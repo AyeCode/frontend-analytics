@@ -1,0 +1,21 @@
+{
+  "name": "ayecode/frontend-analytics",
+  "type": "project",
+  "description": "Display frontend analytics on the frontend",
+  "keywords": ["frontend analytics", "wordpress"],
+  "homepage": "https://wpgeodirectory.com/downloads/frontend-analytics/",
+  "license": "GPL-3.0-or-later",
+  "authors": [
+    {
+      "name": "AyeCode Ltd",
+      "email": "contact@ayecode.io",
+      "homepage": "https://ayecode.io/",
+      "role": "Developer"
+    }
+  ],
+  "require": {
+    "php": ">=5.3.0",
+    "ayecode/wp-super-duper": "^1.0"
+  },
+  "minimum-stability": "dev"
+}

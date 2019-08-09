@@ -1,0 +1,49 @@
+<?php
+/**
+ * This is the main Advertising plugin file, here we declare and call the important stuff
+ *
+ * @package     frontend-analytics
+ * @copyright   2019 AyeCode Ltd
+ * @license     GPLv3
+ * @since       1.0.0
+ *
+ * @frontend-analytics
+ * Plugin Name: Frontend Analytics
+ * Plugin URI: https://wpgeodirectory.com/downloads/frontend-analytics/
+ * Description: View each page's Google Analytics starts on the front-page
+ * Version: 1.0.0
+ * Author: AyeCode Ltd
+ * Author URI: https://wpgeodirectory.com/
+ * Requires at least: 4.4
+ * Tested up to: 5.0.2
+ * License: GPLv3
+ * License URI: http://www.gnu.org/licenses/gpl-3.0.html
+ * Text Domain: frontend-analytics
+ * Domain Path: /languages
+ */
+
+if ( ! defined( 'WPINC' ) ) {
+    die;
+}
+
+if ( ! defined( 'FRONTEND_ANALYTICS_VERSION' ) ) {
+	define( 'FRONTEND_ANALYTICS_VERSION', '1.0.0' );
+}
+
+if ( ! defined( 'FRONTEND_ANALYTICS_PLUGIN_FILE' ) ) {
+	define( 'FRONTEND_ANALYTICS_PLUGIN_FILE', __FILE__ );
+}
+
+// Load the main plugin class
+require_once ( plugin_dir_path( FRONTEND_ANALYTICS_PLUGIN_FILE ) . 'includes/class-frontend-analytics.php' );
+
+/**
+ * Returns an instance of the main plugin file
+ * @since  1.0.0
+ */
+function frontend_analytics() {
+	return Frontend_Analytics::instance();
+}
+	
+//Kickstart plugin execution as soon as all plugins are loaded
+add_action( 'plugins_loaded', array( self::$instance, 'frontend_analytics' ) );
