@@ -42,6 +42,7 @@ class Frontend_Analytics {
 	 */
 	public static function instance() {
 		if ( ! isset( self::$instance ) && ! ( self::$instance instanceof Frontend_Analytics ) ) {
+
             self::$instance = new Frontend_Analytics;
             self::$instance->setup_constants();
 
@@ -104,10 +105,10 @@ class Frontend_Analytics {
         Frontend_Analytics_AJAX::init();
 
         //And settings
-        return new Frontend_Analytics_Settings();
+        new Frontend_Analytics_Settings();
  
         require_once( FRONTEND_ANALYTICS_PLUGIN_DIR . 'includes/functions.php' );
- 
+
         if ( $this->is_request( 'admin' ) || $this->is_request( 'test' ) || $this->is_request( 'cli' ) ) {
             new Frontend_Analytics_Admin();
  

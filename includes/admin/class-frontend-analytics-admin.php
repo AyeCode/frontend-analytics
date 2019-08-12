@@ -20,7 +20,6 @@ class Frontend_Analytics_Admin {
 	 * Constructor.
 	 */
 	public function __construct() {
-		var_dump($this); exit;
 		add_action( 'admin_init', array( $this, 'admin_redirects' ) );
 		add_action( 'admin_menu', array( $this, 'admin_menu' ) );
 	}
@@ -42,7 +41,7 @@ class Frontend_Analytics_Admin {
 	 * renders settings page
 	 */
 	public function render_settings_page() {
-		//
+		Frontend_Analytics_Settings::output();
 	}
 
 	/**
