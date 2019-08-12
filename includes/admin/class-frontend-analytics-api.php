@@ -2,8 +2,8 @@
 /**
  * Google Analytics Stat API.
  *
- * @package    GeoDir_Google_Analytics
- * @since      2.0.0.0
+ * @package    frontend-analytics
+ * @since      1.0.0
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -11,9 +11,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * GeoDir_Google_Analytics_API class.
+ * Frontend_Analytics_API class.
  */
-class GeoDir_Google_Analytics_API {
+class Frontend_Analytics_API {
 
 	var $client = false;
 	var $accountId;
@@ -30,15 +30,15 @@ class GeoDir_Google_Analytics_API {
 
 		// Include the Google Service API
 		if ( ! class_exists( 'Google_Client' ) ) {
-			include_once( GEODIR_GA_PLUGIN_DIR . 'includes/libraries/google-api-php-client/src/Google/autoload.php' );
+			include_once( FRONTEND_ANALYTICS_PLUGIN_DIR . 'includes/libraries/google-api-php-client/src/Google/autoload.php' );
 		}
 
 		$this->client = new Google_Client();
 		$this->client->setApprovalPrompt( 'force' );
 		$this->client->setAccessType( 'offline' );
-		$this->client->setClientId( GEODIR_GA_CLIENTID );
-		$this->client->setClientSecret( GEODIR_GA_CLIENTSECRET );
-		$this->client->setRedirectUri( GEODIR_GA_REDIRECT );
+		$this->client->setClientId( FRONTEND_ANALYTICS_CLIENTID );
+		$this->client->setClientSecret( FRONTEND_ANALYTICS_CLIENTSECRET );
+		$this->client->setRedirectUri( FRONTEND_ANALYTICS_REDIRECT );
 		$this->client->setScopes( array( 'https://www.googleapis.com/auth/analytics' ) );
 
 		try {
@@ -50,7 +50,7 @@ class GeoDir_Google_Analytics_API {
 	}
 
 	function checkLogin() {
-		$ga_google_authtoken = geodir_get_option( 'ga_auth_token' );
+		$ga_google_authtoken = frontend_analytics_get_option( 'ga_auth_token' );
 
 		if ( ! empty( $ga_google_authtoken ) ) {
 			try {
@@ -65,7 +65,7 @@ class GeoDir_Google_Analytics_API {
 				return false;
 			}
 		} else {
-			$authCode = geodir_get_option( 'ga_auth_code' );
+			$authCode = frontend_analytics_get_option( 'auth_code' );
 
 			if ( empty( $authCode ) ) {
 				return false;
@@ -85,7 +85,7 @@ class GeoDir_Google_Analytics_API {
 
 			if ( $accessToken ) {
 				$this->client->setAccessToken( $accessToken );
-				geodir_update_option( 'ga_auth_token', $accessToken );
+				frontend_analytics_update_option( 'auth_token', $accessToken );
 			} else {
 				return false;
 			}
@@ -96,12 +96,12 @@ class GeoDir_Google_Analytics_API {
 	}
 
 	function deauthorize() {
-            geodir_update_option( 'ga_auth_code', '' );
-            geodir_update_option( 'ga_auth_token', '' );
+		frontend_analytics_update_option( 'auth_code', '' );
+		frontend_analytics_update_option( 'auth_token', '' );
 	}
 
 	function getSingleProfile() {
-		$webproperty_id = geodir_get_option( 'ga_account_id' );
+		$webproperty_id = frontend_analytics_get_option( 'account_id' );
 		if ( empty( $webproperty_id ) ) {
 			return false;
 		}

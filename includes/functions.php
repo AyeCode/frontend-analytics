@@ -1,16 +1,5 @@
 <?php
-/**
- * Google analystics related functions.
- *
- * @since 1.0.0
- * @package GeoDirectory
- */
 
-function goedir_ga_register_widgets() {
-	if ( get_option( 'geodir_ga_version' ) ) {
-		register_widget( 'GeoDir_Google_Analytics_Widget_Post_Analytics' );
-	}
-}
 
 /**
  * Formats seconds into to h:m:s.
@@ -21,7 +10,7 @@ function goedir_ga_register_widgets() {
  * @param bool $padHours Whether add leading zero for less than 10 hours. Default false.
  * @return string h:m:s format.
  */
-function geodir_ga_sec2hms( $sec, $padHours = false ) {
+function frontend_analytics_sec2hms( $sec, $padHours = false ) {
     // holds formatted string
     $hms = "";
     // there are 3600 seconds in an hour, so if we
@@ -62,7 +51,7 @@ function geodir_ga_sec2hms( $sec, $padHours = false ) {
  * @param bool   $ga_end The end date of the data to include in YYYY-MM-DD format.
  * @return string Html text content.
  */
-function geodir_ga_get_analytics( $page, $ga_start, $ga_end ) {
+function frontend_analytics_get_analytics( $page, $ga_start, $ga_end ) {
     // NEW ANALYTICS
     $start_date = '';
     $end_date = '';
@@ -100,7 +89,7 @@ function geodir_ga_get_analytics( $page, $ga_start, $ga_end ) {
     }
 
     # Create a new Gdata call
-    $gaApi = new GeoDir_Google_Analytics_API();
+    $gaApi = new Frontend_Analytics_API();
 
     # Check if Google sucessfully logged in
     if ( ! $gaApi->checkLogin() ) {
@@ -131,23 +120,23 @@ function geodir_ga_get_analytics( $page, $ga_start, $ga_end ) {
     exit;
 }
 
-function geodir_ga_get_token() {
-    $at = geodir_get_option( 'gd_ga_access_token' );
+function frontend_analytics_get_token() {
+    $at = frontend_analytics_get_option( 'access_token' );
     $use_url = "https://www.googleapis.com/oauth2/v1/tokeninfo?access_token=" . $at;
     $response = wp_remote_get( $use_url, array( 'timeout' => 15 ) );
 
     if ( ! empty( $response['response']['code'] ) && $response['response']['code'] == 200 ) { // access token is valid
 		return $at;
     } else { // get new access token
-        $refresh_at = geodir_get_option( 'gd_ga_refresh_token' );
+        $refresh_at = frontend_analytics_get_option( 'refresh_token' );
         if ( ! $refresh_at ) {
             echo json_encode( array( 'error' => __( 'Not authorized, please click authorized in GD > Google analytic settings.', 'geodir-ga' ) ) );
 			exit;
         }
 
         $rat_url = "https://www.googleapis.com/oauth2/v3/token?";
-        $client_id = "client_id=" . geodir_get_option('ga_client_id');
-        $client_secret = "&client_secret=" . geodir_get_option('ga_client_secret');
+        $client_id = "client_id=" . frontend_analytics_get_option('client_id');
+        $client_secret = "&client_secret=" . frontend_analytics_get_option('client_secret');
         $refresh_token = "&refresh_token=" . $refresh_at;
         $grant_type = "&grant_type=refresh_token";
 
@@ -156,7 +145,7 @@ function geodir_ga_get_token() {
         $rat_response = wp_remote_post( $rat_url_use, array( 'timeout' => 15 ) );
         if ( ! empty( $rat_response['response']['code'] ) && $rat_response['response']['code'] == 200 ) {
             $parts = json_decode( $rat_response['body'] );
-            geodir_update_option( 'gd_ga_access_token', $parts->access_token );
+            frontend_analytics_update_option( 'access_token', $parts->access_token );
             return $parts->access_token;
         } else {
             echo json_encode( array( 'error' => __( 'Login failed', 'geodir-ga' ) ) );
@@ -166,7 +155,7 @@ function geodir_ga_get_token() {
 }
 
 /**
- * Outputs the google analytics section on details page.
+ * Outputs the google analytics section on page.
  *
  * Outputs the google analytics html if the current logged in user owns the post.
  *
@@ -174,32 +163,32 @@ function geodir_ga_get_token() {
  * @since 1.0.0
  * @package GeoDirectory
  */
-function geodir_ga_display_analytics($args = array()) {
+function frontend_analytics_display_analytics($args = array()) {
     global $post, $preview;
 
     if ( $preview || empty( $post ) ) {
 		return;
 	}
 
-    $id = trim( geodir_get_option( 'ga_account_id' ) );
+    $id = trim( frontend_analytics_get_option( 'account_id' ) );
 
     if ( ! $id ) {
         return; // if no Google Analytics ID then bail.
     }
 
-	if ( ! geodir_ga_check_post_google_analytics( $post ) ) {
+	if ( ! frontend_analytics_check_post_google_analytics( $post ) ) {
 		return;
 	}
 
     ob_start(); // Start buffering;
     /**
-     * This is called before the edit post link html in the function geodir_detail_page_google_analytics()
+     * This is called before the edit post link html in the function frontend_analytics_display_analytics()
      *
      * @since 1.0.0
      */
-    do_action( 'geodir_before_google_analytics' );
+    do_action( 'frontend_analytics_before_google_analytics' );
     
-    $refresh_time = geodir_get_option( 'ga_refresh_time', 5 );
+    $refresh_time = frontend_analytics_get_option( 'refresh_time', 5 );
     /**
      * Filter the time interval to check & refresh new users results.
      *
@@ -207,13 +196,13 @@ function geodir_ga_display_analytics($args = array()) {
      *
      * @param int $refresh_time Time interval to check & refresh new users results.
      */
-    $refresh_time = apply_filters('geodir_google_analytics_refresh_time', $refresh_time);
+    $refresh_time = apply_filters('frontend_analytics_refresh_time', $refresh_time);
     $refresh_time = absint( $refresh_time ) * 1000;
     
-    $hide_refresh = geodir_get_option('ga_auto_refresh');
+    $hide_refresh = frontend_analytics_get_option('auto_refresh');
     
     $auto_refresh = $hide_refresh && $refresh_time && $refresh_time > 0 ? 1 : 0;
-    if (geodir_get_option('ga_stats')) {
+    if (frontend_analytics_get_option('stats')) {
         $page_url = urlencode($_SERVER['REQUEST_URI']);
         ?>
 <script type="text/javascript">
@@ -252,34 +241,34 @@ jQuery(document).ready(function() {
 });
 
 function gdga_weekVSweek() {
-	jQuery.ajax({url: "<?php echo admin_url('admin-ajax.php?action=geodir_ga_stats&ga_page='.$page_url.'&ga_type=thisweek'); ?>", success: function(result){
+	jQuery.ajax({url: "<?php echo admin_url('admin-ajax.php?action=frontend_analytics_stats&ga_page='.$page_url.'&ga_type=thisweek'); ?>", success: function(result){
 		ga_data1 = jQuery.parseJSON(result);
 		if(ga_data1.error){jQuery('#ga_stats').html(result);return;}
 		gd_renderWeekOverWeekChart();
 	}});
 
-	jQuery.ajax({url: "<?php echo admin_url('admin-ajax.php?action=geodir_ga_stats&ga_page='.$page_url.'&ga_type=lastweek'); ?>", success: function(result){
+	jQuery.ajax({url: "<?php echo admin_url('admin-ajax.php?action=frontend_analytics_stats&ga_page='.$page_url.'&ga_type=lastweek'); ?>", success: function(result){
 		ga_data2 = jQuery.parseJSON(result);
 		gd_renderWeekOverWeekChart();
 	}});
 }
 
 function gdga_yearVSyear() {
-	jQuery.ajax({url: "<?php echo admin_url('admin-ajax.php?action=geodir_ga_stats&ga_page='.$page_url.'&ga_type=thisyear'); ?>", success: function(result){
+	jQuery.ajax({url: "<?php echo admin_url('admin-ajax.php?action=frontend_analytics_stats&ga_page='.$page_url.'&ga_type=thisyear'); ?>", success: function(result){
 		ga_data3 = jQuery.parseJSON(result);
 		if(ga_data3.error){jQuery('#ga_stats').html(result);return;}
 
 		gd_renderYearOverYearChart()
 	}});
 
-	jQuery.ajax({url: "<?php echo admin_url('admin-ajax.php?action=geodir_ga_stats&ga_page='.$page_url.'&ga_type=lastyear'); ?>", success: function(result){
+	jQuery.ajax({url: "<?php echo admin_url('admin-ajax.php?action=frontend_analytics_stats&ga_page='.$page_url.'&ga_type=lastyear'); ?>", success: function(result){
 		ga_data4 = jQuery.parseJSON(result);
 		gd_renderYearOverYearChart()
 	}});
 }
 
 function gdga_country() {
-	jQuery.ajax({url: "<?php echo admin_url('admin-ajax.php?action=geodir_ga_stats&ga_page='.$page_url.'&ga_type=country'); ?>", success: function(result){
+	jQuery.ajax({url: "<?php echo admin_url('admin-ajax.php?action=frontend_analytics_stats&ga_page='.$page_url.'&ga_type=country'); ?>", success: function(result){
 		ga_data5 = jQuery.parseJSON(result);
 		if(ga_data5.error){jQuery('#ga_stats').html(result);return;}
 		gd_renderTopCountriesChart();
@@ -287,7 +276,7 @@ function gdga_country() {
 }
 
 function gdga_realtime(dom_ready) {
-	jQuery.ajax({url: "<?php echo admin_url('admin-ajax.php?action=geodir_ga_stats&ga_page='.$page_url.'&ga_type=realtime'); ?>", success: function(result) {
+	jQuery.ajax({url: "<?php echo admin_url('admin-ajax.php?action=frontend_analytics_stats&ga_page='.$page_url.'&ga_type=realtime'); ?>", success: function(result) {
 		ga_data6 = jQuery.parseJSON(result);
 		if (ga_data6.error) {
 			jQuery('#ga_stats').html(result);
@@ -641,7 +630,7 @@ function gdga_refresh(stop) {
     $content_html = ob_get_clean();
     if (trim($content_html) != '')
         $content_html = '<div class="geodir-details-sidebar-google-analytics">' . $content_html . '</div>';
-    if ((int)geodir_get_option('geodir_disable_google_analytics_section') != 1) {
+    if ((int)frontend_analytics_get_option('disable_google_analytics_section') != 1) {
         /**
          * Filter the geodir_edit_post_link() function content.
          *
@@ -654,32 +643,45 @@ function gdga_refresh(stop) {
 /**
  * Loads Google Analytics JS on header.
  *
- * WP Admin -> Geodirectory -> Settings -> Google Analytics -> Google analytics tracking code.
  *
  * @since 1.0.0
- * @package GeoDirectory
  */
-function geodir_ga_add_tracking_code() {
-    if ( geodir_get_option( 'ga_add_tracking_code' ) && ( $account_id = geodir_get_option( 'ga_account_id' ) ) ) { ?>
+function frontend_analytics_add_tracking_code() {
+    if ( frontend_analytics_get_option( 'add_tracking_code' ) && ( $account_id = frontend_analytics_get_option( 'account_id' ) ) ) { ?>
 <script>
 	(function(i,s,o,g,r,a,m){ i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 			(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
 		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
 	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 	ga('create', '<?php echo esc_attr( $account_id ); ?>', 'auto');
-	<?php if ( geodir_get_option( 'ga_anonymize_ip' ) ) { echo "ga('set', 'anonymizeIP', true);"; } ?>
+	<?php if ( frontend_analytics_get_option( 'anonymize_ip' ) ) { echo "ga('set', 'anonymizeIP', true);"; } ?>
 	ga('send', 'pageview');
 </script>
         <?php
-    } elseif ( ( $tracking_code = geodir_get_option( 'ga_tracking_code' ) ) && ! geodir_get_option( 'ga_account_id' ) ) {
-        echo stripslashes( geodir_get_option( 'ga_tracking_code' ) );
+    } elseif ( ( $tracking_code = frontend_analytics_get_option( 'tracking_code' ) ) && ! frontend_analytics_get_option( 'account_id' ) ) {
+        echo stripslashes( frontend_analytics_get_option( 'tracking_code' ) );
     }
 }
 
-function geodir_ga_check_post_google_analytics( $post ) {
-	$package = geodir_get_post_package( $post );
+function frontend_analytics_check_post_google_analytics( $post ) {
+	return apply_filters( 'frontend_analytics_check_post_google_analytics', true, $post );
+}
 
-	$check = ! empty( $package->google_analytics ) ? true : false;
 
-	return apply_filters( 'geodir_ga_check_post_google_analytics', $check, $post );
+function frontend_analytics_get_option( $name ){
+	$fa 			= frontend_analytics();
+	$options 		= $fa->get_options();
+	
+	if( isset( $options[ $name ] ) ) {
+		return $options[ $name ];
+	}
+
+	return null;
+}
+
+function frontend_analytics_update_option( $name, $value ){
+	$fa 			= frontend_analytics();
+	$options 		= $fa->get_options();
+	$options[$name] = $value;
+	$fa->update_options( $options );
 }

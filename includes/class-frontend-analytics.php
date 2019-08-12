@@ -51,7 +51,7 @@ class Frontend_Analytics {
             self::$instance->includes();
             self::$instance->init_hooks();
 
-            do_action( 'geodir_google_analytics_loaded' );
+            do_action( 'frontend_analytics_loaded' );
         }
  
         return self::$instance;
@@ -102,6 +102,9 @@ class Frontend_Analytics {
  
         //Init our ajax handler
         Frontend_Analytics_AJAX::init();
+
+        //And settings
+        return new Frontend_Analytics_Settings();
  
         require_once( FRONTEND_ANALYTICS_PLUGIN_DIR . 'includes/functions.php' );
  
@@ -111,7 +114,6 @@ class Frontend_Analytics {
             require_once( FRONTEND_ANALYTICS_PLUGIN_DIR . 'includes/admin/class-frontend-analytics-api.php' );
             require_once( FRONTEND_ANALYTICS_PLUGIN_DIR . 'includes/admin/admin-functions.php' );
  
-            Frontend_Analytics_Admin_Install::init();        
         }
     }
     

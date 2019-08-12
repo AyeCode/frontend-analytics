@@ -43,7 +43,7 @@ class Frontend_Analytics_AJAX {
 				add_action( 'wp_ajax_nopriv_frontend_analytics_' . $ajax_event, array( __CLASS__, $ajax_event ) );
 
 				// Frontend analytics AJAX can be used for frontend ajax requests.
-				add_action( 'geodir_frontend_analytics_ajax_' . $ajax_event, array( __CLASS__, $ajax_event ) );
+				add_action( 'frontend_analytics_ajax_' . $ajax_event, array( __CLASS__, $ajax_event ) );
 			}
 		}
 	}
@@ -80,14 +80,14 @@ class Frontend_Analytics_AJAX {
 		$fa = frontend_analytics();
 		$options = $fa->get_options();
 
-		$options['frontend_analytics_auth_token'] = '';
-		$options['frontend_analytics_auth_code'] = '';
-		$options['frontend_analytics_uids'] = '';
-		$options['frontend_analytics_account_id'] = '';
+		$options['auth_token'] = '';
+		$options['auth_code'] = '';
+		$options['uids'] = '';
+		$options['account_id'] = '';
 
 		$fa->update_options( $options );
 
-		echo admin_url( 'admin.php?page=gd-settings&tab=analytics' );
+		echo admin_url( 'admin.php?page=frontend-analytics' );
 
 		wp_die( -1 );
 	}
@@ -105,15 +105,15 @@ class Frontend_Analytics_AJAX {
 
 			$response = wp_remote_post( $auth_url, array( 'timeout' => 15 ) );
 
-			$error_msg =  __('Something went wrong','geodirectory');
+			$error_msg =  __('Something went wrong','frontend-analytics');
 			if ( ! empty( $response['response']['code'] ) && $response['response']['code'] == 200 ) {
 				$parts = json_decode( $response['body'] );
 				if ( ! isset( $parts->access_token ) ) {
 					echo $error_msg . " - #1";
 					exit;
 				} else {
-					rontend_analytics_update_option( 'gd_ga_access_token', $parts->access_token );
-					rontend_analytics_update_option( 'gd_ga_refresh_token', $parts->refresh_token );
+					frontend_analytics_update_option( 'access_token', $parts->access_token );
+					frontend_analytics_update_option( 'refresh_token', $parts->refresh_token );
 					?><script>window.close();</script><?php
 				}
 			} elseif ( ! empty( $response['response']['code'] ) ) {
@@ -131,6 +131,6 @@ class Frontend_Analytics_AJAX {
 				exit;
 			}
 		}
-		geodir_die();
+		die();
 	}
 }

@@ -165,10 +165,10 @@ if ( ! class_exists( 'Frontend_Analytics_Settings', false ) ) :
 			return add_query_arg( 
 				array(
 					'next'          => admin_url( 'admin.php?page=geodirectory&active_tab=google_analytic_settings' ),
-					'scope'         => GEODIR_GA_SCOPE,
+					'scope'         => FRONTEND_ANALYTICS_SCOPE,
 					'response_type' => 'code',
-					'redirect_uri'  => GEODIR_GA_REDIRECT,
-					'client_id'     => GEODIR_GA_CLIENTID,
+					'redirect_uri'  => FRONTEND_ANALYTICS_REDIRECT,
+					'client_id'     => FRONTEND_ANALYTICS_CLIENTID,
 				), 
 				'https://accounts.google.com/o/oauth2/auth' 
 			);
@@ -176,8 +176,8 @@ if ( ! class_exists( 'Frontend_Analytics_Settings', false ) ) :
 
 
 		public static function analytics_accounts(){
-			$ga_account_id = geodir_get_option( 'ga_account_id' );
-			$ga_auth_code = geodir_get_option( 'ga_auth_code' );
+			$ga_account_id = frontend_analytics_get_option( 'account_id' );
+			$ga_auth_code = frontend_analytics_get_option( 'auth_code' );
 			
 			$accounts = array();
 			$useAuth = $ga_auth_code == '' ? false : true;
@@ -207,17 +207,17 @@ if ( ! class_exists( 'Frontend_Analytics_Settings', false ) ) :
 			}
 			$accounts = array();
 
-			if ( geodir_get_option( 'ga_auth_token' ) === false ) {
-				geodir_update_option( 'ga_auth_token', '' );
+			if ( frontend_analytics_get_option( 'auth_token' ) === false ) {
+				frontend_analytics_update_option( 'auth_token', '' );
 			}
 
-			if ( geodir_get_option( 'ga_uids' ) && ! isset( $_POST['ga_auth_code'] ) ) {
-				return geodir_get_option( 'ga_uids' );
+			if ( frontend_analytics_get_option( 'uids' ) && ! isset( $_POST['auth_code'] ) ) {
+				return frontend_analytics_get_option( 'uids' );
 			}
 
 			# Create a new Gdata call
-			if ( trim( geodir_get_option( 'ga_auth_code' ) ) != '' )
-				$stats = new GeoDir_Google_Analytics_API();
+			if ( trim( frontend_analytics_get_option( 'auth_code' ) ) != '' )
+				$stats = new Frontend_Analytics_API();
 			else
 				return false;
 
@@ -237,7 +237,7 @@ if ( ! class_exists( 'Frontend_Analytics_Settings', false ) ) :
 
 			# Return the account array if there are accounts
 			if ( count( $accounts ) > 0 ) {
-				geodir_update_option( 'ga_uids', $accounts );
+				frontend_analytics_update_option( 'uids', $accounts );
 				return $accounts;
 			}
 			else
@@ -246,5 +246,3 @@ if ( ! class_exists( 'Frontend_Analytics_Settings', false ) ) :
 	}
 
 endif;
-
-return new GeoDir_Settings_Analytics();

@@ -46,4 +46,4 @@ function frontend_analytics() {
 }
 	
 //Kickstart plugin execution as soon as all plugins are loaded
-add_action( 'plugins_loaded', array( self::$instance, 'frontend_analytics' ) );
+add_action( 'plugins_loaded', 'frontend_analytics' );
