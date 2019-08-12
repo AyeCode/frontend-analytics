@@ -1,0 +1,165 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Frontend Analytics\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-08-12 13:07+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: \n"
+"Language: \n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Loco https://localise.biz/\n"
+"X-Loco-Version: 2.3.0; wp-5.2.2"
+
+#: includes/admin/settings/class-frontend-analytics-settings.php:186
+msgid "Account re-authorization may be required"
+msgstr ""
+
+#: includes/admin/settings/class-frontend-analytics-settings.php:119
+msgid "Add tracking code to site?"
+msgstr ""
+
+#: includes/widgets/class-frontend-analytics-widget-analytics.php:68
+msgid "Administrator"
+msgstr ""
+
+#: includes/admin/settings/class-frontend-analytics-settings.php:110
+msgid "Analytics Account"
+msgstr ""
+
+#: includes/admin/settings/class-frontend-analytics-settings.php:126
+msgid "Anonymize user IP?"
+msgstr ""
+
+#: includes/admin/settings/class-frontend-analytics-settings.php:323
+msgid "Authorized"
+msgstr ""
+
+#: includes/admin/settings/class-frontend-analytics-settings.php:134
+msgid "Auto refresh active users?"
+msgstr ""
+
+#. Author of the plugin
+msgid "AyeCode Ltd"
+msgstr ""
+
+#: includes/widgets/class-frontend-analytics-widget-analytics.php:55
+msgid "Button text:"
+msgstr ""
+
+#: includes/admin/settings/class-frontend-analytics-settings.php:322
+msgid "Deauthorize"
+msgstr ""
+
+#: includes/widgets/class-frontend-analytics-widget-analytics.php:70
+msgid "Everyone"
+msgstr ""
+
+#: includes/widgets/class-frontend-analytics-widget-analytics.php:69
+msgid "Everyone logged in"
+msgstr ""
+
+#. Name of the plugin
+#: includes/widgets/class-frontend-analytics-widget-analytics.php:32
+#: includes/widgets/class-frontend-analytics-widget-analytics.php:39
+msgid "Frontend Analytics"
+msgstr ""
+
+#: includes/admin/settings/class-frontend-analytics-settings.php:327
+msgid "Get Auth Code"
+msgstr ""
+
+#: includes/admin/settings/class-frontend-analytics-settings.php:94
+msgid "Google analytics access"
+msgstr ""
+
+#: includes/admin/settings/class-frontend-analytics-settings.php:102
+msgid "Google analytics Auth Code"
+msgstr ""
+
+#: includes/widgets/class-frontend-analytics-widget-analytics.php:64
+msgid "Google Analytics visible to:"
+msgstr ""
+
+#: includes/widgets/class-frontend-analytics-widget-analytics.php:65
+msgid "Google Analytics will be visible to selected users only."
+msgstr ""
+
+#. Author URI of the plugin
+msgid "https://wpgeodirectory.com/"
+msgstr ""
+
+#. URI of the plugin
+msgid "https://wpgeodirectory.com/downloads/frontend-analytics/"
+msgstr ""
+
+#: includes/admin/settings/class-frontend-analytics-settings.php:135
+msgid ""
+"If ticked it uses the auto refresh time below, if not it never refreshes "
+"unless the refresh button is clicked."
+msgstr ""
+
+#: includes/admin/settings/class-frontend-analytics-settings.php:127
+msgid ""
+"In most cases this is not required, this is to comply with certain country "
+"laws such as Germany."
+msgstr ""
+
+#: includes/admin/settings/class-frontend-analytics-settings.php:183
+msgid "Select Account"
+msgstr ""
+
+#: includes/admin/settings/class-frontend-analytics-settings.php:111
+msgid "Select the account that you setup for this site."
+msgstr ""
+
+#: includes/widgets/class-frontend-analytics-widget-analytics.php:58
+msgid "Show Google Analytics"
+msgstr ""
+
+#: includes/widgets/class-frontend-analytics-widget-analytics.php:42
+msgid "Show google analytics stats on your website front page."
+msgstr ""
+
+#: includes/class-frontend-analytics-ajax.php:108
+msgid "Something went wrong"
+msgstr ""
+
+#: includes/widgets/class-frontend-analytics-widget-analytics.php:56
+msgid "The text to use for the button to show the analytics:"
+msgstr ""
+
+#: includes/widgets/class-frontend-analytics-widget-analytics.php:48
+msgid "The widget title:"
+msgstr ""
+
+#: includes/admin/settings/class-frontend-analytics-settings.php:120
+msgid "This will automatically add the correct tracking code to your site"
+msgstr ""
+
+#: includes/admin/settings/class-frontend-analytics-settings.php:142
+msgid "Time interval for auto refresh active users"
+msgstr ""
+
+#: includes/admin/settings/class-frontend-analytics-settings.php:143
+msgid ""
+"Time interval in seconds to auto refresh active users. The active users will "
+"be auto refreshed after this time interval. Leave blank or use 0(zero) to "
+"disable auto refresh. Default: 5"
+msgstr ""
+
+#: includes/widgets/class-frontend-analytics-widget-analytics.php:47
+msgid "Title:"
+msgstr ""
+
+#. Description of the plugin
+msgid "View each page's Google Analytics starts on the front-page"
+msgstr ""
+
+#: includes/admin/settings/class-frontend-analytics-settings.php:103
+msgid "You must save this setting before accounts will show."
+msgstr ""

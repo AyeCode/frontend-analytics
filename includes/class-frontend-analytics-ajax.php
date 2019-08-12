@@ -31,9 +31,9 @@ class Frontend_Analytics_AJAX {
 	public static function add_ajax_events() {
 		
 		$ajax_events = array(
-			'ga_stats' 		 => true,
-			'ga_deauthorize' => false,
-			'ga_callback'    => false,
+			'stats' 		 => true,
+			'deauthorize' => false,
+			'callback'    => false,
 		);
 
 		foreach ( $ajax_events as $ajax_event => $nopriv ) {
@@ -48,7 +48,7 @@ class Frontend_Analytics_AJAX {
 		}
 	}
 
-	public static function ga_stats() {
+	public static function stats() {
 		if ( isset( $_REQUEST['ga_start'] ) ) {
 			$ga_start = $_REQUEST['ga_start'];
 		} else {
@@ -70,7 +70,7 @@ class Frontend_Analytics_AJAX {
 	/**
 	 * Deauthorize Google Analytics
 	 */
-	public static function ga_deauthorize(){
+	public static function deauthorize(){
 		// security
 		check_ajax_referer( 'frontend_analytics_deauthorize', '_wpnonce' );
 		if ( ! current_user_can( 'manage_options' ) ) {
@@ -92,7 +92,7 @@ class Frontend_Analytics_AJAX {
 		wp_die( -1 );
 	}
 	
-	public static function ga_callback(){
+	public static function callback(){
 		if ( ! empty( $_REQUEST['code'] )) {
 			$oAuthURL = "https://www.googleapis.com/oauth2/v3/token?";
 			$code = "code=" . sanitize_text_field( $_REQUEST['code'] );

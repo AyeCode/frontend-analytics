@@ -111,9 +111,6 @@ class Frontend_Analytics {
 
         if ( $this->is_request( 'admin' ) || $this->is_request( 'test' ) || $this->is_request( 'cli' ) ) {
             new Frontend_Analytics_Admin();
- 
-            require_once( FRONTEND_ANALYTICS_PLUGIN_DIR . 'includes/admin/admin-functions.php' );
- 
         }
     }
     

@@ -144,7 +144,6 @@ if ( ! class_exists( 'Frontend_Analytics_Settings', false ) ) :
 						'id' => 'refresh_time',
 						'el' => 'input',
 						'std' => '5',
-						'class' => 'gd-advanced-setting',
 						'advanced' => true
 					),
 				)
