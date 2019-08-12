@@ -166,7 +166,7 @@ function frontend_analytics_get_token() {
 function frontend_analytics_display_analytics($args = array()) {
     global $post, $preview;
 
-    if ( $preview || empty( $post ) ) {
+    if ( $preview ) {
 		return;
 	}
 
@@ -198,11 +198,11 @@ function frontend_analytics_display_analytics($args = array()) {
      */
     $refresh_time = apply_filters('frontend_analytics_refresh_time', $refresh_time);
     $refresh_time = absint( $refresh_time ) * 1000;
-    
+ 
     $hide_refresh = frontend_analytics_get_option('auto_refresh');
     
     $auto_refresh = $hide_refresh && $refresh_time && $refresh_time > 0 ? 1 : 0;
-    if (frontend_analytics_get_option('stats')) {
+    if (true) {
         $page_url = urlencode($_SERVER['REQUEST_URI']);
         ?>
 <script type="text/javascript">
@@ -671,7 +671,7 @@ function frontend_analytics_check_post_google_analytics( $post ) {
 function frontend_analytics_get_option( $name ){
 	$fa 			= frontend_analytics();
 	$options 		= $fa->get_options();
-	
+
 	if( isset( $options[ $name ] ) ) {
 		return $options[ $name ];
 	}

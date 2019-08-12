@@ -50,13 +50,13 @@ class Frontend_Analytics_API {
 	}
 
 	function checkLogin() {
-		$ga_google_authtoken = frontend_analytics_get_option( 'ga_auth_token' );
+		$ga_google_authtoken = frontend_analytics_get_option( 'auth_token' );
 
 		if ( ! empty( $ga_google_authtoken ) ) {
 			try {
 				$this->client->setAccessToken( $ga_google_authtoken );
 			} catch( Google_AuthException $e ) {
-				print '<div id="message" class="error inline"><p>(cas:72) GeoDirectory was unable to authenticate you with
+				print '<div id="message" class="error inline"><p>(cas:72) Unable to authenticate you with
 						Google using the Auth Token you pasted into the input box on the previous step. <br>
 						This could mean either you pasted the token wrong, or the time/date on your server is wrong,
 						or an SSL issue preventing Google from Authenticating. <br>
@@ -74,7 +74,7 @@ class Frontend_Analytics_API {
 			try {
 				$accessToken = $this->client->authenticate( $authCode );
 			} catch( Exception $e ) {
-				print '<div id="message" class="error inline"><p>(cas:72) GeoDirectory was unable to authenticate you with
+				print '<div id="message" class="error inline"><p>(cas:72) Unable to authenticate you with
 						Google using the Auth Token you pasted into the input box on the previous step. <br>
 						This could mean either you pasted the token wrong, or the time/date on your server is wrong,
 						or an SSL issue preventing Google from Authenticating. <br>
@@ -82,7 +82,7 @@ class Frontend_Analytics_API {
 
 				return false;
 			}
-
+			
 			if ( $accessToken ) {
 				$this->client->setAccessToken( $accessToken );
 				frontend_analytics_update_option( 'auth_token', $accessToken );

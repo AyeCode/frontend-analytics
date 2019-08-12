@@ -16,12 +16,15 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 class Frontend_Analytics_Admin {
 
+	static $default_options = array();
+
 	/**
 	 * Constructor.
 	 */
 	public function __construct() {
 		add_action( 'admin_init', array( $this, 'admin_redirects' ) );
 		add_action( 'admin_menu', array( $this, 'admin_menu' ) );
+		Frontend_Analytics_Admin::$default_options = wp_list_pluck( Frontend_Analytics_Settings::get_settings(), 'std', 'id');
 	}
 
 	/**

@@ -73,7 +73,7 @@ class Frontend_Analytics_Autoloader {
         }
 
         $file  = $this->get_file_name_from_class( $class );
-        $path  = '';
+        $path  = $this->include_path;
 
         if ( strpos( $class, 'frontend_analytics_admin' ) === 0 ) {
             $path = $this->include_path . 'admin/';

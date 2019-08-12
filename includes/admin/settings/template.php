@@ -4,10 +4,10 @@
     <form class="frontend-analytics-settings-tab-main-form" method="post" action="<?php echo admin_url('admin.php?page=frontend-analytics') ?>">
         <table class="form-table">
             <tbody>
-                <?php foreach ( Frontend_Analytics_Settings::get_settings() as $id => $args ) {?>
+                <?php foreach ( Frontend_Analytics_Settings::get_settings() as $args ) {?>
                     <tr>
                         <th scope="row"><?php if(! empty( $args['name'] ) ) echo $args['name']; ?></th>
-                        <td><?php Frontend_Analytics_Settings::render_field(  $id, $args  )?></td>
+                        <td><?php Frontend_Analytics_Settings::render_field(  $args['id'], $args  )?></td>
                     </tr>
                 <?php } ?>
             </tbody>

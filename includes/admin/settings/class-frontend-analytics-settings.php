@@ -51,10 +51,36 @@ if ( ! class_exists( 'Frontend_Analytics_Settings', false ) ) :
 				return;
 			}
 
-			$settings = self::get_settings( $current_section );
+			//Prepare the settings
+			$registered_settings = self::get_settings();
+			$posted_settings     = $_POST;
+			unset( $posted_settings['_wpnonce'] );
+			unset( $posted_settings['_wp_http_referer'] );
+	
+			//Sanitize the settings
+			$options = self::sanitize_settings( $registered_settings, $posted_settings );
 
-			GeoDir_Admin_Settings::save_fields( $settings );
+			//Then save them
+			$fa 		 = frontend_analytics();
+			$old_options = $fa->get_options();
+			$options	 = array_replace( $old_options, $options);
+			$fa->update_options( $options );
 		}
+
+		/**
+    	 * Sanitizes settings fields
+    	 */
+    	public static function sanitize_settings( $registered_settings, $posted_settings ) {
+
+        	foreach( $registered_settings as $id=>$args ) {
+
+            	//Deal with checkboxes(unchecked ones are never posted)
+            	if( 'checkbox' == $args['el'] ) {
+                	$posted_settings[$id] = isset( $posted_settings[$id] ) ? '1' : '0';
+            	}
+        	}
+        	return apply_filters( 'frontend_analytics_sanitize_settings', $posted_settings );
+    	}
 
 		/**
 		 * Get settings array.
@@ -64,13 +90,6 @@ if ( ! class_exists( 'Frontend_Analytics_Settings', false ) ) :
 		public static function get_settings() {
 			$settings = apply_filters( 'frontend_analytics_settings', 
 				array(
-					array(
-						'name' => __( 'Enable output widget?', 'frontend-analytics' ),
-						'desc' => __( 'This will enable the output of the analytics output widget.', 'frontend-analytics' ),
-						'id' => 'stats',
-						'std' => '0',
-						'el' => 'checkbox',
-					),
 					array(
 						'name' => __( 'Google analytics access', 'frontend-analytics' ),
 						'desc' => '',
@@ -83,7 +102,7 @@ if ( ! class_exists( 'Frontend_Analytics_Settings', false ) ) :
 						'name' => __( 'Google analytics Auth Code', 'frontend-analytics' ),
 						'desc' => __( 'You must save this setting before accounts will show.', 'frontend-analytics' ),
 						'id' => 'auth_code',
-						'el' => 'text',
+						'el' => 'input',
 						'css' => 'min-width:300px;',
 						'std' => ''
 					),
@@ -165,7 +184,7 @@ if ( ! class_exists( 'Frontend_Analytics_Settings', false ) ) :
 					$accounts = array_merge( array( __( 'Select Account','frontend-analytics' ) ), $accounts );
 				} elseif ( $ga_auth_code ) {
 					$accounts = array();
-					$accounts[ $ga_auth_code ] = __( 'Account re-authorization may be required', 'frontend-analytics' ).' (' . $ga_account_id . ')';
+					$accounts[ $ga_auth_code ] = __( 'Account re-authorization may be required', 'frontend-analytics' );
 				} else {
 					$accounts = array();
 				}
@@ -194,6 +213,7 @@ if ( ! class_exists( 'Frontend_Analytics_Settings', false ) ) :
 			else
 				return false;
 
+			
 			# Check if Google sucessfully logged in
 			if ( ! $stats->checkLogin() )
 				return false;
@@ -202,7 +222,7 @@ if ( ! class_exists( 'Frontend_Analytics_Settings', false ) ) :
 			try {
 				$accounts = $stats->getAllProfiles();
 			} catch ( Exception $e ) {
-				$gd_ga_errors[] = $e->getMessage();
+				$frontend_analytics_errors[$e->getMessage()] = $e->getMessage();
 				return false;
 			}
 
@@ -235,7 +255,7 @@ if ( ! class_exists( 'Frontend_Analytics_Settings', false ) ) :
 		 * Renders a select field
 		 */
 		public static function render_select( $id,  $args ) {
-	
+
 			//set options
 			if( !empty( $args['data'] ) ) {
 				$data = trim( $args['data'] );
@@ -244,14 +264,10 @@ if ( ! class_exists( 'Frontend_Analytics_Settings', false ) ) :
 					$args['options'] = call_user_func( "frontend_analytics_get_$data", $id, $args );
 				}
 			}
-	
-			//Abort early if there are no options
-			if( empty( $args['options'] ) ) {
-				return;
-			}
+			
 			$id           = esc_attr( $id );
 			$value        = isset( $args['value'] ) ? esc_attr( $args['value'] ) : '';
-			$class        = empty( $args['class'] ) ? "regular-select" : esc_attr( $args['class'] ) . " regular-$type";
+			$class        = empty( $args['class'] ) ? "regular-text" : esc_attr( $args['class'] ) . " regular-text";
 			$description  = isset( $args['desc'] ) ? "<p class='description'>{$args['desc']}</p>" : '';
 			echo "<label for='$id'><select class='$class' id='$id' name='$id'>";
 			
@@ -309,7 +325,7 @@ if ( ! class_exists( 'Frontend_Analytics_Settings', false ) ) :
 
 			<?php	} else {	?>
 
-				<span class="button-primary" onclick="window.open('<?php echo Frontend_Analytics_Settings::activation_url();?>', 'activate','width=700, height=600, menubar=0, status=0, location=0, toolbar=0')"><?php _e( 'Authorize', 'frontend-analytics' ); ?></span>
+				<span class="button-primary" onclick="window.open('<?php echo Frontend_Analytics_Settings::activation_url();?>', 'activate','width=700, height=600, menubar=0, status=0, location=0, toolbar=0')"><?php _e( 'Get Auth Code', 'frontend-analytics' ); ?></span>
 
 			<?php	} ?>
 

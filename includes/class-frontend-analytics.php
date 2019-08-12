@@ -112,7 +112,6 @@ class Frontend_Analytics {
         if ( $this->is_request( 'admin' ) || $this->is_request( 'test' ) || $this->is_request( 'cli' ) ) {
             new Frontend_Analytics_Admin();
  
-            require_once( FRONTEND_ANALYTICS_PLUGIN_DIR . 'includes/admin/class-frontend-analytics-api.php' );
             require_once( FRONTEND_ANALYTICS_PLUGIN_DIR . 'includes/admin/admin-functions.php' );
  
         }
@@ -230,8 +229,8 @@ class Frontend_Analytics {
         update_option( 'frontend-analytics-settings', $options );
     }
 
-    public function register_widget() {
-        new Frontend_Analytics_Widget_Analytics();
+    public function register_widgets() {
+        register_widget( 'Frontend_Analytics_Widget_Analytics' );
     }
 
 }
