@@ -64,17 +64,18 @@ class Frontend_Analytics_Admin {
 			exit;
 		}
 
-		// Activation redirect
-		if ( ! get_transient( '_frontend_analytics_activation_redirect' ) ) {
+		$redirected = get_option( 'frontend_analytics_redirected', 0 );
+
+		if( $redirected ) {
 			return;
 		}
-	
-		delete_transient( '_frontend_analytics_activation_redirect' );
 
 		// Bail if activating from network, or bulk
 		if ( is_network_admin() || isset( $_GET['activate-multi'] ) || apply_filters( 'frontend_analytics_prevent_activation_redirect', false ) ) {
 			return;
 		}
+
+		update_option( 'frontend_analytics_redirected', 1 );
 
 		wp_safe_redirect( admin_url( 'admin.php?page=frontend-analytics' ) );
 		exit;

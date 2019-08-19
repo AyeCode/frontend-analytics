@@ -90,14 +90,7 @@ if ( ! class_exists( 'Frontend_Analytics_Settings', false ) ) :
 		public static function get_settings() {
 			$settings = apply_filters( 'frontend_analytics_settings', 
 				array(
-					array(
-						'name' => __( 'Google analytics access', 'frontend-analytics' ),
-						'desc' => '',
-						'id' => 'token',
-						'el' => 'analytics',
-						'css' => 'min-width:300px;',
-						'std' => ''
-					),
+					
 					array(
 						'name' => __( 'Google analytics Auth Code', 'frontend-analytics' ),
 						'desc' => __( 'You must save this setting before accounts will show.', 'frontend-analytics' ),
@@ -106,6 +99,16 @@ if ( ! class_exists( 'Frontend_Analytics_Settings', false ) ) :
 						'css' => 'min-width:300px;',
 						'std' => ''
 					),
+
+					array(
+						'name' => '',
+						'desc' => '',
+						'id' => 'token',
+						'el' => 'analytics',
+						'css' => 'min-width:300px;',
+						'std' => ''
+					),
+
 					array(
 						'name' => __( 'Analytics Account', 'frontend-analytics' ),
 						'desc' => __( 'Select the account that you setup for this site.', 'frontend-analytics' ),

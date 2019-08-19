@@ -199,9 +199,9 @@ function frontend_analytics_display_analytics($args = array()) {
     $refresh_time = apply_filters('frontend_analytics_refresh_time', $refresh_time);
     $refresh_time = absint( $refresh_time ) * 1000;
  
-    $hide_refresh = frontend_analytics_get_option('auto_refresh');
+    $hide_refresh = 0;
     
-    $auto_refresh = $hide_refresh && $refresh_time && $refresh_time > 0 ? 1 : 0;
+    $auto_refresh = 1;
     if (true) {
         $page_url = urlencode($_SERVER['REQUEST_URI']);
         ?>
@@ -231,7 +231,7 @@ jQuery(document).ready(function() {
 		gdga_realtime(true);
 	});
 
-	if (gd_gaAutoRefresh !== 1) {
+	if (true) {
 		jQuery('#gdga-loader-icon').click(function(e) {
 			gdga_refresh();
 			clearTimeout(gd_gaTimeOut);
@@ -303,7 +303,7 @@ function gd_renderRealTime(dom_ready) {
 
 	jQuery('.gd-ActiveUsers-value').html(ga_au);
 
-	if (gd_gaTime > 0 && gd_gaAutoRefresh === 1) {
+	if (gd_gaTime > 0 ) {
 		// check for new users every 5 seconds
 		gd_gaTimeOut = setTimeout(function() {
 			jQuery('.gd-ActiveUsers').removeClass("is-increasing is-decreasing");
