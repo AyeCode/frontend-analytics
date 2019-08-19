@@ -130,16 +130,9 @@ if ( ! class_exists( 'Frontend_Analytics_Settings', false ) ) :
 						'std' => '0',
 						'advanced' => true
 					),
+			
 					array(
-						'name' => __( 'Auto refresh active users?', 'frontend-analytics' ),
-						'desc' => __( 'If ticked it uses the auto refresh time below, if not it never refreshes unless the refresh button is clicked.', 'frontend-analytics' ),
-						'id' => 'auto_refresh',
-						'el' => 'checkbox',
-						'std' => '0',
-						'advanced' => true
-					),
-					array(
-						'name' => __( 'Time interval for auto refresh active users', 'frontend-analytics' ),
+						'name' => __( 'Auto refresh active users every', 'frontend-analytics' ),
 						'desc' => __( 'Time interval in seconds to auto refresh active users. The active users will be auto refreshed after this time interval. Leave blank or use 0(zero) to disable auto refresh. Default: 5', 'frontend-analytics' ),
 						'id' => 'refresh_time',
 						'el' => 'input',

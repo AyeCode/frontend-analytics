@@ -1,7 +1,7 @@
 .idea/
 
 # Vendor
-vendor/
+# vendor/
 
 # Composer
 composer.phar

@@ -226,7 +226,7 @@ jQuery(document).ready(function() {
 
 	jQuery('.gdga-show-analytics').click(function(e) {
 		jQuery(this).hide();
-		jQuery('.gdga-analytics-box').show();
+		jQuery(this).parent().find('.gdga-analytics-box').show();
 		gdga_weekVSweek();
 		gdga_realtime(true);
 	});

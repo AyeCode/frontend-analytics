@@ -29,7 +29,8 @@ class Frontend_Analytics_Widget_Analytics extends WP_Super_Duper {
 			'block-keywords' => "['analytics','ga','google']",
             'block-output'  => array(
                 'element::p'   => array(
-					'content'	 => __( 'Frontend Analytics', 'frontend-analytics' ),
+					'element'	 => 'p',
+					'content'	 => __( 'Frontend Analytics Button Placeholder', 'frontend-analytics' ),
                     'title' 	 => '[%title%]',
                     'user_roles' => '[%user_roles%]',
                 )
