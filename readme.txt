@@ -1,8 +1,8 @@
 === Frontend Google Analytics ===
-Contributors: stiofansisland, paoltaia
+Contributors: stiofansisland, paoltaia, ayecode
 Donate link: https://wpgeodirectory.com/
 Tags: analytics, google analytics, frontend google analytics
-Requires at least: 4.4
+Requires at least: 4.8
 Tested up to: 5.2
 Stable tag: 1.0.0
 License: GPLv2 or later
@@ -12,7 +12,9 @@ Displays Google Analytics stats on the frontend.
 
 == Description ==
 
-Displays Google Analytics stats on the frontend.
+Frontend Google Analytics gives you the ability to add a widget, shortcode or block anywhere on your site that can show selected Google Analytics information.
+
+You can select if the Analytics are show to either "admins", "logged in users" or "all" (including logged out users).
 
 == Installation ==
 
@@ -22,7 +24,9 @@ Displays Google Analytics stats on the frontend.
 
 == Screenshots ==
 
+TBA
+
 == Changelog ==
 
-= 1.0.0-beta =
+= 1.0.0 =
 * Initial release.

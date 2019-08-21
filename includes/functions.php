@@ -81,7 +81,7 @@ function frontend_analytics_get_analytics( $page, $ga_start, $ga_end ) {
         $start_date = "14daysAgo";
         $end_date = "yesterday";
         $dimensions = "ga:country";
-        $sort = "ga:pageviews";
+        $sort = "-ga:pageviews";
         $limit  = 5;
     } elseif (isset($_REQUEST['ga_type']) && $_REQUEST['ga_type'] == 'realtime') {
         $metrics = "rt:activeUsers";
@@ -93,14 +93,14 @@ function frontend_analytics_get_analytics( $page, $ga_start, $ga_end ) {
 
     # Check if Google sucessfully logged in
     if ( ! $gaApi->checkLogin() ) {
-        echo json_encode( array( 'error' => __( 'Please check Google Analytics Settings', 'geodir-ga' ) ) );
+        echo json_encode( array( 'error' => __( 'Please check Google Analytics Settings', 'frontend-analytics' ) ) );
         return false;
     }
 
     $account = $gaApi->getSingleProfile();
 
     if ( ! isset( $account[0]['id'] ) ) {
-        echo json_encode(array('error'=>__('Please check Google Analytics Settings','geodir-ga')));
+        echo json_encode(array('error'=>__('Please check Google Analytics Settings','frontend-analytics')));
         return false;
     }
 
@@ -130,7 +130,7 @@ function frontend_analytics_get_token() {
     } else { // get new access token
         $refresh_at = frontend_analytics_get_option( 'refresh_token' );
         if ( ! $refresh_at ) {
-            echo json_encode( array( 'error' => __( 'Not authorized, please click authorized in GD > Google analytic settings.', 'geodir-ga' ) ) );
+            echo json_encode( array( 'error' => __( 'Not authorized, please click authorized in GD > Google analytic settings.', 'frontend-analytics' ) ) );
 			exit;
         }
 
@@ -148,7 +148,7 @@ function frontend_analytics_get_token() {
             frontend_analytics_update_option( 'access_token', $parts->access_token );
             return $parts->access_token;
         } else {
-            echo json_encode( array( 'error' => __( 'Login failed', 'geodir-ga' ) ) );
+            echo json_encode( array( 'error' => __( 'Login failed', 'frontend-analytics' ) ) );
 			exit;
         }
     }
@@ -161,7 +161,7 @@ function frontend_analytics_get_token() {
  *
  * @global WP_Post|null $post The current post, if available.
  * @since 1.0.0
- * @package GeoDirectory
+ * @package Frontend_Analytics
  */
 function frontend_analytics_display_analytics($args = array()) {
     global $post, $preview;
@@ -210,6 +210,7 @@ var gd_gaTimeOut;
 var gd_gaTime = parseInt('<?php echo $refresh_time;?>');
 var gd_gaHideRefresh = <?php echo (int)$hide_refresh;?>;
 var gd_gaAutoRefresh = <?php echo $auto_refresh;?>;
+var gd_gaPageToken = "<?php echo frontend_analytics_get_page_access_token($args['user_roles']);?>";
 ga_data1 = false;
 ga_data2 = false;
 ga_data3 = false;
@@ -218,17 +219,23 @@ ga_data5 = false;
 ga_data6 = false;
 ga_au = 0;
 jQuery(document).ready(function() {
-	// Set some global Chart.js defaults.
-	Chart.defaults.global.animationSteps = 60;
-	Chart.defaults.global.animationEasing = 'easeInOutQuart';
-	Chart.defaults.global.responsive = true;
-	Chart.defaults.global.maintainAspectRatio = false;
+
 
 	jQuery('.gdga-show-analytics').click(function(e) {
 		jQuery(this).hide();
 		jQuery(this).parent().find('.gdga-analytics-box').show();
-		gdga_weekVSweek();
-		gdga_realtime(true);
+		// load the JS file needed
+		jQuery.getScript("<?php echo FRONTEND_ANALYTICS_PLUGIN_URL ."/assets/js/Chart.min.js";?>").done(function(script, textStatus) {
+			// Set some global Chart.js defaults.
+			Chart.defaults.global.animationSteps = 60;
+			Chart.defaults.global.animationEasing = 'easeInOutQuart';
+			Chart.defaults.global.responsive = true;
+			Chart.defaults.global.maintainAspectRatio = false;
+			
+			gdga_weekVSweek();
+			gdga_realtime(true);
+		});
+		
 	});
 
 	if (true) {
@@ -241,34 +248,34 @@ jQuery(document).ready(function() {
 });
 
 function gdga_weekVSweek() {
-	jQuery.ajax({url: "<?php echo admin_url('admin-ajax.php?action=frontend_analytics_stats&ga_page='.$page_url.'&ga_type=thisweek'); ?>", success: function(result){
+	jQuery.ajax({url: "<?php echo admin_url('admin-ajax.php?action=frontend_analytics_stats&ga_page='.$page_url.'&ga_type=thisweek&pt='); ?>"+gd_gaPageToken, success: function(result){
 		ga_data1 = jQuery.parseJSON(result);
 		if(ga_data1.error){jQuery('#ga_stats').html(result);return;}
 		gd_renderWeekOverWeekChart();
 	}});
 
-	jQuery.ajax({url: "<?php echo admin_url('admin-ajax.php?action=frontend_analytics_stats&ga_page='.$page_url.'&ga_type=lastweek'); ?>", success: function(result){
+	jQuery.ajax({url: "<?php echo admin_url('admin-ajax.php?action=frontend_analytics_stats&ga_page='.$page_url.'&ga_type=lastweek&pt='); ?>"+gd_gaPageToken, success: function(result){
 		ga_data2 = jQuery.parseJSON(result);
 		gd_renderWeekOverWeekChart();
 	}});
 }
 
 function gdga_yearVSyear() {
-	jQuery.ajax({url: "<?php echo admin_url('admin-ajax.php?action=frontend_analytics_stats&ga_page='.$page_url.'&ga_type=thisyear'); ?>", success: function(result){
+	jQuery.ajax({url: "<?php echo admin_url('admin-ajax.php?action=frontend_analytics_stats&ga_page='.$page_url.'&ga_type=thisyear&pt='); ?>"+gd_gaPageToken, success: function(result){
 		ga_data3 = jQuery.parseJSON(result);
 		if(ga_data3.error){jQuery('#ga_stats').html(result);return;}
 
 		gd_renderYearOverYearChart()
 	}});
 
-	jQuery.ajax({url: "<?php echo admin_url('admin-ajax.php?action=frontend_analytics_stats&ga_page='.$page_url.'&ga_type=lastyear'); ?>", success: function(result){
+	jQuery.ajax({url: "<?php echo admin_url('admin-ajax.php?action=frontend_analytics_stats&ga_page='.$page_url.'&ga_type=lastyear&pt='); ?>"+gd_gaPageToken, success: function(result){
 		ga_data4 = jQuery.parseJSON(result);
 		gd_renderYearOverYearChart()
 	}});
 }
 
 function gdga_country() {
-	jQuery.ajax({url: "<?php echo admin_url('admin-ajax.php?action=frontend_analytics_stats&ga_page='.$page_url.'&ga_type=country'); ?>", success: function(result){
+	jQuery.ajax({url: "<?php echo admin_url('admin-ajax.php?action=frontend_analytics_stats&ga_page='.$page_url.'&ga_type=country&pt='); ?>"+gd_gaPageToken, success: function(result){
 		ga_data5 = jQuery.parseJSON(result);
 		if(ga_data5.error){jQuery('#ga_stats').html(result);return;}
 		gd_renderTopCountriesChart();
@@ -276,7 +283,7 @@ function gdga_country() {
 }
 
 function gdga_realtime(dom_ready) {
-	jQuery.ajax({url: "<?php echo admin_url('admin-ajax.php?action=frontend_analytics_stats&ga_page='.$page_url.'&ga_type=realtime'); ?>", success: function(result) {
+	jQuery.ajax({url: "<?php echo admin_url('admin-ajax.php?action=frontend_analytics_stats&ga_page='.$page_url.'&ga_type=realtime&pt='); ?>"+gd_gaPageToken, success: function(result) {
 		ga_data6 = jQuery.parseJSON(result);
 		if (ga_data6.error) {
 			jQuery('#ga_stats').html(result);
@@ -351,7 +358,7 @@ function gd_renderTopCountriesChart() {
 }
 
 function gdga_noResults() {
-	jQuery('#gdga-chart-container').html('<?php _e('No results available','geodir-ga');?>');
+	jQuery('#gdga-chart-container').html('<?php _e('No results available','frontend-analytics');?>');
 	jQuery('#gdga-legend-container').html('');
 }
 
@@ -376,26 +383,23 @@ function gd_renderYearOverYearChart() {
 	jQuery('.gdga-type-container').show();
 	jQuery('#gdga-select-analytic').prop('disabled', false);
 
-	// Adjust `now` to experiment with different days, for testing only...
-	var now = moment(); // .subtract(3, 'day');
-
 	Promise.all([thisYear, lastYear]).then(function(results) {
 		var data1 = results[0].rows.map(function(row) { return +row[2]; });
 		var data2 = results[1].rows.map(function(row) { return +row[2]; });
 		//var labelsN = results[0].rows.map(function(row) { return +row[1]; });
 
-		var labels = ['<?php _e('Jan', 'geodir-ga');?>',
-			'<?php _e('Feb', 'geodir-ga');?>',
-			'<?php _e('Mar', 'geodir-ga');?>',
-			'<?php _e('Apr', 'geodir-ga');?>',
-			'<?php _e('May', 'geodir-ga');?>',
-			'<?php _e('Jun', 'geodir-ga');?>',
-			'<?php _e('Jul', 'geodir-ga');?>',
-			'<?php _e('Aug', 'geodir-ga');?>',
-			'<?php _e('Sep', 'geodir-ga');?>',
-			'<?php _e('Oct', 'geodir-ga');?>',
-			'<?php _e('Nov', 'geodir-ga');?>',
-			'<?php _e('Dec', 'geodir-ga');?>'];
+		var labels = ['<?php _e('Jan', 'frontend-analytics');?>',
+			'<?php _e('Feb', 'frontend-analytics');?>',
+			'<?php _e('Mar', 'frontend-analytics');?>',
+			'<?php _e('Apr', 'frontend-analytics');?>',
+			'<?php _e('May', 'frontend-analytics');?>',
+			'<?php _e('Jun', 'frontend-analytics');?>',
+			'<?php _e('Jul', 'frontend-analytics');?>',
+			'<?php _e('Aug', 'frontend-analytics');?>',
+			'<?php _e('Sep', 'frontend-analytics');?>',
+			'<?php _e('Oct', 'frontend-analytics');?>',
+			'<?php _e('Nov', 'frontend-analytics');?>',
+			'<?php _e('Dec', 'frontend-analytics');?>'];
 
 		// Ensure the data arrays are at least as long as the labels array.
 		// Chart.js bar charts don't (yet) accept sparse datasets.
@@ -408,13 +412,13 @@ function gd_renderYearOverYearChart() {
 			labels : labels,
 			datasets : [
 				{
-					label: '<?php _e('Last Year', 'geodir-ga');?>',
+					label: '<?php _e('Last Year', 'frontend-analytics');?>',
 					fillColor : "rgba(220,220,220,0.5)",
 					strokeColor : "rgba(220,220,220,1)",
 					data : data2
 				},
 				{
-					label: '<?php _e('This Year', 'geodir-ga');?>',
+					label: '<?php _e('This Year', 'frontend-analytics');?>',
 					fillColor : "rgba(151,187,205,0.5)",
 					strokeColor : "rgba(151,187,205,1)",
 					data : data1
@@ -450,9 +454,6 @@ function gd_renderWeekOverWeekChart() {
 	jQuery('.gdga-type-container').show();
 	jQuery('#gdga-select-analytic').prop('disabled', false);
 
-	// Adjust `now` to experiment with different days, for testing only...
-	var now = moment();
-
 	Promise.all([thisWeek, lastWeek]).then(function(results) {
 		var data1 = results[0].rows.map(function(row) { return +row[2]; });
 		var data2 = results[1].rows.map(function(row) { return +row[2]; });
@@ -460,30 +461,30 @@ function gd_renderWeekOverWeekChart() {
 
 		<?php
 		// Here we list the shorthand days of the week so it can be used in translation.
-		__("Mon",'geodir-ga');
-		__("Tue",'geodir-ga');
-		__("Wed",'geodir-ga');
-		__("Thu",'geodir-ga');
-		__("Fri",'geodir-ga');
-		__("Sat",'geodir-ga');
-		__("Sun",'geodir-ga');
+		__("Mon",'frontend-analytics');
+		__("Tue",'frontend-analytics');
+		__("Wed",'frontend-analytics');
+		__("Thu",'frontend-analytics');
+		__("Fri",'frontend-analytics');
+		__("Sat",'frontend-analytics');
+		__("Sun",'frontend-analytics');
 		?>
 
 		labels = [
-			"<?php _e(date('D', strtotime("+1 day")),'geodir-ga'); ?>",
-			"<?php _e(date('D', strtotime("+2 day")),'geodir-ga'); ?>",
-			"<?php _e(date('D', strtotime("+3 day")),'geodir-ga'); ?>",
-			"<?php _e(date('D', strtotime("+4 day")),'geodir-ga'); ?>",
-			"<?php _e(date('D', strtotime("+5 day")),'geodir-ga'); ?>",
-			"<?php _e(date('D', strtotime("+6 day")),'geodir-ga'); ?>",
-			"<?php _e(date('D', strtotime("+7 day")),'geodir-ga'); ?>"
+			"<?php _e(date('D', strtotime("+1 day")),'frontend-analytics'); ?>",
+			"<?php _e(date('D', strtotime("+2 day")),'frontend-analytics'); ?>",
+			"<?php _e(date('D', strtotime("+3 day")),'frontend-analytics'); ?>",
+			"<?php _e(date('D', strtotime("+4 day")),'frontend-analytics'); ?>",
+			"<?php _e(date('D', strtotime("+5 day")),'frontend-analytics'); ?>",
+			"<?php _e(date('D', strtotime("+6 day")),'frontend-analytics'); ?>",
+			"<?php _e(date('D', strtotime("+7 day")),'frontend-analytics'); ?>"
 		];
 
 		var data = {
 			labels : labels,
 			datasets : [
 				{
-					label: '<?php _e('Last Week', 'geodir-ga');?>',
+					label: '<?php _e('Last Week', 'frontend-analytics');?>',
 					fillColor : "rgba(220,220,220,0.5)",
 					strokeColor : "rgba(220,220,220,1)",
 					pointColor : "rgba(220,220,220,1)",
@@ -491,7 +492,7 @@ function gd_renderWeekOverWeekChart() {
 					data : data2
 				},
 				{
-					label: '<?php _e('This Week', 'geodir-ga');?>',
+					label: '<?php _e('This Week', 'frontend-analytics');?>',
 					fillColor : "rgba(151,187,205,0.5)",
 					strokeColor : "rgba(151,187,205,1)",
 					pointColor : "rgba(151,187,205,1)",
@@ -599,20 +600,18 @@ function gdga_refresh(stop) {
 #gdga-loader-icon svg,#gdga-loader-icon i{margin:0 10px 0 -10px;color:#333333;cursor:pointer}
 .#gdga-loader-icon .fa-spin{-webkit-animation-duration:1.5s;animation-duration:1.5s}
  </style>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.2/moment.min.js"></script>
-        <button type="button" class="gdga-show-analytics"><?php echo !empty($args['button_text']) ? esc_attr($args['button_text']) : __('Show Google Analytics', 'geodir-ga');?></button>
+        <button type="button" class="gdga-show-analytics"><?php echo !empty($args['button_text']) ? esc_attr($args['button_text']) : __('Show Google Analytics', 'frontend-analytics');?></button>
         <span id="ga_stats" class="gdga-analytics-box" style="display:none">
-            <div id="ga-analytics-title"><?php _e("Analytics", 'geodir-ga');?></div>
+            <div id="ga-analytics-title"><?php _e("Analytics", 'frontend-analytics');?></div>
             <div id="gd-active-users-container">
-                <div class="gd-ActiveUsers"><span id="gdga-loader-icon" title="<?php esc_attr_e("Refresh", 'geodir-ga');?>"><i class="fa fa-refresh fa-spin" aria-hidden="true"></i></span><?php _e("Active Users:", 'geodir-ga');?> <b class="gd-ActiveUsers-value">0</b>
+                <div class="gd-ActiveUsers"><span id="gdga-loader-icon" title="<?php esc_attr_e("Refresh", 'frontend-analytics');?>"><i class="fa fa-refresh fa-spin" aria-hidden="true"></i></span><?php _e("Active Users:", 'frontend-analytics');?> <b class="gd-ActiveUsers-value">0</b>
                 </div>
             </div>
             <div class="gdga-type-container" style="display:none">
 				<select id="gdga-select-analytic" class="geodir-select" onchange="gdga_select_option();">
-					<option value="weeks"><?php _e("Last Week vs This Week", 'geodir-ga');?></option>
-					<option value="years"><?php _e("This Year vs Last Year", 'geodir-ga');?></option>
-					<option value="country"><?php _e("Top Countries", 'geodir-ga');?></option>
+					<option value="weeks"><?php _e("Last Week vs This Week", 'frontend-analytics');?></option>
+					<option value="years"><?php _e("This Year vs Last Year", 'frontend-analytics');?></option>
+					<option value="country"><?php _e("Top Countries", 'frontend-analytics');?></option>
 				</select>
 			</div>
             <div class="Chartjs-figure" id="gdga-chart-container"></div>
@@ -684,4 +683,46 @@ function frontend_analytics_update_option( $name, $value ){
 	$options 		= $fa->get_options();
 	$options[$name] = $value;
 	$fa->update_options( $options );
+}
+
+/**
+ * Generate a specific access token for a page and access level.
+ * 
+ * @param string $access_level
+ *
+ * @return string
+ */
+function frontend_analytics_get_page_access_token($access_level = 'administrator',$path = ''){
+	$token = '';
+	$path = $path ? wp_unslash( $path ) : wp_unslash( $_SERVER['REQUEST_URI'] );
+	if($path && $access_level){
+		$token = wp_hash($path.$access_level);
+	}
+
+	return $token;
+}
+
+/**
+ * Check if a page access token is valid for the specific user type.
+ *
+ * @param $token
+ * @param $path
+ *
+ * @return bool
+ */
+function frontend_analytics_validate_page_access_token($token,$path){
+	$result = false;
+	$user_id = get_current_user_id();
+
+	if($token){
+		if(! $user_id && $token == frontend_analytics_get_page_access_token('all',$path )){
+			$result = true;
+		}elseif($user_id && $token == frontend_analytics_get_page_access_token('all-logged-in',$path )){
+			$result = true;
+		}elseif($user_id && current_user_can( 'manage_options' ) && $token == frontend_analytics_get_page_access_token('administrator',$path )){
+			$result = true;
+		}
+	}
+
+	return $result;
 }

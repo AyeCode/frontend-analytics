@@ -49,21 +49,40 @@ class Frontend_Analytics_AJAX {
 	}
 
 	public static function stats() {
-		if ( isset( $_REQUEST['ga_start'] ) ) {
-			$ga_start = $_REQUEST['ga_start'];
-		} else {
-			$ga_start = '';
-		}
-		if ( isset( $_REQUEST['ga_end'] ) ) {
-			$ga_end = $_REQUEST['ga_end'];
-		} else {
-			$ga_end = '';
-		}
-		try {
-			frontend_analytics_get_analytics( $_REQUEST['ga_page'], $ga_start, $ga_end );
-		} catch ( Exception $e ) {
 
-		}
+		// some special security checks
+		$ref = wp_get_referer();
+		$req = isset($_REQUEST['ga_page']) ? urldecode($_REQUEST['ga_page']) : '';
+		$page_token = isset($_REQUEST['pt']) ? $_REQUEST['pt'] : '';
+
+        if (
+	        $ref
+	        && $req
+	        && $page_token
+	        && $ref !== wp_unslash( $_SERVER['REQUEST_URI'] )
+	        && $ref !== home_url() . wp_unslash( $_SERVER['REQUEST_URI'] )
+	        && untrailingslashit(home_url()) . $req == $ref
+	        && frontend_analytics_validate_page_access_token($page_token,$req)
+        ) {
+
+	        if ( isset( $_REQUEST['ga_start'] ) ) {
+		        $ga_start = $_REQUEST['ga_start'];
+	        } else {
+		        $ga_start = '';
+	        }
+	        if ( isset( $_REQUEST['ga_end'] ) ) {
+		        $ga_end = $_REQUEST['ga_end'];
+	        } else {
+		        $ga_end = '';
+	        }
+	        try {
+		        frontend_analytics_get_analytics( $_REQUEST['ga_page'], $ga_start, $ga_end );
+	        } catch ( Exception $e ) {
+
+	        }
+        }
+
+
 		exit;
 	}
 

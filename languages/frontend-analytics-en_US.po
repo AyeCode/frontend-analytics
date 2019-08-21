@@ -1,165 +1,302 @@
-#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: Frontend Analytics\n"
+"Project-Id-Version: Frontend Google Analytics 1.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-08-12 13:07+0000\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: \n"
-"Language: \n"
-"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+"POT-Creation-Date: 2019-08-21 19:41+0100\n"
+"PO-Revision-Date: 2019-08-21 19:42+0100\n"
+"Last-Translator: \n"
+"Language-Team: AyeCode Ltd <contact@ayecode.io>\n"
+"Language: en_US\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Loco https://localise.biz/\n"
-"X-Loco-Version: 2.3.0; wp-5.2.2"
+"X-Poedit-KeywordsList: __;__ngettext:1,2;__ngettext_noop:1,2;_c;_e;_ex:1,2c;"
+"_n:1,2;_n_noop:1,2;_nc:4c,1,2;_nx:4c,1,2;_nx_noop:4c,1,2;_x:1,2c;esc_attr__;"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;gettext;"
+"gettext_noop\n"
+"X-Poedit-Basepath: ..\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Generator: Poedit 1.8.7.1\n"
+"X-Poedit-SearchPath-0: .\n"
 
-#: includes/admin/settings/class-frontend-analytics-settings.php:186
-msgid "Account re-authorization may be required"
-msgstr ""
-
-#: includes/admin/settings/class-frontend-analytics-settings.php:119
-msgid "Add tracking code to site?"
-msgstr ""
-
-#: includes/widgets/class-frontend-analytics-widget-analytics.php:68
-msgid "Administrator"
-msgstr ""
-
-#: includes/admin/settings/class-frontend-analytics-settings.php:110
-msgid "Analytics Account"
-msgstr ""
-
-#: includes/admin/settings/class-frontend-analytics-settings.php:126
-msgid "Anonymize user IP?"
-msgstr ""
-
-#: includes/admin/settings/class-frontend-analytics-settings.php:323
-msgid "Authorized"
-msgstr ""
-
-#: includes/admin/settings/class-frontend-analytics-settings.php:134
-msgid "Auto refresh active users?"
-msgstr ""
-
-#. Author of the plugin
-msgid "AyeCode Ltd"
-msgstr ""
-
-#: includes/widgets/class-frontend-analytics-widget-analytics.php:55
-msgid "Button text:"
-msgstr ""
-
-#: includes/admin/settings/class-frontend-analytics-settings.php:322
-msgid "Deauthorize"
-msgstr ""
-
-#: includes/widgets/class-frontend-analytics-widget-analytics.php:70
-msgid "Everyone"
-msgstr ""
-
-#: includes/widgets/class-frontend-analytics-widget-analytics.php:69
-msgid "Everyone logged in"
-msgstr ""
-
-#. Name of the plugin
-#: includes/widgets/class-frontend-analytics-widget-analytics.php:32
-#: includes/widgets/class-frontend-analytics-widget-analytics.php:39
-msgid "Frontend Analytics"
-msgstr ""
-
-#: includes/admin/settings/class-frontend-analytics-settings.php:327
-msgid "Get Auth Code"
-msgstr ""
-
-#: includes/admin/settings/class-frontend-analytics-settings.php:94
-msgid "Google analytics access"
-msgstr ""
-
-#: includes/admin/settings/class-frontend-analytics-settings.php:102
+#: includes/admin/settings/class-frontend-analytics-settings.php:95
 msgid "Google analytics Auth Code"
 msgstr ""
 
-#: includes/widgets/class-frontend-analytics-widget-analytics.php:64
-msgid "Google Analytics visible to:"
+#: includes/admin/settings/class-frontend-analytics-settings.php:96
+msgid "You must save this setting before accounts will show."
 msgstr ""
 
-#: includes/widgets/class-frontend-analytics-widget-analytics.php:65
-msgid "Google Analytics will be visible to selected users only."
+#: includes/admin/settings/class-frontend-analytics-settings.php:113
+msgid "Analytics Account"
 msgstr ""
 
-#. Author URI of the plugin
-msgid "https://wpgeodirectory.com/"
+#: includes/admin/settings/class-frontend-analytics-settings.php:114
+msgid "Select the account that you setup for this site."
 msgstr ""
 
-#. URI of the plugin
-msgid "https://wpgeodirectory.com/downloads/frontend-analytics/"
+#: includes/admin/settings/class-frontend-analytics-settings.php:122
+msgid "Add tracking code to site?"
 msgstr ""
 
-#: includes/admin/settings/class-frontend-analytics-settings.php:135
-msgid ""
-"If ticked it uses the auto refresh time below, if not it never refreshes "
-"unless the refresh button is clicked."
+#: includes/admin/settings/class-frontend-analytics-settings.php:123
+msgid "This will automatically add the correct tracking code to your site"
 msgstr ""
 
-#: includes/admin/settings/class-frontend-analytics-settings.php:127
+#: includes/admin/settings/class-frontend-analytics-settings.php:129
+msgid "Anonymize user IP?"
+msgstr ""
+
+#: includes/admin/settings/class-frontend-analytics-settings.php:130
 msgid ""
 "In most cases this is not required, this is to comply with certain country "
 "laws such as Germany."
 msgstr ""
 
-#: includes/admin/settings/class-frontend-analytics-settings.php:183
-msgid "Select Account"
+#: includes/admin/settings/class-frontend-analytics-settings.php:138
+msgid "Auto refresh active users every"
 msgstr ""
 
-#: includes/admin/settings/class-frontend-analytics-settings.php:111
-msgid "Select the account that you setup for this site."
-msgstr ""
-
-#: includes/widgets/class-frontend-analytics-widget-analytics.php:58
-msgid "Show Google Analytics"
-msgstr ""
-
-#: includes/widgets/class-frontend-analytics-widget-analytics.php:42
-msgid "Show google analytics stats on your website front page."
-msgstr ""
-
-#: includes/class-frontend-analytics-ajax.php:108
-msgid "Something went wrong"
-msgstr ""
-
-#: includes/widgets/class-frontend-analytics-widget-analytics.php:56
-msgid "The text to use for the button to show the analytics:"
-msgstr ""
-
-#: includes/widgets/class-frontend-analytics-widget-analytics.php:48
-msgid "The widget title:"
-msgstr ""
-
-#: includes/admin/settings/class-frontend-analytics-settings.php:120
-msgid "This will automatically add the correct tracking code to your site"
-msgstr ""
-
-#: includes/admin/settings/class-frontend-analytics-settings.php:142
-msgid "Time interval for auto refresh active users"
-msgstr ""
-
-#: includes/admin/settings/class-frontend-analytics-settings.php:143
+#: includes/admin/settings/class-frontend-analytics-settings.php:139
 msgid ""
 "Time interval in seconds to auto refresh active users. The active users will "
 "be auto refreshed after this time interval. Leave blank or use 0(zero) to "
 "disable auto refresh. Default: 5"
 msgstr ""
 
-#: includes/widgets/class-frontend-analytics-widget-analytics.php:47
+#: includes/admin/settings/class-frontend-analytics-settings.php:179
+msgid "Select Account"
+msgstr ""
+
+#: includes/admin/settings/class-frontend-analytics-settings.php:182
+msgid "Account re-authorization may be required"
+msgstr ""
+
+#: includes/admin/settings/class-frontend-analytics-settings.php:318
+msgid "Deauthorize"
+msgstr ""
+
+#: includes/admin/settings/class-frontend-analytics-settings.php:319
+msgid "Authorized"
+msgstr ""
+
+#: includes/admin/settings/class-frontend-analytics-settings.php:323
+msgid "Get Auth Code"
+msgstr ""
+
+#: includes/class-frontend-analytics-ajax.php:127
+msgid "Something went wrong"
+msgstr ""
+
+#: includes/functions.php:96 includes/functions.php:103
+msgid "Please check Google Analytics Settings"
+msgstr ""
+
+#: includes/functions.php:133
+msgid ""
+"Not authorized, please click authorized in GD > Google analytic settings."
+msgstr ""
+
+#: includes/functions.php:151
+msgid "Login failed"
+msgstr ""
+
+#: includes/functions.php:361
+msgid "No results available"
+msgstr ""
+
+#: includes/functions.php:391
+msgid "Jan"
+msgstr ""
+
+#: includes/functions.php:392
+msgid "Feb"
+msgstr ""
+
+#: includes/functions.php:393
+msgid "Mar"
+msgstr ""
+
+#: includes/functions.php:394
+msgid "Apr"
+msgstr ""
+
+#: includes/functions.php:395
+msgid "May"
+msgstr ""
+
+#: includes/functions.php:396
+msgid "Jun"
+msgstr ""
+
+#: includes/functions.php:397
+msgid "Jul"
+msgstr ""
+
+#: includes/functions.php:398
+msgid "Aug"
+msgstr ""
+
+#: includes/functions.php:399
+msgid "Sep"
+msgstr ""
+
+#: includes/functions.php:400
+msgid "Oct"
+msgstr ""
+
+#: includes/functions.php:401
+msgid "Nov"
+msgstr ""
+
+#: includes/functions.php:402
+msgid "Dec"
+msgstr ""
+
+#: includes/functions.php:415
+msgid "Last Year"
+msgstr ""
+
+#: includes/functions.php:421
+msgid "This Year"
+msgstr ""
+
+#: includes/functions.php:464
+msgid "Mon"
+msgstr ""
+
+#: includes/functions.php:465
+msgid "Tue"
+msgstr ""
+
+#: includes/functions.php:466
+msgid "Wed"
+msgstr ""
+
+#: includes/functions.php:467
+msgid "Thu"
+msgstr ""
+
+#: includes/functions.php:468
+msgid "Fri"
+msgstr ""
+
+#: includes/functions.php:469
+msgid "Sat"
+msgstr ""
+
+#: includes/functions.php:470
+msgid "Sun"
+msgstr ""
+
+#: includes/functions.php:487
+msgid "Last Week"
+msgstr ""
+
+#: includes/functions.php:495
+msgid "This Week"
+msgstr ""
+
+#: includes/functions.php:603
+#: includes/widgets/class-frontend-analytics-widget-analytics.php:59
+msgid "Show Google Analytics"
+msgstr ""
+
+#: includes/functions.php:605
+msgid "Analytics"
+msgstr ""
+
+#: includes/functions.php:607
+msgid "Refresh"
+msgstr ""
+
+#: includes/functions.php:607
+msgid "Active Users:"
+msgstr ""
+
+#: includes/functions.php:612
+msgid "Last Week vs This Week"
+msgstr ""
+
+#: includes/functions.php:613
+msgid "This Year vs Last Year"
+msgstr ""
+
+#: includes/functions.php:614
+msgid "Top Countries"
+msgstr ""
+
+#: includes/widgets/class-frontend-analytics-widget-analytics.php:33
+msgid "Frontend Analytics Button Placeholder"
+msgstr ""
+
+#: includes/widgets/class-frontend-analytics-widget-analytics.php:40
+msgid "Frontend Analytics"
+msgstr ""
+
+#: includes/widgets/class-frontend-analytics-widget-analytics.php:43
+msgid "Show google analytics stats on your website front page."
+msgstr ""
+
+#: includes/widgets/class-frontend-analytics-widget-analytics.php:48
 msgid "Title:"
 msgstr ""
 
-#. Description of the plugin
-msgid "View each page's Google Analytics starts on the front-page"
+#: includes/widgets/class-frontend-analytics-widget-analytics.php:49
+msgid "The widget title:"
 msgstr ""
 
-#: includes/admin/settings/class-frontend-analytics-settings.php:103
-msgid "You must save this setting before accounts will show."
+#: includes/widgets/class-frontend-analytics-widget-analytics.php:56
+msgid "Button text:"
+msgstr ""
+
+#: includes/widgets/class-frontend-analytics-widget-analytics.php:57
+msgid "The text to use for the button to show the analytics:"
+msgstr ""
+
+#: includes/widgets/class-frontend-analytics-widget-analytics.php:65
+msgid "Google Analytics visible to:"
+msgstr ""
+
+#: includes/widgets/class-frontend-analytics-widget-analytics.php:66
+msgid "Google Analytics will be visible to selected users only."
+msgstr ""
+
+#: includes/widgets/class-frontend-analytics-widget-analytics.php:69
+msgid "Administrator"
+msgstr ""
+
+#: includes/widgets/class-frontend-analytics-widget-analytics.php:70
+msgid "Everyone logged in"
+msgstr ""
+
+#: includes/widgets/class-frontend-analytics-widget-analytics.php:71
+msgid "Everyone"
+msgstr ""
+
+#: vendor/ayecode/wp-super-duper/wp-super-duper.php:140
+msgid "Select shortcode"
+msgstr ""
+
+#: vendor/ayecode/wp-super-duper/wp-super-duper.php:159
+msgid "Insert shortcode"
+msgstr ""
+
+#: vendor/ayecode/wp-super-duper/wp-super-duper.php:162
+msgid "Copy shortcode"
+msgstr ""
+
+#: vendor/ayecode/wp-super-duper/wp-super-duper.php:361
+#: vendor/ayecode/wp-super-duper/wp-super-duper.php:981
+msgid "Advanced Settings"
+msgstr ""
+
+#: vendor/ayecode/wp-super-duper/wp-super-duper.php:1229
+#, php-format
+msgid "Placeholder for: %s"
+msgstr ""
+
+#: vendor/ayecode/wp-super-duper/wp-super-duper.php:1514
+msgid "Placeholder for: "
 msgstr ""

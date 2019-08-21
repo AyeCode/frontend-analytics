@@ -1,6 +1,6 @@
 <?php
 /**
- * This is the main Advertising plugin file, here we declare and call the important stuff
+ * This is the main plugin file, here we declare and call the important stuff
  *
  * @package     frontend-analytics
  * @copyright   2019 AyeCode Ltd
@@ -8,13 +8,13 @@
  * @since       1.0.0
  *
  * @frontend-analytics
- * Plugin Name: Frontend Analytics
+ * Plugin Name: Frontend Google Analytics
  * Plugin URI: https://wpgeodirectory.com/downloads/frontend-analytics/
  * Description: View each page's Google Analytics starts on the front-page
  * Version: 1.0.0
  * Author: AyeCode Ltd
  * Author URI: https://wpgeodirectory.com/
- * Requires at least: 4.4
+ * Requires at least: 4.8
  * Tested up to: 5.2
  * License: GPLv3
  * License URI: http://www.gnu.org/licenses/gpl-3.0.html
@@ -32,6 +32,10 @@ if ( ! defined( 'FRONTEND_ANALYTICS_VERSION' ) ) {
 
 if ( ! defined( 'FRONTEND_ANALYTICS_PLUGIN_FILE' ) ) {
 	define( 'FRONTEND_ANALYTICS_PLUGIN_FILE', __FILE__ );
+}
+
+if ( ! defined( 'FRONTEND_ANALYTICS_PLUGIN_URL' ) ) {
+	define( 'FRONTEND_ANALYTICS_PLUGIN_URL',untrailingslashit( plugins_url( '/', __FILE__ ) ) );
 }
 
 // Load the main plugin class
