@@ -51,8 +51,9 @@ function frontend_analytics_sec2hms( $sec, $padHours = false ) {
  * @param bool   $ga_end The end date of the data to include in YYYY-MM-DD format.
  * @return string Html text content.
  */
-function frontend_analytics_get_analytics( $page, $ga_start, $ga_end ) {
+function frontend_analytics_get_analytics( $page, $ga_start = '', $ga_end = '' ) {
     // NEW ANALYTICS
+	$page = esc_url_raw($page);
     $start_date = '';
     $end_date = '';
     $dimensions = '';
@@ -231,7 +232,7 @@ jQuery(document).ready(function() {
 			Chart.defaults.global.animationEasing = 'easeInOutQuart';
 			Chart.defaults.global.responsive = true;
 			Chart.defaults.global.maintainAspectRatio = false;
-			
+
 			gdga_weekVSweek();
 			gdga_realtime(true);
 		});
@@ -248,34 +249,34 @@ jQuery(document).ready(function() {
 });
 
 function gdga_weekVSweek() {
-	jQuery.ajax({url: "<?php echo admin_url('admin-ajax.php?action=frontend_analytics_stats&ga_page='.$page_url.'&ga_type=thisweek&pt='); ?>"+gd_gaPageToken, success: function(result){
+	jQuery.ajax({url: "<?php echo admin_url('admin-ajax.php?action=frontend_analytics_stats&ga_page='. esc_html( $page_url ).'&ga_type=thisweek&pt='); ?>"+gd_gaPageToken, success: function(result){
 		ga_data1 = jQuery.parseJSON(result);
 		if(ga_data1.error){jQuery('#ga_stats').html(result);return;}
 		gd_renderWeekOverWeekChart();
 	}});
 
-	jQuery.ajax({url: "<?php echo admin_url('admin-ajax.php?action=frontend_analytics_stats&ga_page='.$page_url.'&ga_type=lastweek&pt='); ?>"+gd_gaPageToken, success: function(result){
+	jQuery.ajax({url: "<?php echo admin_url('admin-ajax.php?action=frontend_analytics_stats&ga_page='.esc_html( $page_url ).'&ga_type=lastweek&pt='); ?>"+gd_gaPageToken, success: function(result){
 		ga_data2 = jQuery.parseJSON(result);
 		gd_renderWeekOverWeekChart();
 	}});
 }
 
 function gdga_yearVSyear() {
-	jQuery.ajax({url: "<?php echo admin_url('admin-ajax.php?action=frontend_analytics_stats&ga_page='.$page_url.'&ga_type=thisyear&pt='); ?>"+gd_gaPageToken, success: function(result){
+	jQuery.ajax({url: "<?php echo admin_url('admin-ajax.php?action=frontend_analytics_stats&ga_page='.esc_html( $page_url ).'&ga_type=thisyear&pt='); ?>"+gd_gaPageToken, success: function(result){
 		ga_data3 = jQuery.parseJSON(result);
 		if(ga_data3.error){jQuery('#ga_stats').html(result);return;}
 
 		gd_renderYearOverYearChart()
 	}});
 
-	jQuery.ajax({url: "<?php echo admin_url('admin-ajax.php?action=frontend_analytics_stats&ga_page='.$page_url.'&ga_type=lastyear&pt='); ?>"+gd_gaPageToken, success: function(result){
+	jQuery.ajax({url: "<?php echo admin_url('admin-ajax.php?action=frontend_analytics_stats&ga_page='.esc_html( $page_url ).'&ga_type=lastyear&pt='); ?>"+gd_gaPageToken, success: function(result){
 		ga_data4 = jQuery.parseJSON(result);
 		gd_renderYearOverYearChart()
 	}});
 }
 
 function gdga_country() {
-	jQuery.ajax({url: "<?php echo admin_url('admin-ajax.php?action=frontend_analytics_stats&ga_page='.$page_url.'&ga_type=country&pt='); ?>"+gd_gaPageToken, success: function(result){
+	jQuery.ajax({url: "<?php echo admin_url('admin-ajax.php?action=frontend_analytics_stats&ga_page='.esc_html( $page_url ).'&ga_type=country&pt='); ?>"+gd_gaPageToken, success: function(result){
 		ga_data5 = jQuery.parseJSON(result);
 		if(ga_data5.error){jQuery('#ga_stats').html(result);return;}
 		gd_renderTopCountriesChart();
@@ -283,7 +284,7 @@ function gdga_country() {
 }
 
 function gdga_realtime(dom_ready) {
-	jQuery.ajax({url: "<?php echo admin_url('admin-ajax.php?action=frontend_analytics_stats&ga_page='.$page_url.'&ga_type=realtime&pt='); ?>"+gd_gaPageToken, success: function(result) {
+	jQuery.ajax({url: "<?php echo admin_url('admin-ajax.php?action=frontend_analytics_stats&ga_page='.esc_html( $page_url ).'&ga_type=realtime&pt='); ?>"+gd_gaPageToken, success: function(result) {
 		ga_data6 = jQuery.parseJSON(result);
 		if (ga_data6.error) {
 			jQuery('#ga_stats').html(result);
@@ -339,19 +340,32 @@ function gd_renderTopCountriesChart() {
 	jQuery('#gdga-select-analytic').prop('disabled', false);
 
 	var data = [];
+	data.labels = [];
+	data.datasets = [];
+	data.datasets[0] = {};
+	data.datasets[0].label = "Countries";
+	data.datasets[0].data = [];
+	data.datasets[0].backgroundColor = [];
+
 	var colors = ['#4D5360', '#949FB1', '#D4CCC5', '#E2EAE9', '#F7464A'];
 
 	if (response.rows) {
 		response.rows.forEach(function(row, i) {
-			data.push({
-				label: row[0],
-				value: +row[1],
-				color: colors[i]
-			});
+
+			data.labels.push(row[0]);
+			data.datasets[0].data.push(+row[1]);
+			data.datasets[0].backgroundColor.push(colors[i]);
+
 		});
 
-		new Chart(makeCanvas('gdga-chart-container')).Doughnut(data);
-		generateLegend('gdga-legend-container', data);
+		new Chart(makeCanvas('gdga-chart-container'), {
+			// The type of chart we want to create
+			type: 'doughnut',
+			// The data for our dataset
+			data: data,
+			// Configuration options go here
+			options: {}
+		});
 	} else {
 		gdga_noResults();
 	}
@@ -413,21 +427,27 @@ function gd_renderYearOverYearChart() {
 			datasets : [
 				{
 					label: '<?php _e('Last Year', 'frontend-analytics');?>',
-					fillColor : "rgba(220,220,220,0.5)",
-					strokeColor : "rgba(220,220,220,1)",
+					backgroundColor : "rgba(220,220,220,0.5)",
+					borderColor : "rgba(220,220,220,1)",
 					data : data2
 				},
 				{
 					label: '<?php _e('This Year', 'frontend-analytics');?>',
-					fillColor : "rgba(151,187,205,0.5)",
-					strokeColor : "rgba(151,187,205,1)",
+					backgroundColor : "rgba(151,187,205,0.5)",
+					borderColor : "rgba(151,187,205,1)",
 					data : data1
 				}
 			]
 		};
 
-		new Chart(makeCanvas('gdga-chart-container')).Bar(data);
-		generateLegend('gdga-legend-container', data.datasets);
+		new Chart(makeCanvas('gdga-chart-container'), {
+			// The type of chart we want to create
+			type: 'bar',
+			// The data for our dataset
+			data: data,
+			// Configuration options go here
+			options: {}
+		});
 	}).catch(function(err) {
 		console.error(err.stack);
 	})
@@ -484,26 +504,34 @@ function gd_renderWeekOverWeekChart() {
 			labels : labels,
 			datasets : [
 				{
-					label: '<?php _e('Last Week', 'frontend-analytics');?>',
-					fillColor : "rgba(220,220,220,0.5)",
-					strokeColor : "rgba(220,220,220,1)",
-					pointColor : "rgba(220,220,220,1)",
-					pointStrokeColor : "#fff",
-					data : data2
+					label: '<?php _e('This Week', 'frontend-analytics');?>',
+					backgroundColor : "rgba(151,187,205,0.5)",
+					borderColor : "rgba(151,187,205,1)",
+					pointBackgroundColor : "rgba(151,187,205,1)",
+					pointBorderColor : "#fff",
+					data : data1
 				},
 				{
-					label: '<?php _e('This Week', 'frontend-analytics');?>',
-					fillColor : "rgba(151,187,205,0.5)",
-					strokeColor : "rgba(151,187,205,1)",
-					pointColor : "rgba(151,187,205,1)",
-					pointStrokeColor : "#fff",
-					data : data1
+					label: '<?php _e('Last Week', 'frontend-analytics');?>',
+					backgroundColor : "rgba(220,220,220,0.5)",
+					borderColor : "rgba(220,220,220,1)",
+					pointBackgroundColor : "rgba(220,220,220,1)",
+					pointBorderColor : "#fff",
+					data : data2
 				}
+
 			]
 		};
 
-		new Chart(makeCanvas('gdga-chart-container')).Line(data);
-		generateLegend('gdga-legend-container', data.datasets);
+		new Chart(makeCanvas('gdga-chart-container'), {
+			// The type of chart we want to create
+			type: 'line',
+			// The data for our dataset
+			data: data,
+			// Configuration options go here
+			options: {}
+		});
+
 	});
 }
 

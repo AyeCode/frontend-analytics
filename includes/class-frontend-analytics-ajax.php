@@ -66,23 +66,23 @@ class Frontend_Analytics_AJAX {
         ) {
 
 	        if ( isset( $_REQUEST['ga_start'] ) ) {
-		        $ga_start = $_REQUEST['ga_start'];
+		        $ga_start = sanitize_file_name( $_REQUEST['ga_start'] );
 	        } else {
 		        $ga_start = '';
 	        }
 	        if ( isset( $_REQUEST['ga_end'] ) ) {
-		        $ga_end = $_REQUEST['ga_end'];
+		        $ga_end = sanitize_file_name( $_REQUEST['ga_end']);
 	        } else {
 		        $ga_end = '';
 	        }
 	        try {
-		        frontend_analytics_get_analytics( $_REQUEST['ga_page'], $ga_start, $ga_end );
+		        $page_uri = esc_url_raw($_REQUEST['ga_page']);
+		        frontend_analytics_get_analytics( $page_uri, $ga_start, $ga_end );
 	        } catch ( Exception $e ) {
 
 	        }
         }
-
-
+		
 		exit;
 	}
 
