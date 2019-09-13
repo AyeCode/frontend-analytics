@@ -3,8 +3,8 @@ Contributors: stiofansisland, paoltaia, ayecode
 Donate link: https://wpgeodirectory.com/
 Tags: analytics, google analytics, frontend google analytics
 Requires at least: 4.8
-Tested up to: 5.2
-Stable tag: 1.0.3
+Tested up to: 5.3
+Stable tag: 1.0.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -29,6 +29,9 @@ You can select if the Analytics are show to either "admins", "logged in users" o
 3. Top Countries.
 
 == Changelog ==
+
+= 1.0.4 =
+* Block output not always working depending on role selected - FIXED
 
 = 1.0.3 =
 * Initial WP.org release - INFO

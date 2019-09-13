@@ -132,6 +132,8 @@ class Frontend_Analytics_Widget_Analytics extends WP_Super_Duper {
 			return;
 		}
 
+		$options['user_roles'] = $allow_roles[0]; //@todo we need to make this work for arrays.
+		
 		if ( ! in_array( 'all', $allow_roles ) ) {
 
 			if( in_array( 'all-logged-in', $allow_roles ) ){
