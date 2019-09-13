@@ -4,7 +4,7 @@ Donate link: https://wpgeodirectory.com/
 Tags: analytics, google analytics, frontend google analytics
 Requires at least: 4.8
 Tested up to: 5.2
-Stable tag: 1.0.2
+Stable tag: 1.0.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -24,9 +24,14 @@ You can select if the Analytics are show to either "admins", "logged in users" o
 
 == Screenshots ==
 
-TBA
+1. This week vs last week.
+2. This year vs last year.
+3. Top Countries.
 
 == Changelog ==
+
+= 1.0.3 =
+* Initial WP.org release - INFO
 
 = 1.0.2 =
 * Initial release.
