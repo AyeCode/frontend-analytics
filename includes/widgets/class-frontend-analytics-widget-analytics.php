@@ -67,6 +67,7 @@ class Frontend_Analytics_Widget_Analytics extends WP_Super_Duper {
 					'type' => 'select',
 					'options'   =>  array(
 						"administrator" => __('Administrator', 'frontend-analytics'),
+						"author" => __('Author or profile owner.', 'frontend-analytics'),
 						"all-logged-in" => __('Everyone logged in', 'frontend-analytics'),
 						"all" 			=> __('Everyone', 'frontend-analytics'),
 					),
@@ -133,13 +134,33 @@ class Frontend_Analytics_Widget_Analytics extends WP_Super_Duper {
 		}
 
 		$options['user_roles'] = $allow_roles[0]; //@todo we need to make this work for arrays.
-		
+
 		if ( ! in_array( 'all', $allow_roles ) ) {
 
 			if( in_array( 'all-logged-in', $allow_roles ) ){
 				$user_id = is_user_logged_in() ? get_current_user_id() : 0;
 				if ( empty( $user_id ) ) {
 					return;
+				}
+			}elseif( in_array( 'author', $allow_roles ) ){
+				if(!current_user_can( 'manage_options' )) {
+					global $post;
+					$user_id = is_user_logged_in() ? get_current_user_id() : 0;
+					if ( empty( $user_id ) ) {
+						return;
+					}
+					$author_ID = get_the_author_meta( "ID" );
+					if ( ! $author_ID && function_exists( 'bp_displayed_user_id' ) ) {
+						$author_ID = bp_displayed_user_id();
+					} elseif ( function_exists( 'uwp_get_displayed_user' ) && $post->post_type == 'page' && $post->ID == uwp_get_page_id( 'profile_page' ) ) {
+						$displayed_user = uwp_get_displayed_user();
+						if ( ! empty( $displayed_user->ID ) ) {
+							$author_ID = $displayed_user->ID;
+						}
+					}
+					if ( ! $author_ID || $author_ID != $user_id ) {
+						return;
+					}
 				}
 			}else{
 				$user_id = is_user_logged_in() ? get_current_user_id() : 0;

@@ -747,6 +747,8 @@ function frontend_analytics_validate_page_access_token($token,$path){
 			$result = true;
 		}elseif($user_id && $token == frontend_analytics_get_page_access_token('all-logged-in',$path )){
 			$result = true;
+		}elseif($user_id && $token == frontend_analytics_get_page_access_token('author',$path )){
+			$result = true;
 		}elseif($user_id && current_user_can( 'manage_options' ) && $token == frontend_analytics_get_page_access_token('administrator',$path )){
 			$result = true;
 		}

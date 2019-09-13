@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: Frontend Google Analytics 1.0.4\n"
+"Project-Id-Version: Frontend Google Analytics 1.0.5\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-09-13 19:06+0100\n"
-"PO-Revision-Date: 2019-09-13 19:07+0100\n"
+"POT-Creation-Date: 2019-09-13 20:15+0100\n"
+"PO-Revision-Date: 2019-09-13 20:16+0100\n"
 "Last-Translator: \n"
 "Language-Team: AyeCode Ltd <contact@ayecode.io>\n"
 "Language: en_US\n"
@@ -268,10 +268,14 @@ msgid "Administrator"
 msgstr ""
 
 #: includes/widgets/class-frontend-analytics-widget-analytics.php:70
-msgid "Everyone logged in"
+msgid "Author or profile owner."
 msgstr ""
 
 #: includes/widgets/class-frontend-analytics-widget-analytics.php:71
+msgid "Everyone logged in"
+msgstr ""
+
+#: includes/widgets/class-frontend-analytics-widget-analytics.php:72
 msgid "Everyone"
 msgstr ""
 
