@@ -92,7 +92,7 @@ function frontend_analytics_get_analytics( $page, $ga_start = '', $ga_end = '' )
     # Create a new Gdata call
     $gaApi = new Frontend_Analytics_API();
 
-    # Check if Google sucessfully logged in
+    # Check if Google successfully logged in
     if ( ! $gaApi->checkLogin() ) {
         echo json_encode( array( 'error' => __( 'Please check Google Analytics Settings', 'frontend-analytics' ) ) );
         return false;

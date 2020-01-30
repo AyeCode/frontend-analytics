@@ -39,11 +39,11 @@ class Frontend_Analytics_API {
 		$this->client->setClientId( FRONTEND_ANALYTICS_CLIENTID );
 		$this->client->setClientSecret( FRONTEND_ANALYTICS_CLIENTSECRET );
 		$this->client->setRedirectUri( FRONTEND_ANALYTICS_REDIRECT );
-		$this->client->setScopes( array( 'https://www.googleapis.com/auth/analytics' ) );
+		$this->client->setScopes( array( FRONTEND_ANALYTICS_SCOPE ) );
 
 		try {
 			$this->analytics = new Google_Service_Analytics( $this->client );
-		} catch ( Google_ServiceException $e ) {
+		} catch ( Exception $e ) {
 			print 'Google Analytics API Service error ' . $e->getCode() . ':' . $e->getMessage();
 			return false;
 		}
@@ -55,7 +55,7 @@ class Frontend_Analytics_API {
 		if ( ! empty( $ga_google_authtoken ) ) {
 			try {
 				$this->client->setAccessToken( $ga_google_authtoken );
-			} catch( Google_AuthException $e ) {
+			} catch( Exception $e ) {
 				print '<div id="message" class="error inline"><p>(cas:72) Unable to authenticate you with
 						Google using the Auth Token you pasted into the input box on the previous step. <br>
 						This could mean either you pasted the token wrong, or the time/date on your server is wrong,
@@ -102,6 +102,7 @@ class Frontend_Analytics_API {
 
 	function getSingleProfile() {
 		$webproperty_id = frontend_analytics_get_option( 'account_id' );
+
 		if ( empty( $webproperty_id ) ) {
 			return false;
 		}
@@ -110,7 +111,7 @@ class Frontend_Analytics_API {
 
 		try {
 			$profiles = $this->analytics->management_profiles->listManagementProfiles( $account_id, $webproperty_id );
-		} catch ( Google_ServiceException $e ) {
+		} catch ( Exception $e ) {
 			print 'Google Analytics API Service error ' . $e->getCode() . ':' . $e->getMessage();
 			return false;
 		}
@@ -130,7 +131,7 @@ class Frontend_Analytics_API {
 
 		try {
 			$profiles = $this->analytics->management_webproperties->listManagementWebproperties( '~all' );
-		} catch ( Google_ServiceException $e ) {
+		} catch ( Exception $e ) {
 			print 'There was an Analytics API service error ' . $e->getCode() . ': ' . $e->getMessage();
 		}
 

@@ -103,7 +103,7 @@ if ( ! class_exists( 'Frontend_Analytics_Settings', false ) ) :
 					array(
 						'name' => '',
 						'desc' => '',
-						'id' => 'token',
+						'id' => 'auth_token',
 						'el' => 'analytics',
 						'css' => 'min-width:300px;',
 						'std' => ''
@@ -312,7 +312,7 @@ if ( ! class_exists( 'Frontend_Analytics_Settings', false ) ) :
 		 * Renders an analytics field
 		 */
 		public static function render_analytics( $id,  $args ) {
-	
+
 			if ( !empty( $args['value'] ) ) { ?>
 
 				<span class="button-primary" onclick="frontend_analytics_deauthorize('<?php echo wp_create_nonce( 'frontend_analytics_deauthorize' ); ?>');"><?php _e( 'Deauthorize', 'frontend-analytics' ); ?></span> 
@@ -327,7 +327,7 @@ if ( ! class_exists( 'Frontend_Analytics_Settings', false ) ) :
 			<script type="text/javascript">
 			function frontend_analytics_deauthorize(nonce) {
 
-				if (result) {
+				if (nonce) {
 					jQuery.ajax({
 						url: ajaxurl,
 						type: 'POST',

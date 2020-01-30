@@ -108,7 +108,7 @@ class Frontend_Analytics_AJAX {
 
 		echo admin_url( 'admin.php?page=frontend-analytics' );
 
-		wp_die( -1 );
+		exit;
 	}
 	
 	public static function callback(){

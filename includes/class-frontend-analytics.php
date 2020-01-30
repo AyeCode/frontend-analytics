@@ -78,10 +78,11 @@ class Frontend_Analytics {
         $this->define( 'FRONTEND_ANALYTICS_PLUGIN_BASENAME', plugin_basename( FRONTEND_ANALYTICS_PLUGIN_FILE ) );
 		
 		// Google Analytic app settings
-		$this->define( 'FRONTEND_ANALYTICS_CLIENTID', '687912069872-sdpsjssrdt7t3ao1dnv1ib71hkckbt5s.apps.googleusercontent.com' );
-		$this->define( 'FRONTEND_ANALYTICS_CLIENTSECRET', 'yBVkDpqJ1B9nAETHy738Zn8C' ); // don't worry - this don't need to be secret in our case
+	    $this->define( 'FRONTEND_ANALYTICS_CLIENTID', '687912069872-sdpsjssrdt7t3ao1dnv1ib71hkckbt5s.apps.googleusercontent.com' ); // GD
+	    $this->define( 'FRONTEND_ANALYTICS_CLIENTSECRET', 'yBVkDpqJ1B9nAETHy738Zn8C' ); // don't worry - this don't need to be secret in our case : GD
+
 		$this->define( 'FRONTEND_ANALYTICS_REDIRECT', 'urn:ietf:wg:oauth:2.0:oob' );
-		$this->define( 'FRONTEND_ANALYTICS_SCOPE', 'https://www.googleapis.com/auth/analytics' ); // .readonly
+		$this->define( 'FRONTEND_ANALYTICS_SCOPE', 'https://www.googleapis.com/auth/analytics.readonly' ); // .readonly
 
     }
 
