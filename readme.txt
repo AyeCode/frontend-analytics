@@ -35,6 +35,7 @@ UsersWP - Can be used on the UsersWP profile page to show the owner their profil
 
 = 1.0.6 =
 * Changes for Google App Verification - CHANGED
+* Deauthorize option not showing in settings - FIXED
 
 = 1.0.5 =
 * Add support for Author of page or profile page to view stats - ADDED
