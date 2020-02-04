@@ -290,7 +290,7 @@ if ( ! class_exists( 'Frontend_Analytics_Settings', false ) ) :
 			$checked      = checked( $value, '1', false );
 			$class        = empty( $args['class'] ) ? "regular-checkbox" : esc_attr( $args['class'] ) . " regular-checkbox";
 			$description  = isset( $args['desc'] ) ? $args['desc'] : '';
-			echo "<label for='$id'><input class='$class' id='$id' name='$id' value='1' type='checkbox' $checked />$description</label>";
+			echo "<label for='$id'><input name='$id' value='0' type='hidden'  /><input class='$class' id='$id' name='$id' value='1' type='checkbox' $checked />$description</label>";
 	
 		}
 	

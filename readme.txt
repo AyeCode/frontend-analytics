@@ -4,7 +4,7 @@ Donate link: https://wpgeodirectory.com/
 Tags: analytics, google analytics, frontend google analytics
 Requires at least: 4.8
 Tested up to: 5.3
-Stable tag: 1.0.6
+Stable tag: 1.0.7
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -32,6 +32,9 @@ UsersWP - Can be used on the UsersWP profile page to show the owner their profil
 3. Top Countries.
 
 == Changelog ==
+
+= 1.0.7 =
+* Anonymize user IP setting can't be unset once set - FIXED
 
 = 1.0.6 =
 * Changes for Google App Verification - CHANGED
