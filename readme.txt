@@ -3,7 +3,7 @@ Contributors: stiofansisland, paoltaia, ayecode, basantakumar
 Donate link: https://wpgeodirectory.com/
 Tags: analytics, google analytics, frontend google analytics
 Requires at least: 4.8
-Tested up to: 5.3
+Tested up to: 5.4.1
 Stable tag: 1.0.7
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -32,6 +32,9 @@ UsersWP - Can be used on the UsersWP profile page to show the owner their profil
 3. Top Countries.
 
 == Changelog ==
+
+= 1.0.8 =
+* JavaScript errors breaks analytics when cache is enabled - FIXED
 
 = 1.0.7 =
 * Anonymize user IP setting can't be unset once set - FIXED
