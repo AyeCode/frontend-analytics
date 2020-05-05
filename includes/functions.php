@@ -219,9 +219,8 @@ ga_data4 = false;
 ga_data5 = false;
 ga_data6 = false;
 ga_au = 0;
+setTimeout(function() {
 jQuery(document).ready(function() {
-
-
 	jQuery('.gdga-show-analytics').click(function(e) {
 		jQuery(this).hide();
 		jQuery(this).parent().find('.gdga-analytics-box').show();
@@ -246,7 +245,8 @@ jQuery(document).ready(function() {
 			gdga_realtime();
 		});
 	}
-});
+}); 
+}, 1000);
 
 function gdga_weekVSweek() {
 	jQuery.ajax({url: "<?php echo admin_url('admin-ajax.php?action=frontend_analytics_stats&ga_page='. esc_html( $page_url ).'&ga_type=thisweek&pt='); ?>"+gd_gaPageToken, success: function(result){
