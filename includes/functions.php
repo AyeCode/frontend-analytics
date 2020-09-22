@@ -164,21 +164,47 @@ function frontend_analytics_get_token() {
  * @since 1.0.0
  * @package Frontend_Analytics
  */
-function frontend_analytics_display_analytics($args = array()) {
-    global $post, $preview;
+function frontend_analytics_display_analytics( $args = array() ) {
+	global $post, $preview;
 
-    if ( $preview ) {
+	if ( $preview || empty( $post ) ) {
 		return;
 	}
 
-    $id = trim( frontend_analytics_get_option( 'account_id' ) );
+	$id = trim( frontend_analytics_get_option( 'account_id' ) );
 
-    if ( ! $id ) {
-        return; // if no Google Analytics ID then bail.
-    }
+	if ( ! $id ) {
+		return; // if no Google Analytics ID then bail.
+	}
 
 	if ( ! frontend_analytics_check_post_google_analytics( $post ) ) {
 		return;
+	}
+
+	$design_style = frontend_analytics_design_style();
+
+	if ( empty( $args['height'] ) || absint( $args['height'] ) < 100 ) {
+		$args['height'] = 200;
+	}
+
+	if ( $design_style ) {
+		if ( empty( $args['btn_color'] ) ) {
+			$args['btn_color'] = 'primary';
+		}
+
+		if ( $args['btn_size'] ) {
+			switch ( $args['btn_size'] ) {
+				case 'small':
+					$args['btn_size'] = 'sm';
+				break;
+				case 'large':
+					$args['btn_size'] = 'lg';
+				break;
+				case 'medium':
+					$args['btn_size'] = '';
+				break;
+			}
+		}
 	}
 
     ob_start(); // Start buffering;
@@ -203,9 +229,8 @@ function frontend_analytics_display_analytics($args = array()) {
     $hide_refresh = 0;
     
     $auto_refresh = 1;
-    if (true) {
-        $page_url = urlencode($_SERVER['REQUEST_URI']);
-        ?>
+    $page_url = urlencode($_SERVER['REQUEST_URI']);
+    ?>
 <script type="text/javascript">
 var gd_gaTimeOut;
 var gd_gaTime = parseInt('<?php echo $refresh_time;?>');
@@ -565,7 +590,11 @@ function generateLegend(id, items) {
 	legend.innerHTML = items.map(function(item) {
 		var color = item.color || item.fillColor;
 		var label = item.label;
+		<?php if ( $design_style ) { ?>
+		return '<div class="btn btn-sm m-auto shadow-none py-0 px-3"><i style="background:' + color + '" class="mr-1 badge badge-pill p-2 d-inline-block align-middle"></i><span class="d-inline-block align-middle">' + label + '</span></div>';
+		<?php } else { ?>
 		return '<li><i style="background:' + color + '"></i>' + label + '</li>';
+		<?php } ?>
 	}).join('');
 }
 
@@ -602,6 +631,58 @@ function gdga_refresh(stop) {
 	}
 }
 </script>
+<?php if ( $design_style ) {
+	$btn_class = '';
+	if ( ! empty( $args['btn_color'] ) ) {
+		$btn_class .= ' btn-' . sanitize_html_class( $args['btn_color'] );
+	}
+	if ( ! empty( $args['btn_size'] ) ) {
+		$btn_class .= ' btn-' . sanitize_html_class( $args['btn_size'] );
+	}
+	$btn_wrap_class = ' text-left';
+	if ( ! empty( $args['btn_alignment'] ) ) {
+		if ( $args['btn_alignment'] == 'block' ) {
+			$btn_class .= ' w-100';
+			$btn_wrap_class = '';
+		} else {
+			$btn_wrap_class .= ' text-' . sanitize_html_class( $args['btn_alignment'] );
+		}
+	}
+	?>
+		<div class="gdga-show-analytics<?php echo $btn_wrap_class; ?>"><button role="button" class="btn<?php echo $btn_class; ?>"><i class="fas fa-chart-bar mr-1" aria-hidden="true"></i><?php echo ! empty( $args['button_text'] ) ? esc_attr( $args['button_text'] ) : __('Show Google Analytics', 'frontend-analytics');?></button></div>
+		<div id="ga_stats" class="gdga-analytics-box card" style="display:none">
+			<div class="card-header p-3">
+				<div class="gd-ActiveUsers btn btn-sm btn-info float-right py-1 px-2 align-middle"><span id="gdga-loader-icon" class="mr-1" title="<?php esc_attr_e("Refresh", 'frontend-analytics');?>"><i class="fa fa-refresh fa-spin" aria-hidden="true"></i></span><?php _e("Active Users:", 'frontend-analytics');?> <span class="gd-ActiveUsers-value badge badge-light badge-pill">0</span></div>
+				<div id="ga-analytics-title" class="h5 m-0 card-title align-middle"><i class="fas fa-chart-bar mr-1" aria-hidden="true"></i><?php _e("Analytics", 'frontend-analytics');?></div>
+			</div>
+			<div class="card-body">
+				<div class="gdga-type-container form-group" style="display:none">
+					<?php
+					echo aui()->select( array(
+						'id' => 'gdga-select-analytic',
+						'name' => '',
+						'title' => '',
+						'placeholder' => '',
+						'value' => '',
+						'label_show' => false,
+						'label' => '',
+						'options' => array(
+							'weeks' => __( "Last Week vs This Week", 'frontend-analytics' ),
+							'years' => __( "This Year vs Last Year", 'frontend-analytics' ),
+							'country' => __( "Top Countries", 'frontend-analytics' ),
+						),
+						'select2' => true,
+						'extra_attributes' => array(
+							'onchange' => 'gdga_select_option();'
+						),
+					) );
+					?>
+				</div>
+				<div class="Chartjs-figure w-100" id="gdga-chart-container" style="display:none;height:<?php echo absint( $args['height'] ); ?>px"></div>
+				<div class="Chartjs-legend text-center" id="gdga-legend-container"></div>
+			</div>
+		</div>
+<?php } else { ?>
 <style>
 #gdga-chart-container{clear:both}
 .gdga-type-container{width:100%;display:block;clear:both}
@@ -612,7 +693,7 @@ function gdga_refresh(stop) {
 #ga_stats #ga-analytics-title{float:left;font-weight:bold}
 #ga_stats #gd-active-users-container{float:right}
 .Chartjs{font-size:.85em}
-.Chartjs-figure{height:200px;width:100%;display:none}
+.Chartjs-figure{height:<?php echo absint( $args['height'] ); ?>px;width:100%;display:none}
 .Chartjs-legend{list-style:none;margin:0;padding:1em 0 0;text-align:center;width:100%;display:none}
 .Chartjs-legend>li{display:inline-block;padding:.25em .5em}
 .Chartjs-legend>li>i{display:inline-block;height:1em;margin-right:.5em;vertical-align:-.1em;width:1em}
@@ -645,7 +726,6 @@ function gdga_refresh(stop) {
             <div class="Chartjs-figure" id="gdga-chart-container"></div>
             <ol class="Chartjs-legend" id="gdga-legend-container"></ol>
         </span>
-
     <?php
     }
     /**
@@ -755,4 +835,21 @@ function frontend_analytics_validate_page_access_token($token,$path){
 	}
 
 	return $result;
+}
+
+/**
+ * Get the design style for the site if available.
+ *
+ * @since 2.0.0
+ *
+ * @return mixed
+ */
+function frontend_analytics_design_style() {
+	if ( function_exists( 'geodir_design_style' ) ) {
+		$style = geodir_design_style();
+	} else {
+		$style = '';
+	}
+
+	return $style;
 }

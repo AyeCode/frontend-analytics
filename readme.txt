@@ -33,8 +33,9 @@ UsersWP - Can be used on the UsersWP profile page to show the owner their profil
 
 == Changelog ==
 
-= 1.0.8 =
+= 2.0.0 =
 * JavaScript errors breaks analytics when cache is enabled - FIXED
+* Changes for AyeCode UI compatibility - CHANGED
 
 = 1.0.7 =
 * Anonymize user IP setting can't be unset once set - FIXED

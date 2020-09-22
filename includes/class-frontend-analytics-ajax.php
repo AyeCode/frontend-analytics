@@ -55,34 +55,33 @@ class Frontend_Analytics_AJAX {
 		$req = isset($_REQUEST['ga_page']) ? urldecode($_REQUEST['ga_page']) : '';
 		$page_token = isset($_REQUEST['pt']) ? $_REQUEST['pt'] : '';
 
-        if (
-	        $ref
-	        && $req
-	        && $page_token
-	        && $ref !== wp_unslash( $_SERVER['REQUEST_URI'] )
-	        && $ref !== home_url() . wp_unslash( $_SERVER['REQUEST_URI'] )
-	        && untrailingslashit(home_url()) . $req == $ref
-	        && frontend_analytics_validate_page_access_token($page_token,$req)
-        ) {
+		if (
+			$ref
+			&& $req
+			&& $page_token
+			&& $ref !== wp_unslash( $_SERVER['REQUEST_URI'] )
+			&& $ref !== home_url() . wp_unslash( $_SERVER['REQUEST_URI'] )
+			&& ( untrailingslashit(home_url()) . $req ) == $ref
+			&& frontend_analytics_validate_page_access_token($page_token,$req)
+		) {
+			if ( isset( $_REQUEST['ga_start'] ) ) {
+				$ga_start = sanitize_file_name( $_REQUEST['ga_start'] );
+			} else {
+				$ga_start = '';
+			}
+			if ( isset( $_REQUEST['ga_end'] ) ) {
+				$ga_end = sanitize_file_name( $_REQUEST['ga_end']);
+			} else {
+				$ga_end = '';
+			}
+			try {
+				$page_uri = esc_url_raw($_REQUEST['ga_page']);
+				frontend_analytics_get_analytics( $page_uri, $ga_start, $ga_end );
+			} catch ( Exception $e ) {
 
-	        if ( isset( $_REQUEST['ga_start'] ) ) {
-		        $ga_start = sanitize_file_name( $_REQUEST['ga_start'] );
-	        } else {
-		        $ga_start = '';
-	        }
-	        if ( isset( $_REQUEST['ga_end'] ) ) {
-		        $ga_end = sanitize_file_name( $_REQUEST['ga_end']);
-	        } else {
-		        $ga_end = '';
-	        }
-	        try {
-		        $page_uri = esc_url_raw($_REQUEST['ga_page']);
-		        frontend_analytics_get_analytics( $page_uri, $ga_start, $ga_end );
-	        } catch ( Exception $e ) {
+			}
+		}
 
-	        }
-        }
-		
 		exit;
 	}
 
