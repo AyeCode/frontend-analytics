@@ -14,9 +14,9 @@ if ( ! defined( 'ABSPATH' ) ) {
  * Frontend_Analytics_Widget_Analytics class.
  */
 class Frontend_Analytics_Widget_Analytics extends WP_Super_Duper {
-	
+
 	public $arguments;
-	
+
 	/**
 	 * Sets up the widgets name etc
 	 */
@@ -27,59 +27,125 @@ class Frontend_Analytics_Widget_Analytics extends WP_Super_Duper {
 			'block-icon'     => 'chart-bar',
 			'block-category' => 'widgets',
 			'block-keywords' => "['analytics','ga','google']",
-            'block-output'  => array(
-                'element::p'   => array(
+			'block-output'  => array(
+				'element::p'   => array(
 					'element'	 => 'p',
 					'content'	 => __( 'Frontend Analytics Button Placeholder', 'frontend-analytics' ),
-                    'title' 	 => '[%title%]',
-                    'user_roles' => '[%user_roles%]',
-                )
-            ),
+					'title' 	 => '[%title%]',
+					'user_roles' => '[%user_roles%]',
+				)
+			),
 			'class_name'     => __CLASS__,
 			'base_id'        => 'frontend_analytics',
 			'name'           => __( 'Frontend Analytics', 'frontend-analytics' ),
 			'widget_ops'     => array(
-				'classname'     => 'frontend-analytics',
+				'classname'     => 'frontend-analytics' . ( frontend_analytics_design_style() ? ' bsui' : '' ),
 				'description'   => esc_html__( 'Show google analytics stats on your website front page.', 'frontend-analytics' ),
 				'geodirectory'  => false,
-			),
-            'arguments'     => array(
-				'title'  => array(
-					'title' => __('Title:', 'frontend-analytics'),
-					'desc' => __('The widget title:', 'frontend-analytics'),
-					'type' => 'text',
-					'desc_tip' => true,
-					'default'  => '',
-					'advanced' => false
-				),
-				'button_text'  => array(
-					'title' => __('Button text:', 'frontend-analytics'),
-					'desc' => __('The text to use for the button to show the analytics:', 'frontend-analytics'),
-					'type' => 'text',
-					'placeholder' => __('Show Google Analytics', 'frontend-analytics'),
-					'desc_tip' => true,
-					'default'  => '',
-					'advanced' => true
-				),
-				'user_roles'  => array(
-					'title' => __('Google Analytics visible to:', 'frontend-analytics'),
-					'desc' => __('Google Analytics will be visible to selected users only.', 'frontend-analytics'),
-					'type' => 'select',
-					'options'   =>  array(
-						"administrator" => __('Administrator', 'frontend-analytics'),
-						"author" => __('Author or profile owner.', 'frontend-analytics'),
-						"all-logged-in" => __('Everyone logged in', 'frontend-analytics'),
-						"all" 			=> __('Everyone', 'frontend-analytics'),
-					),
-					'desc_tip' => true,
-					'advanced' => false
-				),
-			),
-        );
+			)
+		);
 
-        parent::__construct( $options );
-    }
-    
+		parent::__construct( $options );
+	}
+
+	/**
+	 * Widget arguments.
+	 */
+	public function set_arguments() {
+		$design_style = frontend_analytics_design_style();
+
+		$arguments = array(
+			'title'  => array(
+				'title' => __( 'Title:', 'frontend-analytics' ),
+				'desc' => __( 'The widget title:', 'frontend-analytics' ),
+				'type' => 'text',
+				'desc_tip' => true,
+				'default'  => '',
+				'advanced' => false
+			),
+			'height' => array(
+				'title' => __( 'Chart Height:', 'frontend-analytics' ),
+				'desc' => __( 'Chart height in px. Default: 200', 'frontend-analytics' ),
+				'type' => 'number',
+				'desc_tip' => true,
+				'default' => '200',
+				'advanced' => true
+			),
+			'button_text'  => array(
+				'title' => __( 'Button text:', 'frontend-analytics' ),
+				'desc' => __( 'The text to use for the button to show the analytics:', 'frontend-analytics' ),
+				'type' => 'text',
+				'placeholder' => __( 'Show Google Analytics', 'frontend-analytics' ),
+				'desc_tip' => true,
+				'default'  => '',
+				'advanced' => true
+			),
+			'user_roles'  => array(
+				'title' => __( 'Google Analytics visible to:', 'frontend-analytics' ),
+				'desc' => __( 'Google Analytics will be visible to selected users only.', 'frontend-analytics' ),
+				'type' => 'select',
+				'options' =>  array(
+					"administrator" => __( 'Administrator', 'frontend-analytics' ),
+					"author" => __( 'Author or profile owner.', 'frontend-analytics' ),
+					"all-logged-in" => __( 'Everyone logged in', 'frontend-analytics' ),
+					"all" => __( 'Everyone', 'frontend-analytics' ),
+				),
+				'desc_tip' => true,
+				'advanced' => false
+				)
+		);
+
+		if ( $design_style ) {
+			$arguments['btn_color'] = array(
+				'type' => 'select',
+				'title' => __( 'Button Color:', 'frontend-analytics' ),
+				'desc' => __( 'Analytics button color.', 'frontend-analytics' ),
+				'options' => array(
+					'' => __( 'Default (primary)', 'frontend-analytics' ),
+				) + geodir_aui_colors(),
+				'default' => '',
+				'desc_tip' => true,
+				'advanced' => false,
+				'group' => __( 'Design', 'frontend-analytics' )
+			);
+
+			$arguments['btn_size'] = array(
+				'type' => 'select',
+				'title' => __( 'Button Size:', 'frontend-analytics' ),
+				'desc' => __( 'Analytics button size.', 'frontend-analytics' ),
+				'options' => array(
+					'' => __( 'Default (medium)', 'frontend-analytics' ),
+					'small' => __( 'Small', 'frontend-analytics' ),
+					'medium' => __( 'Medium', 'frontend-analytics' ),
+					'large' => __( 'Large', 'frontend-analytics' ),
+				),
+				'default' => '',
+				'desc_tip' => true,
+				'advanced' => false,
+				'group' => __( 'Design', 'frontend-analytics' )
+			);
+
+			$arguments['btn_alignment'] = array(
+				'type' => 'select',
+				'title' => __( 'Button Position:', 'frontend-analytics' ),
+				'desc' => __( 'Analytics button alignment.', 'frontend-analytics' ),
+				'options' => array(
+					'' => __( 'Default (left)', 'frontend-analytics' ),
+					'left' => __( 'Left', 'frontend-analytics' ),
+					'center' => __( 'Center', 'frontend-analytics' ),
+					'right' => __( 'Right', 'frontend-analytics' ),
+					'block' => __( 'Block', 'frontend-analytics' ),
+				),
+				'default' => '',
+				'desc_tip' => true,
+				'advanced' => false,
+				'group' => __( 'Design', 'frontend-analytics' )
+			);
+		}
+
+		return $arguments;
+	}
+
 	/**
 	 * This is the output function for the widget, shortcode and block (front end).
 	 *
@@ -90,42 +156,33 @@ class Frontend_Analytics_Widget_Analytics extends WP_Super_Duper {
 	 * @return string
 	 */
 	public function output( $args = array(), $widget_args = array(), $content = '' ) {
-        global $post, $preview;
+		global $post, $preview;
 
 		if ( $preview || empty( $post ) ) {
-            return;
-        }
+			return;
+		}
 
 		// options
 		$defaults = array(
-			'title'      => '',
+			'title' => '',
 			'button_text' => '',
-			'user_roles'  => array( 'administrator' ),
+			'user_roles' => array( 'administrator' ),
+			'height' => 200,
+			// AUI
+			'btn_color' => '',
+			'btn_size' => '',
+			'btn_alignment' => ''
 		);
-
 
 		/**
 		 * Parse incoming $args into an array and merge it with $defaults
 		 */
 		$options = wp_parse_args( $args, $defaults );
 
+		$allow_roles = ! empty( $options['user_roles'] ) ? $options['user_roles'] : array( 'administrator' );
 
-        /**
-         * Filters the widget title.
-         *
-         * @since 1.0.0
-         *
-         * @param string $title    The widget title. Default 'Pages'.
-         * @param array  $widget_args An array of the widget's settings.
-         * @param mixed  $id_base  The widget ID.
-         */
-       // $title = apply_filters( 'widget_title', empty( $widget_args['title'] ) ? '' : $widget_args['title'], $widget_args, $this->id_base );
-
-
-		$allow_roles = !empty( $options['user_roles'] ) ? $options['user_roles'] : array( 'administrator' );
-
-		if(!is_array($allow_roles)){
-			$allow_roles = explode(",",$allow_roles);
+		if ( ! is_array( $allow_roles ) ) {
+			$allow_roles = explode( ",", $allow_roles );
 		}
 
 		$allow_roles = apply_filters( 'frontend_analytics_widget_user_roles', $allow_roles, $widget_args, $this->id_base );
@@ -133,18 +190,17 @@ class Frontend_Analytics_Widget_Analytics extends WP_Super_Duper {
 			return;
 		}
 
-		$options['user_roles'] = $allow_roles[0]; //@todo we need to make this work for arrays.
+		$options['user_roles'] = $allow_roles[0]; // @todo we need to make this work for arrays.
 
 		if ( ! in_array( 'all', $allow_roles ) ) {
 
-			if( in_array( 'all-logged-in', $allow_roles ) ){
+			if ( in_array( 'all-logged-in', $allow_roles ) ) {
 				$user_id = is_user_logged_in() ? get_current_user_id() : 0;
 				if ( empty( $user_id ) ) {
 					return;
 				}
-			}elseif( in_array( 'author', $allow_roles ) ){
-				if(!current_user_can( 'manage_options' )) {
-					global $post;
+			} elseif ( in_array( 'author', $allow_roles ) ) {
+				if ( !current_user_can( 'manage_options' ) ) {
 					$user_id = is_user_logged_in() ? get_current_user_id() : 0;
 					if ( empty( $user_id ) ) {
 						return;
@@ -162,7 +218,7 @@ class Frontend_Analytics_Widget_Analytics extends WP_Super_Duper {
 						return;
 					}
 				}
-			}else{
+			} else {
 				$user_id = is_user_logged_in() ? get_current_user_id() : 0;
 				if ( empty( $user_id ) ) {
 					return;
@@ -195,13 +251,11 @@ class Frontend_Analytics_Widget_Analytics extends WP_Super_Duper {
 
 		}
 
+		ob_start();
 
-		
-        ob_start();
-        
-        frontend_analytics_display_analytics($options);
-        
-        return ob_get_clean();
-    }
+		frontend_analytics_display_analytics( $options );
+
+		return ob_get_clean();
+	}
 
 }
