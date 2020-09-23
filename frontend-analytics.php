@@ -14,8 +14,8 @@
  * Version: 1.0.7
  * Author: AyeCode Ltd
  * Author URI: https://wpgeodirectory.com/
- * Requires at least: 4.8
- * Tested up to: 5.3
+ * Requires at least: 4.9
+ * Tested up to: 5.5
  * License: GPLv3
  * License URI: http://www.gnu.org/licenses/gpl-3.0.html
  * Text Domain: frontend-analytics

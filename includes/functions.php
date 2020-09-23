@@ -70,6 +70,14 @@ function frontend_analytics_get_analytics( $page, $ga_start = '', $ga_end = '' )
         $start_date = date('Y-m-d', strtotime("-13 day"));
         $end_date = date('Y-m-d', strtotime("-7 day"));
         $dimensions = "ga:date,ga:nthDay";
+    } elseif (isset($_REQUEST['ga_type']) && $_REQUEST['ga_type'] == 'thismonth') {
+        $start_date = date('Y-m-01');
+        $end_date = date('Y-m-d');
+        $dimensions = "ga:date,ga:nthDay";
+    } elseif (isset($_REQUEST['ga_type']) && $_REQUEST['ga_type'] == 'lastmonth') {
+        $start_date = date('Y-m-01', strtotime("-1 month"));
+        $end_date = date('Y-m-t', strtotime("-1 month"));
+        $dimensions = "ga:date,ga:nthDay";
     } elseif (isset($_REQUEST['ga_type']) && $_REQUEST['ga_type'] == 'thisyear') {
         $start_date = date('Y')."-01-01";
         $end_date = date('Y-m-d');
@@ -111,6 +119,7 @@ function frontend_analytics_get_analytics( $page, $ga_start = '', $ga_end = '' )
     $gaApi->setAccount( $account );
 
     # Get the metrics needed to build the visits graph;
+    $stats = array();
     try {
         $stats = $gaApi->getMetrics( $metrics, $start_date, $end_date, $dimensions, $sort, $filters, $limit , $realtime );
     } catch ( Exception $e ) {
@@ -172,6 +181,11 @@ function frontend_analytics_display_analytics( $args = array() ) {
 	}
 
 	$id = trim( frontend_analytics_get_option( 'account_id' ) );
+	$month_last_day = max( (int) date( 't' ), (int) date( 't', strtotime( '-1 month' ) ) );
+	$month_days = array();
+	for ( $d = 1; $d <= $month_last_day; $d++ ) {
+		$month_days[] = $d;
+	}
 
 	if ( ! $id ) {
 		return; // if no Google Analytics ID then bail.
@@ -283,6 +297,19 @@ function gdga_weekVSweek() {
 	jQuery.ajax({url: "<?php echo admin_url('admin-ajax.php?action=frontend_analytics_stats&ga_page='.esc_html( $page_url ).'&ga_type=lastweek&pt='); ?>"+gd_gaPageToken, success: function(result){
 		ga_data2 = jQuery.parseJSON(result);
 		gd_renderWeekOverWeekChart();
+	}});
+}
+
+function gdga_monthVSmonth() {
+	jQuery.ajax({url: "<?php echo admin_url('admin-ajax.php?action=frontend_analytics_stats&ga_page='.$page_url.'&ga_type=thismonth&pt='); ?>"+gd_gaPageToken, success: function(result){
+		ga_data1 = jQuery.parseJSON(result);
+		if(ga_data1.error){jQuery('#ga_stats').html(result);return;}
+		gd_renderMonthOverMonthChart();
+	}});
+
+	jQuery.ajax({url: "<?php echo admin_url('admin-ajax.php?action=frontend_analytics_stats&ga_page='.$page_url.'&ga_type=lastmonth&pt='); ?>"+gd_gaPageToken, success: function(result){
+		ga_data2 = jQuery.parseJSON(result);
+		gd_renderMonthOverMonthChart();
 	}});
 }
 
@@ -560,6 +587,70 @@ function gd_renderWeekOverWeekChart() {
 	});
 }
 
+function gd_renderMonthOverMonthChart() {
+	if(ga_data1 && ga_data2){
+		thisMonth = ga_data1;
+		lastMonth = ga_data2;
+		ga_data1 = false;
+		ga_data2 = false;
+	}else{
+		return;
+	}
+
+	jQuery('#gdga-chart-container').show();
+	jQuery('#gdga-legend-container').show();
+	gdga_refresh(true);
+	jQuery('.gdga-type-container').show();
+	jQuery('#gdga-select-analytic').prop('disabled', false);
+
+	// Adjust `now` to experiment with different days, for testing only...
+	var now = moment();
+
+	Promise.all([thisMonth, lastMonth]).then(function(results) {
+		var data1 = results[0].rows.map(function(row) { return +row[2]; });
+		var data2 = results[1].rows.map(function(row) { return +row[2]; });
+		var labels = results[1].rows.map(function(row) { return +row[0]; });
+
+		labels = [<?php echo implode( ",", $month_days ) ?>];
+		
+		for (var i = 0, len = labels.length; i < len; i++) {
+			if (data1[i] === undefined) data1[i] = null;
+			if (data2[i] === undefined) data2[i] = 0;
+		}
+
+		var data = {
+			labels : labels,
+			datasets : [
+				{
+					label: '<?php _e('Last Month', 'frontend-analytics');?>',
+					fillColor : "rgba(220,220,220,0.5)",
+					strokeColor : "rgba(220,220,220,1)",
+					pointColor : "rgba(220,220,220,1)",
+					pointStrokeColor : "#fff",
+					data : data2
+				},
+				{
+					label: '<?php _e('This Month', 'frontend-analytics');?>',
+					fillColor : "rgba(151,187,205,0.5)",
+					strokeColor : "rgba(151,187,205,1)",
+					pointColor : "rgba(151,187,205,1)",
+					pointStrokeColor : "#fff",
+					data : data1
+				}
+			]
+		};
+
+		new Chart(makeCanvas('gdga-chart-container'), {
+			// The type of chart we want to create
+			type: 'line',
+			// The data for our dataset
+			data: data,
+			// Configuration options go here
+			options: {}
+		});
+	});
+}
+
 /**
  * Create a new canvas inside the specified element. Set it to be the width
  * and height of its container.
@@ -606,6 +697,8 @@ function gdga_select_option() {
 
 	if (gaType == 'weeks') {
 		gdga_weekVSweek();
+	} else if (gaType == 'months') {
+		gdga_monthVSmonth();
 	} else if (gaType == 'years') {
 		gdga_yearVSyear();
 	} else if (gaType == 'country') {
@@ -668,6 +761,7 @@ function gdga_refresh(stop) {
 						'label' => '',
 						'options' => array(
 							'weeks' => __( "Last Week vs This Week", 'frontend-analytics' ),
+							'months' => __( "This Month vs Last Month", 'frontend-analytics' ),
 							'years' => __( "This Year vs Last Year", 'frontend-analytics' ),
 							'country' => __( "Top Countries", 'frontend-analytics' ),
 						),
@@ -719,6 +813,7 @@ function gdga_refresh(stop) {
             <div class="gdga-type-container" style="display:none">
 				<select id="gdga-select-analytic" class="geodir-select" onchange="gdga_select_option();">
 					<option value="weeks"><?php _e("Last Week vs This Week", 'frontend-analytics');?></option>
+					<option value="months"><?php _e("This Month vs Last Month", 'frontend-analytics');?></option>
 					<option value="years"><?php _e("This Year vs Last Year", 'frontend-analytics');?></option>
 					<option value="country"><?php _e("Top Countries", 'frontend-analytics');?></option>
 				</select>
