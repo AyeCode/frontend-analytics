@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: Frontend Google Analytics 1.0.7\n"
+"Project-Id-Version: Frontend Google Analytics 2.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-02-04 09:55+0000\n"
-"PO-Revision-Date: 2020-02-04 09:55+0000\n"
+"POT-Creation-Date: 2020-10-07 17:42+0530\n"
+"PO-Revision-Date: 2020-10-07 17:42+0530\n"
 "Last-Translator: \n"
 "Language-Team: AyeCode Ltd <contact@ayecode.io>\n"
 "Language: en_US\n"
@@ -17,7 +17,7 @@ msgstr ""
 "X-Poedit-Basepath: ..\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Poedit-SourceCharset: UTF-8\n"
-"X-Generator: Poedit 1.8.7.1\n"
+"X-Generator: Poedit 2.2.4\n"
 "X-Poedit-SearchPath-0: .\n"
 
 #: includes/admin/settings/class-frontend-analytics-settings.php:95
@@ -85,145 +85,157 @@ msgstr ""
 msgid "Get Auth Code"
 msgstr ""
 
-#: includes/class-frontend-analytics-ajax.php:127
+#: includes/class-frontend-analytics-ajax.php:126
 msgid "Something went wrong"
 msgstr ""
 
-#: includes/functions.php:97 includes/functions.php:104
+#: includes/functions.php:105 includes/functions.php:112
 msgid "Please check Google Analytics Settings"
 msgstr ""
 
-#: includes/functions.php:134
+#: includes/functions.php:143
 msgid ""
 "Not authorized, please click authorized in GD > Google analytic settings."
 msgstr ""
 
-#: includes/functions.php:152
+#: includes/functions.php:161
 msgid "Login failed"
 msgstr ""
 
-#: includes/functions.php:375
+#: includes/functions.php:427
 msgid "No results available"
 msgstr ""
 
-#: includes/functions.php:405
+#: includes/functions.php:457
 msgid "Jan"
 msgstr ""
 
-#: includes/functions.php:406
+#: includes/functions.php:458
 msgid "Feb"
 msgstr ""
 
-#: includes/functions.php:407
+#: includes/functions.php:459
 msgid "Mar"
 msgstr ""
 
-#: includes/functions.php:408
+#: includes/functions.php:460
 msgid "Apr"
 msgstr ""
 
-#: includes/functions.php:409
+#: includes/functions.php:461
 msgid "May"
 msgstr ""
 
-#: includes/functions.php:410
+#: includes/functions.php:462
 msgid "Jun"
 msgstr ""
 
-#: includes/functions.php:411
+#: includes/functions.php:463
 msgid "Jul"
 msgstr ""
 
-#: includes/functions.php:412
+#: includes/functions.php:464
 msgid "Aug"
 msgstr ""
 
-#: includes/functions.php:413
+#: includes/functions.php:465
 msgid "Sep"
 msgstr ""
 
-#: includes/functions.php:414
+#: includes/functions.php:466
 msgid "Oct"
 msgstr ""
 
-#: includes/functions.php:415
+#: includes/functions.php:467
 msgid "Nov"
 msgstr ""
 
-#: includes/functions.php:416
+#: includes/functions.php:468
 msgid "Dec"
 msgstr ""
 
-#: includes/functions.php:429
+#: includes/functions.php:481
 msgid "Last Year"
 msgstr ""
 
-#: includes/functions.php:435
+#: includes/functions.php:487
 msgid "This Year"
 msgstr ""
 
-#: includes/functions.php:484
+#: includes/functions.php:536
 msgid "Mon"
 msgstr ""
 
-#: includes/functions.php:485
+#: includes/functions.php:537
 msgid "Tue"
 msgstr ""
 
-#: includes/functions.php:486
+#: includes/functions.php:538
 msgid "Wed"
 msgstr ""
 
-#: includes/functions.php:487
+#: includes/functions.php:539
 msgid "Thu"
 msgstr ""
 
-#: includes/functions.php:488
+#: includes/functions.php:540
 msgid "Fri"
 msgstr ""
 
-#: includes/functions.php:489
+#: includes/functions.php:541
 msgid "Sat"
 msgstr ""
 
-#: includes/functions.php:490
+#: includes/functions.php:542
 msgid "Sun"
 msgstr ""
 
-#: includes/functions.php:507
+#: includes/functions.php:559
 msgid "This Week"
 msgstr ""
 
-#: includes/functions.php:515
+#: includes/functions.php:567
 msgid "Last Week"
 msgstr ""
 
-#: includes/functions.php:631
-#: includes/widgets/class-frontend-analytics-widget-analytics.php:59
-msgid "Show Google Analytics"
+#: includes/functions.php:625
+msgid "Last Month"
 msgstr ""
 
 #: includes/functions.php:633
-msgid "Analytics"
+msgid "This Month"
 msgstr ""
 
-#: includes/functions.php:635
+#: includes/functions.php:745 includes/functions.php:806
+#: includes/widgets/class-frontend-analytics-widget-analytics.php:78
+msgid "Show Google Analytics"
+msgstr ""
+
+#: includes/functions.php:748 includes/functions.php:810
 msgid "Refresh"
 msgstr ""
 
-#: includes/functions.php:635
+#: includes/functions.php:748 includes/functions.php:810
 msgid "Active Users:"
 msgstr ""
 
-#: includes/functions.php:640
+#: includes/functions.php:749 includes/functions.php:808
+msgid "Analytics"
+msgstr ""
+
+#: includes/functions.php:763 includes/functions.php:815
 msgid "Last Week vs This Week"
 msgstr ""
 
-#: includes/functions.php:641
+#: includes/functions.php:764 includes/functions.php:816
+msgid "This Month vs Last Month"
+msgstr ""
+
+#: includes/functions.php:765 includes/functions.php:817
 msgid "This Year vs Last Year"
 msgstr ""
 
-#: includes/functions.php:642
+#: includes/functions.php:766 includes/functions.php:818
 msgid "Top Countries"
 msgstr ""
 
@@ -239,180 +251,122 @@ msgstr ""
 msgid "Show google analytics stats on your website front page."
 msgstr ""
 
-#: includes/widgets/class-frontend-analytics-widget-analytics.php:48
+#: includes/widgets/class-frontend-analytics-widget-analytics.php:59
 msgid "Title:"
 msgstr ""
 
-#: includes/widgets/class-frontend-analytics-widget-analytics.php:49
+#: includes/widgets/class-frontend-analytics-widget-analytics.php:60
 msgid "The widget title:"
 msgstr ""
 
-#: includes/widgets/class-frontend-analytics-widget-analytics.php:56
+#: includes/widgets/class-frontend-analytics-widget-analytics.php:67
+msgid "Chart Height:"
+msgstr ""
+
+#: includes/widgets/class-frontend-analytics-widget-analytics.php:68
+msgid "Chart height in px. Default: 200"
+msgstr ""
+
+#: includes/widgets/class-frontend-analytics-widget-analytics.php:75
 msgid "Button text:"
 msgstr ""
 
-#: includes/widgets/class-frontend-analytics-widget-analytics.php:57
+#: includes/widgets/class-frontend-analytics-widget-analytics.php:76
 msgid "The text to use for the button to show the analytics:"
 msgstr ""
 
-#: includes/widgets/class-frontend-analytics-widget-analytics.php:65
+#: includes/widgets/class-frontend-analytics-widget-analytics.php:84
 msgid "Google Analytics visible to:"
 msgstr ""
 
-#: includes/widgets/class-frontend-analytics-widget-analytics.php:66
+#: includes/widgets/class-frontend-analytics-widget-analytics.php:85
 msgid "Google Analytics will be visible to selected users only."
 msgstr ""
 
-#: includes/widgets/class-frontend-analytics-widget-analytics.php:69
+#: includes/widgets/class-frontend-analytics-widget-analytics.php:88
 msgid "Administrator"
 msgstr ""
 
-#: includes/widgets/class-frontend-analytics-widget-analytics.php:70
+#: includes/widgets/class-frontend-analytics-widget-analytics.php:89
 msgid "Author or profile owner."
 msgstr ""
 
-#: includes/widgets/class-frontend-analytics-widget-analytics.php:71
+#: includes/widgets/class-frontend-analytics-widget-analytics.php:90
 msgid "Everyone logged in"
 msgstr ""
 
-#: includes/widgets/class-frontend-analytics-widget-analytics.php:72
+#: includes/widgets/class-frontend-analytics-widget-analytics.php:91
 msgid "Everyone"
 msgstr ""
 
-#: vendor/ayecode/wp-super-duper/hello-world.php:26
-msgid "Placeholder"
+#: includes/widgets/class-frontend-analytics-widget-analytics.php:101
+msgid "Button Color:"
 msgstr ""
 
-#: vendor/ayecode/wp-super-duper/hello-world.php:36
-msgid "Hello World"
+#: includes/widgets/class-frontend-analytics-widget-analytics.php:102
+msgid "Analytics button color."
 msgstr ""
 
-#: vendor/ayecode/wp-super-duper/hello-world.php:41
-#: vendor/ayecode/wp-super-duper/map.php:74
-msgid ""
-"This is an example that will take a text parameter and output it after "
-"`Hello:`."
+#: includes/widgets/class-frontend-analytics-widget-analytics.php:104
+msgid "Default (primary)"
 msgstr ""
 
-#: vendor/ayecode/wp-super-duper/hello-world.php:47
-msgid "Text after hello:"
+#: includes/widgets/class-frontend-analytics-widget-analytics.php:109
+#: includes/widgets/class-frontend-analytics-widget-analytics.php:125
+#: includes/widgets/class-frontend-analytics-widget-analytics.php:142
+msgid "Design"
 msgstr ""
 
-#: vendor/ayecode/wp-super-duper/hello-world.php:49
-msgid "This is the text that will appear after `Hello:`."
+#: includes/widgets/class-frontend-analytics-widget-analytics.php:114
+msgid "Button Size:"
 msgstr ""
 
-#: vendor/ayecode/wp-super-duper/hello-world.php:119
-msgid "Another input:"
+#: includes/widgets/class-frontend-analytics-widget-analytics.php:115
+msgid "Analytics button size."
 msgstr ""
 
-#: vendor/ayecode/wp-super-duper/hello-world.php:120
-msgid "This is an input added via filter."
+#: includes/widgets/class-frontend-analytics-widget-analytics.php:117
+msgid "Default (medium)"
 msgstr ""
 
-#: vendor/ayecode/wp-super-duper/map.php:25
-msgid ""
-"A Google API key is required to use this block, we recommend installing our "
-"plugin which makes it easy and sets it globally, or you can set a key in the "
-"block settings sidebar: "
+#: includes/widgets/class-frontend-analytics-widget-analytics.php:118
+msgid "Small"
 msgstr ""
 
-#: vendor/ayecode/wp-super-duper/map.php:31
-msgid "API KEY for Google Maps"
+#: includes/widgets/class-frontend-analytics-widget-analytics.php:119
+msgid "Medium"
 msgstr ""
 
-#: vendor/ayecode/wp-super-duper/map.php:48
-msgid "Placeholderx"
+#: includes/widgets/class-frontend-analytics-widget-analytics.php:120
+msgid "Large"
 msgstr ""
 
-#: vendor/ayecode/wp-super-duper/map.php:61
-msgid "Click here, Settings are in the block settings sidebar"
+#: includes/widgets/class-frontend-analytics-widget-analytics.php:130
+msgid "Button Position:"
 msgstr ""
 
-#: vendor/ayecode/wp-super-duper/map.php:69
-msgid "Map"
+#: includes/widgets/class-frontend-analytics-widget-analytics.php:131
+msgid "Analytics button alignment."
 msgstr ""
 
-#: vendor/ayecode/wp-super-duper/map.php:79
-msgid "Map Type:"
+#: includes/widgets/class-frontend-analytics-widget-analytics.php:133
+msgid "Default (left)"
 msgstr ""
 
-#: vendor/ayecode/wp-super-duper/map.php:80
-msgid "Select the map type to use."
+#: includes/widgets/class-frontend-analytics-widget-analytics.php:134
+msgid "Left"
 msgstr ""
 
-#: vendor/ayecode/wp-super-duper/map.php:83
-msgid "Static Image"
+#: includes/widgets/class-frontend-analytics-widget-analytics.php:135
+msgid "Center"
 msgstr ""
 
-#: vendor/ayecode/wp-super-duper/map.php:84
-msgid "Place"
+#: includes/widgets/class-frontend-analytics-widget-analytics.php:136
+msgid "Right"
 msgstr ""
 
-#: vendor/ayecode/wp-super-duper/map.php:96
-msgid "Location:"
-msgstr ""
-
-#: vendor/ayecode/wp-super-duper/map.php:97
-msgid "Enter the location to show on the map, place, city, zip code or GPS."
-msgstr ""
-
-#: vendor/ayecode/wp-super-duper/map.php:105
-#: vendor/ayecode/wp-super-duper/map.php:134
-msgid "Width:"
-msgstr ""
-
-#: vendor/ayecode/wp-super-duper/map.php:106
-msgid ""
-"This is the width of the map, for static maps you can only use px values."
-msgstr ""
-
-#: vendor/ayecode/wp-super-duper/map.php:119
-#: vendor/ayecode/wp-super-duper/map.php:144
-msgid "Height:"
-msgstr ""
-
-#: vendor/ayecode/wp-super-duper/map.php:120
-msgid ""
-"This is the height of the map, for static maps you can only use px values."
-msgstr ""
-
-#: vendor/ayecode/wp-super-duper/map.php:135
-#, php-format
-msgid "This is the width of the map, you can use % or px here."
-msgstr ""
-
-#: vendor/ayecode/wp-super-duper/map.php:145
-#: vendor/ayecode/wp-super-duper/map.php:179
-msgid "This is the height of the map, you can use %, px or vh here."
-msgstr ""
-
-#: vendor/ayecode/wp-super-duper/map.php:154
-msgid "Mapview:"
-msgstr ""
-
-#: vendor/ayecode/wp-super-duper/map.php:155
-msgid "This is the type of map view that will be used by default."
-msgstr ""
-
-#: vendor/ayecode/wp-super-duper/map.php:157
-msgid "Road Map"
-msgstr ""
-
-#: vendor/ayecode/wp-super-duper/map.php:158
-msgid "Satellite Map"
-msgstr ""
-
-#: vendor/ayecode/wp-super-duper/map.php:168
-msgid "Zoom level:"
-msgstr ""
-
-#: vendor/ayecode/wp-super-duper/map.php:169
-msgid "This is the zoom level of the map, `auto` is recommended."
-msgstr ""
-
-#: vendor/ayecode/wp-super-duper/map.php:178
-msgid "Api Key:"
+#: includes/widgets/class-frontend-analytics-widget-analytics.php:137
+msgid "Block"
 msgstr ""
 
 #: vendor/ayecode/wp-super-duper/wp-super-duper.php:182
