@@ -918,7 +918,7 @@ function frontend_analytics_validate_page_access_token($token,$path){
 	$user_id = get_current_user_id();
 
 	if($token){
-		if(! $user_id && $token == frontend_analytics_get_page_access_token('all',$path )){
+		if($token == frontend_analytics_get_page_access_token('all',$path )){
 			$result = true;
 		}elseif($user_id && $token == frontend_analytics_get_page_access_token('all-logged-in',$path )){
 			$result = true;
