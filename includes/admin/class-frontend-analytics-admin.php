@@ -25,6 +25,8 @@ class Frontend_Analytics_Admin {
 		add_action( 'admin_init', array( $this, 'admin_redirects' ) );
 		add_action( 'admin_menu', array( $this, 'admin_menu' ) );
 		Frontend_Analytics_Admin::$default_options = wp_list_pluck( Frontend_Analytics_Settings::get_settings(), 'std', 'id');
+		add_filter( 'geodir_pricing_package_settings', array( $this, 'pricing_package_settings' ), 10, 3 );
+		add_action( 'geodir_pricing_process_data_for_save', array( $this, 'pricing_process_data_for_save' ), 1, 3 );
 	}
 
 	/**
@@ -81,4 +83,36 @@ class Frontend_Analytics_Admin {
 		exit;
 	}
 
+	public function pricing_package_settings( $settings, $package_data ) {
+		$new_settings = array();
+
+		foreach ( $settings as $key => $setting ) {
+			if ( ! empty( $setting['id'] ) && $setting['id'] == 'package_features_settings' && ! empty( $setting['type'] ) && $setting['type'] == 'sectionend' ) {
+				$new_settings[] = array(
+					'type' => 'checkbox',
+					'id' => 'package_google_analytics',
+					'title'=> __( 'Google Analytics', 'frontend-analytics' ),
+					'desc' => __( 'Tick to enable google analytics.', 'frontend-analytics' ),
+					'std' => '0',
+					'advanced' => true,
+					'value'	=> ( ! empty( $package_data['google_analytics'] ) ? '1' : '0' )
+				);
+			}
+			$new_settings[] = $setting;
+		}
+
+		return $new_settings;
+	}
+
+	public function pricing_process_data_for_save( $package_data, $data, $package ) {
+		if ( isset( $data['google_analytics'] ) ) {
+			$package_data['meta']['google_analytics'] = ! empty( $data['google_analytics'] ) ? 1 : 0;
+		} else if ( isset( $package['google_analytics'] ) ) {
+			$package_data['meta']['google_analytics'] = $package['google_analytics'];
+		} else {
+			$package_data['meta']['google_analytics'] = 0;
+		}
+
+		return $package_data;
+	}
 }
