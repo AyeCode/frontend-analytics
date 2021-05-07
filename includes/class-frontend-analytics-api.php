@@ -33,6 +33,11 @@ class Frontend_Analytics_API {
 			include_once( FRONTEND_ANALYTICS_PLUGIN_DIR . 'includes/libraries/google-api-php-client/src/Google/autoload.php' );
 		}
 
+		// Include Google_Service_Analytics class
+		if ( ! class_exists( 'Google_Service_Analytics' ) ) {
+			require_once( FRONTEND_ANALYTICS_PLUGIN_DIR . 'includes/libraries/google-api-php-client/src/Google/Service/Analytics.php' );
+		}
+
 		$this->client = new Google_Client();
 		$this->client->setApprovalPrompt( 'force' );
 		$this->client->setAccessType( 'offline' );
