@@ -603,9 +603,6 @@ function gd_renderMonthOverMonthChart() {
 	jQuery('.gdga-type-container').show();
 	jQuery('#gdga-select-analytic').prop('disabled', false);
 
-	// Adjust `now` to experiment with different days, for testing only...
-	var now = moment();
-
 	Promise.all([thisMonth, lastMonth]).then(function(results) {
 		var data1 = results[0].rows.map(function(row) { return +row[2]; });
 		var data2 = results[1].rows.map(function(row) { return +row[2]; });
