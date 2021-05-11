@@ -88,7 +88,7 @@ function frontend_analytics_get_analytics( $page, $ga_start = '', $ga_end = '' )
         $dimensions = "ga:month,ga:nthMonth";
     } elseif (isset($_REQUEST['ga_type']) && $_REQUEST['ga_type'] == 'country') {
         $start_date = "14daysAgo";
-        $end_date = "yesterday";
+        $end_date = "today";
         $dimensions = "ga:country";
         $sort = "-ga:pageviews";
         $limit  = 5;
@@ -264,12 +264,12 @@ jQuery(document).ready(function() {
 		jQuery(this).hide();
 		jQuery(this).parent().find('.gdga-analytics-box').show();
 		// load the JS file needed
-		jQuery.getScript("<?php echo FRONTEND_ANALYTICS_PLUGIN_URL ."/assets/js/Chart.min.js";?>").done(function(script, textStatus) {
+		jQuery.getScript("<?php echo FRONTEND_ANALYTICS_PLUGIN_URL ."/assets/js/chart.min.js";?>").done(function(script, textStatus) {
 			// Set some global Chart.js defaults.
-			Chart.defaults.global.animationSteps = 60;
-			Chart.defaults.global.animationEasing = 'easeInOutQuart';
-			Chart.defaults.global.responsive = true;
-			Chart.defaults.global.maintainAspectRatio = false;
+			Chart.defaults.animationSteps = 60;
+			Chart.defaults.animationEasing = 'easeInOutQuart';
+			Chart.defaults.responsive = true;
+			Chart.defaults.maintainAspectRatio = false;
 
 			gdga_weekVSweek();
 			gdga_realtime(true);
@@ -708,14 +708,14 @@ function gdga_refresh(stop) {
 		if (gd_gaAutoRefresh === 1 || gd_gaHideRefresh == 1) {
 			jQuery('#gdga-loader-icon').hide();
 		} else {
-			jQuery('#gdga-loader-icon .fa-refresh').removeClass('fa-spin');
+			jQuery('#gdga-loader-icon .fa-sync').removeClass('fa-spin');
 		}
 	} else {
 		if (gd_gaAutoRefresh === 1 || gd_gaHideRefresh == 1) {
 			jQuery('#gdga-loader-icon').show();
 		} else {
-			if (!jQuery('#gdga-loader-icon .fa-refresh').hasClass('fa-spin')) {
-				jQuery('#gdga-loader-icon .fa-refresh').addClass('fa-spin');
+			if (!jQuery('#gdga-loader-icon .fa-sync').hasClass('fa-spin')) {
+				jQuery('#gdga-loader-icon .fa-sync').addClass('fa-spin');
 			}
 		}
 	}
@@ -742,7 +742,7 @@ function gdga_refresh(stop) {
 		<div class="gdga-show-analytics<?php echo $btn_wrap_class; ?>"><button role="button" class="btn<?php echo $btn_class; ?>"><i class="fas fa-chart-bar mr-1" aria-hidden="true"></i><?php echo ! empty( $args['button_text'] ) ? esc_attr( $args['button_text'] ) : __('Show Google Analytics', 'frontend-analytics');?></button></div>
 		<div id="ga_stats" class="gdga-analytics-box card" style="display:none">
 			<div class="card-header p-3">
-				<div class="gd-ActiveUsers btn btn-sm btn-info float-right py-1 px-2 align-middle"><span id="gdga-loader-icon" class="mr-1" title="<?php esc_attr_e("Refresh", 'frontend-analytics');?>"><i class="fa fa-refresh fa-spin" aria-hidden="true"></i></span><?php _e("Active Users:", 'frontend-analytics');?> <span class="gd-ActiveUsers-value badge badge-light badge-pill">0</span></div>
+				<div class="gd-ActiveUsers btn btn-sm btn-info float-right py-1 px-2 align-middle"><span id="gdga-loader-icon" class="mr-1" title="<?php esc_attr_e("Refresh", 'frontend-analytics');?>"><i class="fas fa-sync fa-spin" aria-hidden="true"></i></span><?php _e("Active Users:", 'frontend-analytics');?> <span class="gd-ActiveUsers-value badge badge-light badge-pill">0</span></div>
 				<div id="ga-analytics-title" class="h5 m-0 card-title align-middle"><i class="fas fa-chart-bar mr-1" aria-hidden="true"></i><?php _e("Analytics", 'frontend-analytics');?></div>
 			</div>
 			<div class="card-body">
@@ -804,7 +804,7 @@ function gdga_refresh(stop) {
         <span id="ga_stats" class="gdga-analytics-box" style="display:none">
             <div id="ga-analytics-title"><?php _e("Analytics", 'frontend-analytics');?></div>
             <div id="gd-active-users-container">
-                <div class="gd-ActiveUsers"><span id="gdga-loader-icon" title="<?php esc_attr_e("Refresh", 'frontend-analytics');?>"><i class="fa fa-refresh fa-spin" aria-hidden="true"></i></span><?php _e("Active Users:", 'frontend-analytics');?> <b class="gd-ActiveUsers-value">0</b>
+                <div class="gd-ActiveUsers"><span id="gdga-loader-icon" title="<?php esc_attr_e("Refresh", 'frontend-analytics');?>"><i class="fas fa-sync fa-spin" aria-hidden="true"></i></span><?php _e("Active Users:", 'frontend-analytics');?> <b class="gd-ActiveUsers-value">0</b>
                 </div>
             </div>
             <div class="gdga-type-container" style="display:none">

@@ -37,6 +37,7 @@ UsersWP - Can be used on the UsersWP profile page to show the owner their profil
 = 2.0.1 =
 * Show/hide visibility for GD listings based on GD packages - FIXED
 * Fix conflicts with Uncanny Automator Pro plugin - FIXED
+* Chart.js updated to v3.2 - CHANGED
 
 = 2.0.0 =
 * JavaScript errors breaks analytics when cache is enabled - FIXED

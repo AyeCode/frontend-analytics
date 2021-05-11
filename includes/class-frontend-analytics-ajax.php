@@ -61,7 +61,7 @@ class Frontend_Analytics_AJAX {
 			&& $page_token
 			&& $ref !== wp_unslash( $_SERVER['REQUEST_URI'] )
 			&& $ref !== home_url() . wp_unslash( $_SERVER['REQUEST_URI'] )
-			&& ( untrailingslashit(home_url()) . $req ) == $ref
+			&& ( ( untrailingslashit( home_url() ) . $req ) == $ref || ( strpos( $ref, home_url() ) === 0 && strpos( $ref, $req ) > 0 ) )
 			&& frontend_analytics_validate_page_access_token($page_token,$req)
 		) {
 			if ( isset( $_REQUEST['ga_start'] ) ) {
