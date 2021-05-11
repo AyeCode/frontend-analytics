@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: Frontend Google Analytics 2.0.0\n"
+"Project-Id-Version: Frontend Analytics 2.0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-07 17:42+0530\n"
-"PO-Revision-Date: 2020-10-07 17:42+0530\n"
+"POT-Creation-Date: 2021-05-11 18:24+0530\n"
+"PO-Revision-Date: 2021-05-11 18:24+0530\n"
 "Last-Translator: \n"
 "Language-Team: AyeCode Ltd <contact@ayecode.io>\n"
 "Language: en_US\n"
@@ -19,6 +19,14 @@ msgstr ""
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Generator: Poedit 2.2.4\n"
 "X-Poedit-SearchPath-0: .\n"
+
+#: includes/admin/class-frontend-analytics-admin.php:94
+msgid "Google Analytics"
+msgstr ""
+
+#: includes/admin/class-frontend-analytics-admin.php:95
+msgid "Tick to enable google analytics."
+msgstr ""
 
 #: includes/admin/settings/class-frontend-analytics-settings.php:95
 msgid "Google analytics Auth Code"
@@ -198,44 +206,44 @@ msgstr ""
 msgid "Last Week"
 msgstr ""
 
-#: includes/functions.php:625
+#: includes/functions.php:622
 msgid "Last Month"
 msgstr ""
 
-#: includes/functions.php:633
+#: includes/functions.php:630
 msgid "This Month"
 msgstr ""
 
-#: includes/functions.php:745 includes/functions.php:806
+#: includes/functions.php:742 includes/functions.php:803
 #: includes/widgets/class-frontend-analytics-widget-analytics.php:78
 msgid "Show Google Analytics"
 msgstr ""
 
-#: includes/functions.php:748 includes/functions.php:810
+#: includes/functions.php:745 includes/functions.php:807
 msgid "Refresh"
 msgstr ""
 
-#: includes/functions.php:748 includes/functions.php:810
+#: includes/functions.php:745 includes/functions.php:807
 msgid "Active Users:"
 msgstr ""
 
-#: includes/functions.php:749 includes/functions.php:808
+#: includes/functions.php:746 includes/functions.php:805
 msgid "Analytics"
 msgstr ""
 
-#: includes/functions.php:763 includes/functions.php:815
+#: includes/functions.php:760 includes/functions.php:812
 msgid "Last Week vs This Week"
 msgstr ""
 
-#: includes/functions.php:764 includes/functions.php:816
+#: includes/functions.php:761 includes/functions.php:813
 msgid "This Month vs Last Month"
 msgstr ""
 
-#: includes/functions.php:765 includes/functions.php:817
+#: includes/functions.php:762 includes/functions.php:814
 msgid "This Year vs Last Year"
 msgstr ""
 
-#: includes/functions.php:766 includes/functions.php:818
+#: includes/functions.php:763 includes/functions.php:815
 msgid "Top Countries"
 msgstr ""
 
