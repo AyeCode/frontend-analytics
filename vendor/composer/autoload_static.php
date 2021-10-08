@@ -6,6 +6,10 @@ namespace Composer\Autoload;
 
 class ComposerStaticInitbf9c091eacc2203f2ee3fdb559e1e304
 {
+    public static $files = array (
+        '42671a413efb740d7040437ff2a982cd' => __DIR__ . '/..' . '/ayecode/wp-super-duper/sd-functions.php',
+    );
+
     public static $prefixLengthsPsr4 = array (
         'C' => 
         array (
@@ -21,6 +25,7 @@ class ComposerStaticInitbf9c091eacc2203f2ee3fdb559e1e304
     );
 
     public static $classMap = array (
+        'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
         'WP_Super_Duper' => __DIR__ . '/..' . '/ayecode/wp-super-duper/wp-super-duper.php',
     );
 
