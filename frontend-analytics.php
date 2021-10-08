@@ -11,7 +11,7 @@
  * Plugin Name: Frontend Analytics
  * Plugin URI: https://wpgeodirectory.com/downloads/frontend-analytics/
  * Description: View each page's Google Analytics starts on the front-page
- * Version: 2.1.0
+ * Version: 2.1.1
  * Author: AyeCode Ltd
  * Author URI: https://wpgeodirectory.com/
  * Requires at least: 4.9
@@ -27,7 +27,7 @@ if ( ! defined( 'WPINC' ) ) {
 }
 
 if ( ! defined( 'FRONTEND_ANALYTICS_VERSION' ) ) {
-	define( 'FRONTEND_ANALYTICS_VERSION', '2.1.0' );
+	define( 'FRONTEND_ANALYTICS_VERSION', '2.1.1' );
 }
 
 if ( ! defined( 'FRONTEND_ANALYTICS_PLUGIN_FILE' ) ) {
