@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: Frontend Analytics 2.0.1\n"
+"Project-Id-Version: Frontend Analytics 2.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-11 18:24+0530\n"
-"PO-Revision-Date: 2021-05-11 18:24+0530\n"
+"POT-Creation-Date: 2021-10-08 16:09+0530\n"
+"PO-Revision-Date: 2021-10-08 16:09+0530\n"
 "Last-Translator: \n"
 "Language-Team: AyeCode Ltd <contact@ayecode.io>\n"
 "Language: en_US\n"
@@ -17,7 +17,7 @@ msgstr ""
 "X-Poedit-Basepath: ..\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Poedit-SourceCharset: UTF-8\n"
-"X-Generator: Poedit 2.2.4\n"
+"X-Generator: Poedit 3.0\n"
 "X-Poedit-SearchPath-0: .\n"
 
 #: includes/admin/class-frontend-analytics-admin.php:94
@@ -377,40 +377,199 @@ msgstr ""
 msgid "Block"
 msgstr ""
 
-#: vendor/ayecode/wp-super-duper/wp-super-duper.php:182
+#: vendor/ayecode/wp-super-duper/hello-world.php:25
+msgid "Placeholder"
+msgstr ""
+
+#: vendor/ayecode/wp-super-duper/hello-world.php:38
+msgid "Hello World"
+msgstr ""
+
+#: vendor/ayecode/wp-super-duper/hello-world.php:43
+#: vendor/ayecode/wp-super-duper/map.php:74
+msgid ""
+"This is an example that will take a text parameter and output it after "
+"`Hello:`."
+msgstr ""
+
+#: vendor/ayecode/wp-super-duper/hello-world.php:53
+msgid "Text after hello:"
+msgstr ""
+
+#: vendor/ayecode/wp-super-duper/hello-world.php:55
+msgid "This is the text that will appear after `Hello:`."
+msgstr ""
+
+#: vendor/ayecode/wp-super-duper/hello-world.php:119
+msgid "Another input:"
+msgstr ""
+
+#: vendor/ayecode/wp-super-duper/hello-world.php:120
+msgid "This is an input added via filter."
+msgstr ""
+
+#: vendor/ayecode/wp-super-duper/map.php:25
+msgid ""
+"A Google API key is required to use this block, we recommend installing our "
+"plugin which makes it easy and sets it globally, or you can set a key in the "
+"block settings sidebar: "
+msgstr ""
+
+#: vendor/ayecode/wp-super-duper/map.php:31
+msgid "API KEY for Google Maps"
+msgstr ""
+
+#: vendor/ayecode/wp-super-duper/map.php:48
+msgid "Placeholderx"
+msgstr ""
+
+#: vendor/ayecode/wp-super-duper/map.php:61
+msgid "Click here, Settings are in the block settings sidebar"
+msgstr ""
+
+#: vendor/ayecode/wp-super-duper/map.php:69
+msgid "Map"
+msgstr ""
+
+#: vendor/ayecode/wp-super-duper/map.php:80
+msgid "Map Type:"
+msgstr ""
+
+#: vendor/ayecode/wp-super-duper/map.php:81
+msgid "Select the map type to use."
+msgstr ""
+
+#: vendor/ayecode/wp-super-duper/map.php:84
+msgid "Static Image"
+msgstr ""
+
+#: vendor/ayecode/wp-super-duper/map.php:85
+msgid "Place"
+msgstr ""
+
+#: vendor/ayecode/wp-super-duper/map.php:97
+msgid "Location:"
+msgstr ""
+
+#: vendor/ayecode/wp-super-duper/map.php:98
+msgid "Enter the location to show on the map, place, city, zip code or GPS."
+msgstr ""
+
+#: vendor/ayecode/wp-super-duper/map.php:106
+#: vendor/ayecode/wp-super-duper/map.php:135
+msgid "Width:"
+msgstr ""
+
+#: vendor/ayecode/wp-super-duper/map.php:107
+msgid ""
+"This is the width of the map, for static maps you can only use px values."
+msgstr ""
+
+#: vendor/ayecode/wp-super-duper/map.php:120
+#: vendor/ayecode/wp-super-duper/map.php:145
+msgid "Height:"
+msgstr ""
+
+#: vendor/ayecode/wp-super-duper/map.php:121
+msgid ""
+"This is the height of the map, for static maps you can only use px values."
+msgstr ""
+
+#: vendor/ayecode/wp-super-duper/map.php:136
+#, php-format
+msgid "This is the width of the map, you can use % or px here."
+msgstr ""
+
+#: vendor/ayecode/wp-super-duper/map.php:146
+msgid "This is the height of the map, you can use %, px or vh here."
+msgstr ""
+
+#: vendor/ayecode/wp-super-duper/map.php:155
+msgid "Mapview:"
+msgstr ""
+
+#: vendor/ayecode/wp-super-duper/map.php:156
+msgid "This is the type of map view that will be used by default."
+msgstr ""
+
+#: vendor/ayecode/wp-super-duper/map.php:158
+msgid "Road Map"
+msgstr ""
+
+#: vendor/ayecode/wp-super-duper/map.php:159
+msgid "Satellite Map"
+msgstr ""
+
+#: vendor/ayecode/wp-super-duper/map.php:169
+msgid "Zoom level:"
+msgstr ""
+
+#: vendor/ayecode/wp-super-duper/map.php:170
+msgid "This is the zoom level of the map, `auto` is recommended."
+msgstr ""
+
+#: vendor/ayecode/wp-super-duper/map.php:179
+msgid "Api Key:"
+msgstr ""
+
+#: vendor/ayecode/wp-super-duper/map.php:180
+msgid "Enter your Google maps API key here."
+msgstr ""
+
+#: vendor/ayecode/wp-super-duper/type/block.php:364
+msgid "Placeholder for: "
+msgstr ""
+
+#: vendor/ayecode/wp-super-duper/type/block.php:464
+msgid "Settings"
+msgstr ""
+
+#: vendor/ayecode/wp-super-duper/type/shortcode.php:247
+#: vendor/ayecode/wp-super-duper/wp-super-duper.php:731
 msgid "No"
 msgstr ""
 
-#: vendor/ayecode/wp-super-duper/wp-super-duper.php:182
+#: vendor/ayecode/wp-super-duper/type/shortcode.php:247
+#: vendor/ayecode/wp-super-duper/wp-super-duper.php:730
 msgid "Yes"
 msgstr ""
 
-#: vendor/ayecode/wp-super-duper/wp-super-duper.php:233
-msgid "Select shortcode"
-msgstr ""
-
-#: vendor/ayecode/wp-super-duper/wp-super-duper.php:252
-msgid "Insert shortcode"
-msgstr ""
-
-#: vendor/ayecode/wp-super-duper/wp-super-duper.php:255
-msgid "Copy shortcode"
-msgstr ""
-
-#: vendor/ayecode/wp-super-duper/wp-super-duper.php:459
-#: vendor/ayecode/wp-super-duper/wp-super-duper.php:1112
+#: vendor/ayecode/wp-super-duper/wp-super-duper.php:347
+#: vendor/ayecode/wp-super-duper/wp-super-duper.php:538
 msgid "Advanced Settings"
 msgstr ""
 
-#: vendor/ayecode/wp-super-duper/wp-super-duper.php:1365
+#: vendor/ayecode/wp-super-duper/wp-super-duper.php:414
+msgid "Select shortcode"
+msgstr ""
+
+#: vendor/ayecode/wp-super-duper/wp-super-duper.php:433
+msgid "Insert shortcode"
+msgstr ""
+
+#: vendor/ayecode/wp-super-duper/wp-super-duper.php:436
+msgid "Copy shortcode"
+msgstr ""
+
+#: vendor/ayecode/wp-super-duper/wp-super-duper.php:718
+msgid "Load Super Duper Widgets"
+msgstr ""
+
+#: vendor/ayecode/wp-super-duper/wp-super-duper.php:732
+msgid "Auto"
+msgstr ""
+
+#: vendor/ayecode/wp-super-duper/wp-super-duper.php:742
+msgid ""
+"This option allows you to disable Super Duper widgets and instead only load "
+"the blocks and shortcodes."
+msgstr ""
+
+#: vendor/ayecode/wp-super-duper/wp-super-duper.php:792
 #, php-format
 msgid "Placeholder for: %s"
 msgstr ""
 
-#: vendor/ayecode/wp-super-duper/wp-super-duper.php:1566
+#: vendor/ayecode/wp-super-duper/wp-super-duper.php:1114
 msgid "General"
-msgstr ""
-
-#: vendor/ayecode/wp-super-duper/wp-super-duper.php:1752
-msgid "Placeholder for: "
 msgstr ""

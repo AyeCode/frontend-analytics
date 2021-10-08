@@ -228,7 +228,27 @@ class Frontend_Analytics {
     }
 
     public function register_widgets() {
-        register_widget( 'Frontend_Analytics_Widget_Analytics' );
+        global $pagenow;
+
+        $block_widget_init_screens = function_exists( 'sd_pagenow_exclude' ) ? sd_pagenow_exclude() : array();
+
+        if ( is_admin() && $pagenow && in_array( $pagenow, $block_widget_init_screens ) ) {
+            // Don't initiate in these conditions.
+        } else {
+            $exclude = function_exists( 'sd_widget_exclude' ) ? sd_widget_exclude() : array();
+            $widgets = array( 'Frontend_Analytics_Widget_Analytics' );
+
+            foreach ( $widgets as $widget ) {
+                if ( ! in_array( $widget, $exclude ) ) {
+                    // SD V1 used to extend the widget class. V2 does not, so we cannot call register widget on it.
+                    if ( is_subclass_of( $widget, 'WP_Widget' ) ) {
+                        register_widget( $widget );
+                    } else {
+                        new $widget();
+                    }
+                }
+            }
+        }
     }
 
 }

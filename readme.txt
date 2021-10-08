@@ -3,8 +3,8 @@ Contributors: stiofansisland, paoltaia, ayecode, basantakumar
 Donate link: https://wpgeodirectory.com/
 Tags: analytics, google analytics, frontend google analytics
 Requires at least: 4.9
-Tested up to: 5.7
-Stable tag: 2.0.1
+Tested up to: 5.8
+Stable tag: 2.1.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -33,6 +33,9 @@ UsersWP - Can be used on the UsersWP profile page to show the owner their profil
 4. Top Countries.
 
 == Changelog ==
+
+= 2.1.0 =
+* Prevent the block/widget class loading when not required - CHANGED
 
 = 2.0.1 =
 * Show/hide visibility for GD listings based on GD packages - FIXED
