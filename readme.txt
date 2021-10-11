@@ -4,7 +4,7 @@ Donate link: https://wpgeodirectory.com/
 Tags: analytics, google analytics, frontend google analytics
 Requires at least: 4.9
 Tested up to: 5.8
-Stable tag: 2.1.0
+Stable tag: 2.1.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -33,6 +33,9 @@ UsersWP - Can be used on the UsersWP profile page to show the owner their profil
 4. Top Countries.
 
 == Changelog ==
+
+= 2.1.1 =
+* Super Duper v2 causing some issues with builders that use widgets, rolled back to SDv1 to resolve - FIXED
 
 = 2.1.0 =
 * Prevent the block/widget class loading when not required - CHANGED
