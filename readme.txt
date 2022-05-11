@@ -34,6 +34,9 @@ UsersWP - Can be used on the UsersWP profile page to show the owner their profil
 
 == Changelog ==
 
+= 2.1.2 =
+* Graph line & bar color changed - CHANGED
+
 = 2.1.1 =
 * Super Duper v2 causing some issues with builders that use widgets, rolled back to SDv1 to resolve - FIXED
 

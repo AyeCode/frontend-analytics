@@ -395,7 +395,7 @@ function gd_renderTopCountriesChart() {
 	data.labels = [];
 	data.datasets = [];
 	data.datasets[0] = {};
-	data.datasets[0].label = "Countries";
+	data.datasets[0].label = '<?php echo addslashes( __( 'Countries', 'frontend-analytics' ) );?>';
 	data.datasets[0].data = [];
 	data.datasets[0].backgroundColor = [];
 
@@ -479,14 +479,14 @@ function gd_renderYearOverYearChart() {
 			datasets : [
 				{
 					label: '<?php _e('Last Year', 'frontend-analytics');?>',
-					backgroundColor : "rgba(220,220,220,0.5)",
-					borderColor : "rgba(220,220,220,1)",
+					borderColor:'rgb(255,159,64)',
+					backgroundColor:'rgba(255,159,64,0.5)',
 					data : data2
 				},
 				{
 					label: '<?php _e('This Year', 'frontend-analytics');?>',
-					backgroundColor : "rgba(151,187,205,0.5)",
-					borderColor : "rgba(151,187,205,1)",
+					borderColor:'rgb(54,162,235)',
+					backgroundColor:'rgba(54,162,235,0.5)',
 					data : data1
 				}
 			]
@@ -557,18 +557,14 @@ function gd_renderWeekOverWeekChart() {
 			datasets : [
 				{
 					label: '<?php _e('This Week', 'frontend-analytics');?>',
-					backgroundColor : "rgba(151,187,205,0.5)",
-					borderColor : "rgba(151,187,205,1)",
-					pointBackgroundColor : "rgba(151,187,205,1)",
-					pointBorderColor : "#fff",
+					borderColor:'rgb(255,159,64)',
+					backgroundColor:'rgba(255,159,64,0.5)',
 					data : data1
 				},
 				{
 					label: '<?php _e('Last Week', 'frontend-analytics');?>',
-					backgroundColor : "rgba(220,220,220,0.5)",
-					borderColor : "rgba(220,220,220,1)",
-					pointBackgroundColor : "rgba(220,220,220,1)",
-					pointBorderColor : "#fff",
+					borderColor:'rgb(54,162,235)',
+					backgroundColor:'rgba(54,162,235,0.5)',
 					data : data2
 				}
 
@@ -620,18 +616,14 @@ function gd_renderMonthOverMonthChart() {
 			datasets : [
 				{
 					label: '<?php _e('Last Month', 'frontend-analytics');?>',
-					fillColor : "rgba(220,220,220,0.5)",
-					strokeColor : "rgba(220,220,220,1)",
-					pointColor : "rgba(220,220,220,1)",
-					pointStrokeColor : "#fff",
+					borderColor:'rgb(255,159,64)',
+					backgroundColor:'rgba(255,159,64,0.5)',
 					data : data2
 				},
 				{
 					label: '<?php _e('This Month', 'frontend-analytics');?>',
-					fillColor : "rgba(151,187,205,0.5)",
-					strokeColor : "rgba(151,187,205,1)",
-					pointColor : "rgba(151,187,205,1)",
-					pointStrokeColor : "#fff",
+					borderColor:'rgb(54,162,235)',
+					backgroundColor:'rgba(54,162,235,0.5)',
 					data : data1
 				}
 			]
