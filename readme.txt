@@ -37,6 +37,7 @@ UsersWP - Can be used on the UsersWP profile page to show the owner their profil
 = 2.2.0 =
 * Graph line & bar color changed - CHANGED
 * Google OAuth 2.0 authorization compatibility changes - CHANGED
+* Single quote in translations breaks analytics graph - FIXED
 
 = 2.1.1 =
 * Super Duper v2 causing some issues with builders that use widgets, rolled back to SDv1 to resolve - FIXED
