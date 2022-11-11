@@ -87,10 +87,11 @@ class Frontend_Analytics_API {
 
 				return false;
 			}
-			
+
 			if ( $accessToken ) {
 				$this->client->setAccessToken( $accessToken );
 				frontend_analytics_update_option( 'auth_token', $accessToken );
+				frontend_analytics_update_option( 'auth_date', date( 'Y-m-d H:i:s' ) );
 			} else {
 				return false;
 			}
@@ -103,6 +104,7 @@ class Frontend_Analytics_API {
 	function deauthorize() {
 		frontend_analytics_update_option( 'auth_code', '' );
 		frontend_analytics_update_option( 'auth_token', '' );
+		frontend_analytics_update_option( 'auth_date', '' );
 	}
 
 	function getSingleProfile() {

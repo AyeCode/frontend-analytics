@@ -99,6 +99,7 @@ class Frontend_Analytics_AJAX {
 		$options = $fa->get_options();
 
 		$options['auth_token'] = '';
+		$options['auth_date'] = '';
 		$options['auth_code'] = '';
 		$options['uids'] = '';
 		$options['account_id'] = '';
