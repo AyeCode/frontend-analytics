@@ -424,7 +424,7 @@ function gd_renderTopCountriesChart() {
 }
 
 function gdga_noResults() {
-	jQuery('#gdga-chart-container').html('<?php _e('No results available','frontend-analytics');?>');
+	jQuery('#gdga-chart-container').html('<p>' + geodir_fa_htmlEscape('<?php echo esc_js( __( 'No results available', 'frontend-analytics' ) ); ?>') + '</p>');
 	jQuery('#gdga-legend-container').html('');
 }
 
@@ -454,18 +454,18 @@ function gd_renderYearOverYearChart() {
 		var data2 = results[1].rows.map(function(row) { return +row[2]; });
 		//var labelsN = results[0].rows.map(function(row) { return +row[1]; });
 
-		var labels = ['<?php _e('Jan', 'frontend-analytics');?>',
-			'<?php _e('Feb', 'frontend-analytics');?>',
-			'<?php _e('Mar', 'frontend-analytics');?>',
-			'<?php _e('Apr', 'frontend-analytics');?>',
-			'<?php _e('May', 'frontend-analytics');?>',
-			'<?php _e('Jun', 'frontend-analytics');?>',
-			'<?php _e('Jul', 'frontend-analytics');?>',
-			'<?php _e('Aug', 'frontend-analytics');?>',
-			'<?php _e('Sep', 'frontend-analytics');?>',
-			'<?php _e('Oct', 'frontend-analytics');?>',
-			'<?php _e('Nov', 'frontend-analytics');?>',
-			'<?php _e('Dec', 'frontend-analytics');?>'];
+		var labels = [geodir_fa_htmlEscape('<?php echo esc_js( __( 'Jan', 'frontend-analytics' ) ); ?>'),
+			geodir_fa_htmlEscape('<?php echo esc_js( __( 'Feb', 'frontend-analytics' ) ); ?>'),
+			geodir_fa_htmlEscape('<?php echo esc_js( __( 'Mar', 'frontend-analytics' ) ); ?>'),
+			geodir_fa_htmlEscape('<?php echo esc_js( __( 'Apr', 'frontend-analytics' ) ); ?>'),
+			geodir_fa_htmlEscape('<?php echo esc_js( __( 'May', 'frontend-analytics' ) ); ?>'),
+			geodir_fa_htmlEscape('<?php echo esc_js( __( 'Jun', 'frontend-analytics' ) ); ?>'),
+			geodir_fa_htmlEscape('<?php echo esc_js( __( 'Jul', 'frontend-analytics' ) ); ?>'),
+			geodir_fa_htmlEscape('<?php echo esc_js( __( 'Aug', 'frontend-analytics' ) ); ?>'),
+			geodir_fa_htmlEscape('<?php echo esc_js( __( 'Sep', 'frontend-analytics' ) ); ?>'),
+			geodir_fa_htmlEscape('<?php echo esc_js( __( 'Oct', 'frontend-analytics' ) ); ?>'),
+			geodir_fa_htmlEscape('<?php echo esc_js( __( 'Nov', 'frontend-analytics' ) ); ?>'),
+			geodir_fa_htmlEscape('<?php echo esc_js( __( 'Dec', 'frontend-analytics' ) ); ?>')];
 
 		// Ensure the data arrays are at least as long as the labels array.
 		// Chart.js bar charts don't (yet) accept sparse datasets.
@@ -478,13 +478,13 @@ function gd_renderYearOverYearChart() {
 			labels : labels,
 			datasets : [
 				{
-					label: '<?php _e('Last Year', 'frontend-analytics');?>',
+					label: geodir_fa_htmlEscape('<?php echo esc_js( __( 'Last Year', 'frontend-analytics' ) ); ?>'),
 					borderColor:'rgb(255,159,64)',
 					backgroundColor:'rgba(255,159,64,0.5)',
 					data : data2
 				},
 				{
-					label: '<?php _e('This Year', 'frontend-analytics');?>',
+					label: geodir_fa_htmlEscape('<?php echo esc_js( __( 'This Year', 'frontend-analytics' ) ); ?>'),
 					borderColor:'rgb(54,162,235)',
 					backgroundColor:'rgba(54,162,235,0.5)',
 					data : data1
@@ -542,27 +542,27 @@ function gd_renderWeekOverWeekChart() {
 		__("Sun",'frontend-analytics');
 		?>
 
-		labels = [
-			"<?php _e(date('D', strtotime("+1 day")),'frontend-analytics'); ?>",
-			"<?php _e(date('D', strtotime("+2 day")),'frontend-analytics'); ?>",
-			"<?php _e(date('D', strtotime("+3 day")),'frontend-analytics'); ?>",
-			"<?php _e(date('D', strtotime("+4 day")),'frontend-analytics'); ?>",
-			"<?php _e(date('D', strtotime("+5 day")),'frontend-analytics'); ?>",
-			"<?php _e(date('D', strtotime("+6 day")),'frontend-analytics'); ?>",
-			"<?php _e(date('D', strtotime("+7 day")),'frontend-analytics'); ?>"
+		var labels = [
+			geodir_fa_htmlEscape("<?php echo esc_js( date_i18n( 'D', strtotime( "+1 day" ) ) ); ?>"),
+			geodir_fa_htmlEscape("<?php echo esc_js( date_i18n( 'D', strtotime( "+2 day" ) ) ); ?>"),
+			geodir_fa_htmlEscape("<?php echo esc_js( date_i18n( 'D', strtotime( "+3 day" ) ) ); ?>"),
+			geodir_fa_htmlEscape("<?php echo esc_js( date_i18n( 'D', strtotime( "+4 day" ) ) ); ?>"),
+			geodir_fa_htmlEscape("<?php echo esc_js( date_i18n( 'D', strtotime( "+5 day" ) ) ); ?>"),
+			geodir_fa_htmlEscape("<?php echo esc_js( date_i18n( 'D', strtotime( "+6 day" ) ) ); ?>"),
+			geodir_fa_htmlEscape("<?php echo esc_js( date_i18n( 'D', strtotime( "+7 day" ) ) ); ?>")
 		];
 
 		var data = {
 			labels : labels,
 			datasets : [
 				{
-					label: '<?php _e('This Week', 'frontend-analytics');?>',
+					label: geodir_fa_htmlEscape('<?php echo esc_js( __( 'This Week', 'frontend-analytics' ) ); ?>'),
 					borderColor:'rgb(255,159,64)',
 					backgroundColor:'rgba(255,159,64,0.5)',
 					data : data1
 				},
 				{
-					label: '<?php _e('Last Week', 'frontend-analytics');?>',
+					label: geodir_fa_htmlEscape('<?php echo esc_js( __( 'Last Week', 'frontend-analytics' ) ); ?>'),
 					borderColor:'rgb(54,162,235)',
 					backgroundColor:'rgba(54,162,235,0.5)',
 					data : data2
@@ -615,13 +615,13 @@ function gd_renderMonthOverMonthChart() {
 			labels : labels,
 			datasets : [
 				{
-					label: '<?php _e('Last Month', 'frontend-analytics');?>',
+					label: geodir_fa_htmlEscape('<?php echo esc_js( __( 'Last Month', 'frontend-analytics' ) ); ?>'),
 					borderColor:'rgb(255,159,64)',
 					backgroundColor:'rgba(255,159,64,0.5)',
 					data : data2
 				},
 				{
-					label: '<?php _e('This Month', 'frontend-analytics');?>',
+					label: geodir_fa_htmlEscape('<?php echo esc_js( __( 'This Month', 'frontend-analytics' ) ); ?>'),
 					borderColor:'rgb(54,162,235)',
 					backgroundColor:'rgba(54,162,235,0.5)',
 					data : data1
@@ -711,6 +711,19 @@ function gdga_refresh(stop) {
 			}
 		}
 	}
+}
+
+function geodir_fa_htmlEscape(str) {
+	return String(str)
+		.replace(/&prime;/g, "'")
+		.replace(/&frasl;/g, '/')
+		.replace(/&ndash;/g, '-')
+		.replace(/&ldquo;/g, '"')
+		.replace(/&gt;/g, '>')
+		.replace(/&quot;/g, '"')
+		.replace(/&apos;/g, "'")
+		.replace(/&amp;quot;/g, '"')
+		.replace(/&amp;apos;/g, "'");
 }
 </script>
 <?php if ( $design_style ) {
