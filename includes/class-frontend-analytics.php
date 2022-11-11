@@ -77,15 +77,6 @@ class Frontend_Analytics {
 		$this->define( 'FRONTEND_ANALYTICS_PLUGIN_BASENAME', plugin_basename( FRONTEND_ANALYTICS_PLUGIN_FILE ) );
 
 		/**
-		 * Frontend Analytics (OAuth 2.0 Desktop Application)
-		 *
-		 * See https://developers.google.com/identity/protocols/oauth2/resources/oob-migration#web-application
-		 */
-		//$this->define( 'FRONTEND_ANALYTICS_CLIENTID', '687912069872-sdpsjssrdt7t3ao1dnv1ib71hkckbt5s.apps.googleusercontent.com' ); // Client ID
-		//$this->define( 'FRONTEND_ANALYTICS_CLIENTSECRET', 'yBVkDpqJ1B9nAETHy738Zn8C' ); // Client secret
-		//$this->define( 'FRONTEND_ANALYTICS_REDIRECT', 'urn:ietf:wg:oauth:2.0:oob' ); // Redirect URI
-
-		/**
 		 * Frontend Analytics (OAuth 2.0 Web Application)
 		 */
 		$this->define( 'FRONTEND_ANALYTICS_CLIENTID', '160776539703-k9sdbacijmo233u2p4vj7gjcrfh7iro2.apps.googleusercontent.com' ); // Client ID
