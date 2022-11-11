@@ -3,7 +3,7 @@ Contributors: stiofansisland, paoltaia, ayecode, basantakumar
 Donate link: https://wpgeodirectory.com/
 Tags: analytics, google analytics, frontend google analytics
 Requires at least: 4.9
-Tested up to: 5.8
+Tested up to: 6.1
 Stable tag: 2.1.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -34,8 +34,9 @@ UsersWP - Can be used on the UsersWP profile page to show the owner their profil
 
 == Changelog ==
 
-= 2.1.2 =
+= 2.2.0 =
 * Graph line & bar color changed - CHANGED
+* Google OAuth 2.0 authorization compatibility changes - CHANGED
 
 = 2.1.1 =
 * Super Duper v2 causing some issues with builders that use widgets, rolled back to SDv1 to resolve - FIXED
