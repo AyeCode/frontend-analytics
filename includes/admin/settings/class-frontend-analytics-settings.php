@@ -142,9 +142,9 @@ if ( ! class_exists( 'Frontend_Analytics_Settings', false ) ) :
 					'access_type'     => 'offline',
 					'approval_prompt' => 'force',
 					'response_type'   => 'code',
-					'redirect_uri'    => FRONTEND_ANALYTICS_REDIRECT,
-					'next'            => admin_url( 'admin.php?page=frontend-analytics' ),
-					'state'           => admin_url( 'admin.php?page=frontend-analytics' ),
+					'redirect_uri'    => urlencode( FRONTEND_ANALYTICS_REDIRECT ),
+					'next'            => urlencode( admin_url( 'admin.php?page=frontend-analytics' ) ),
+					'state'           => urlencode( admin_url( 'admin.php?page=frontend-analytics' ) ),
 				), 
 				FRONTEND_ANALYTICS_OAUTH2_AUTH_URL
 			);

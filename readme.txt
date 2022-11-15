@@ -1,10 +1,10 @@
 === Frontend Analytics ===
 Contributors: stiofansisland, paoltaia, ayecode, basantakumar
 Donate link: https://wpgeodirectory.com/
-Tags: analytics, google analytics, frontend google analytics
+Tags: analytics, google analytics, frontend google analytics, tracking
 Requires at least: 4.9
 Tested up to: 6.1
-Stable tag: 2.1.1
+Stable tag: 2.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -34,23 +34,23 @@ UsersWP - Can be used on the UsersWP profile page to show the owner their profil
 
 == Changelog ==
 
-= 2.2.0 =
+= 2.2 (2022-11-15) =
 * Graph line & bar color changed - CHANGED
 * Google OAuth 2.0 authorization compatibility changes - CHANGED
 * Single quote in translations breaks analytics graph - FIXED
 
-= 2.1.1 =
+= 2.1.1 (2021-10-09) =
 * Super Duper v2 causing some issues with builders that use widgets, rolled back to SDv1 to resolve - FIXED
 
-= 2.1.0 =
+= 2.1.0 (2021-10-08) =
 * Prevent the block/widget class loading when not required - CHANGED
 
-= 2.0.1 =
+= 2.0.1 (2021-05-11) =
 * Show/hide visibility for GD listings based on GD packages - FIXED
 * Fix conflicts with Uncanny Automator Pro plugin - FIXED
 * Chart.js updated to v3.2 - CHANGED
 
-= 2.0.0 =
+= 2.0.0 (2020-10-08) =
 * JavaScript errors breaks analytics when cache is enabled - FIXED
 * Changes for AyeCode UI compatibility - CHANGED
 * This Month vs Last Month option added in analytics stats view - ADDED

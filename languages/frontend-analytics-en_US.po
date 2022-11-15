@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: Frontend Analytics 2.1.0\n"
+"Project-Id-Version: Frontend Analytics 2.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-08 19:11+0530\n"
-"PO-Revision-Date: 2021-10-08 19:11+0530\n"
+"POT-Creation-Date: 2022-11-15 15:56+0530\n"
+"PO-Revision-Date: 2022-11-15 15:56+0530\n"
 "Last-Translator: \n"
 "Language-Team: AyeCode Ltd <contact@ayecode.io>\n"
 "Language: en_US\n"
@@ -20,80 +20,97 @@ msgstr ""
 "X-Generator: Poedit 3.0\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: includes/admin/class-frontend-analytics-admin.php:94
+#: includes/admin/class-frontend-analytics-admin.php:99
 msgid "Google Analytics"
 msgstr ""
 
-#: includes/admin/class-frontend-analytics-admin.php:95
+#: includes/admin/class-frontend-analytics-admin.php:100
 msgid "Tick to enable google analytics."
 msgstr ""
 
-#: includes/admin/settings/class-frontend-analytics-settings.php:95
-msgid "Google analytics Auth Code"
+#: includes/admin/settings/class-frontend-analytics-settings.php:93
+msgid "Google Authentication"
 msgstr ""
 
-#: includes/admin/settings/class-frontend-analytics-settings.php:96
-msgid "You must save this setting before accounts will show."
+#: includes/admin/settings/class-frontend-analytics-settings.php:94
+msgid "Google Analytics account authentication."
 msgstr ""
 
-#: includes/admin/settings/class-frontend-analytics-settings.php:113
+#: includes/admin/settings/class-frontend-analytics-settings.php:100
 msgid "Analytics Account"
 msgstr ""
 
-#: includes/admin/settings/class-frontend-analytics-settings.php:114
+#: includes/admin/settings/class-frontend-analytics-settings.php:101
 msgid "Select the account that you setup for this site."
 msgstr ""
 
-#: includes/admin/settings/class-frontend-analytics-settings.php:122
+#: includes/admin/settings/class-frontend-analytics-settings.php:109
 msgid "Add tracking code to site?"
 msgstr ""
 
-#: includes/admin/settings/class-frontend-analytics-settings.php:123
+#: includes/admin/settings/class-frontend-analytics-settings.php:110
 msgid "This will automatically add the correct tracking code to your site"
 msgstr ""
 
-#: includes/admin/settings/class-frontend-analytics-settings.php:129
+#: includes/admin/settings/class-frontend-analytics-settings.php:116
 msgid "Anonymize user IP?"
 msgstr ""
 
-#: includes/admin/settings/class-frontend-analytics-settings.php:130
+#: includes/admin/settings/class-frontend-analytics-settings.php:117
 msgid ""
 "In most cases this is not required, this is to comply with certain country "
 "laws such as Germany."
 msgstr ""
 
-#: includes/admin/settings/class-frontend-analytics-settings.php:138
+#: includes/admin/settings/class-frontend-analytics-settings.php:124
 msgid "Auto refresh active users every"
 msgstr ""
 
-#: includes/admin/settings/class-frontend-analytics-settings.php:139
+#: includes/admin/settings/class-frontend-analytics-settings.php:125
 msgid ""
 "Time interval in seconds to auto refresh active users. The active users will "
 "be auto refreshed after this time interval. Leave blank or use 0(zero) to "
 "disable auto refresh. Default: 5"
 msgstr ""
 
-#: includes/admin/settings/class-frontend-analytics-settings.php:179
+#: includes/admin/settings/class-frontend-analytics-settings.php:169
 msgid "Select Account"
 msgstr ""
 
-#: includes/admin/settings/class-frontend-analytics-settings.php:182
+#: includes/admin/settings/class-frontend-analytics-settings.php:172
 msgid "Account re-authorization may be required"
 msgstr ""
 
-#: includes/admin/settings/class-frontend-analytics-settings.php:318
+#: includes/admin/settings/class-frontend-analytics-settings.php:300
 msgid "Deauthorize"
 msgstr ""
 
-#: includes/admin/settings/class-frontend-analytics-settings.php:319
+#: includes/admin/settings/class-frontend-analytics-settings.php:301
 msgid "Authorized"
 msgstr ""
 
-#: includes/admin/settings/class-frontend-analytics-settings.php:323
-msgid "Get Auth Code"
+#: includes/admin/settings/class-frontend-analytics-settings.php:303
+#, php-format
+msgid "Last Authorized On: %s"
 msgstr ""
 
-#: includes/class-frontend-analytics-ajax.php:126
+#: includes/admin/settings/class-frontend-analytics-settings.php:305
+msgid "Click on Deauthorize to disconnect your Google Analytics account."
+msgstr ""
+
+#: includes/admin/settings/class-frontend-analytics-settings.php:307
+msgid "Log in with your Google Analytics Account"
+msgstr ""
+
+#: includes/admin/settings/class-frontend-analytics-settings.php:307
+msgid "Log In with your Google Analytics Account"
+msgstr ""
+
+#: includes/admin/settings/class-frontend-analytics-settings.php:308
+msgid "Log in with your Google Analytics Account."
+msgstr ""
+
+#: includes/class-frontend-analytics-ajax.php:127
 msgid "Something went wrong"
 msgstr ""
 
@@ -108,6 +125,10 @@ msgstr ""
 
 #: includes/functions.php:161
 msgid "Login failed"
+msgstr ""
+
+#: includes/functions.php:398
+msgid "Countries"
 msgstr ""
 
 #: includes/functions.php:427
@@ -202,48 +223,48 @@ msgstr ""
 msgid "This Week"
 msgstr ""
 
-#: includes/functions.php:567
+#: includes/functions.php:565
 msgid "Last Week"
 msgstr ""
 
-#: includes/functions.php:622
+#: includes/functions.php:618
 msgid "Last Month"
 msgstr ""
 
-#: includes/functions.php:630
+#: includes/functions.php:624
 msgid "This Month"
 msgstr ""
 
-#: includes/functions.php:742 includes/functions.php:803
+#: includes/functions.php:747 includes/functions.php:808
 #: includes/widgets/class-frontend-analytics-widget-analytics.php:78
 msgid "Show Google Analytics"
 msgstr ""
 
-#: includes/functions.php:745 includes/functions.php:807
+#: includes/functions.php:750 includes/functions.php:812
 msgid "Refresh"
 msgstr ""
 
-#: includes/functions.php:745 includes/functions.php:807
+#: includes/functions.php:750 includes/functions.php:812
 msgid "Active Users:"
 msgstr ""
 
-#: includes/functions.php:746 includes/functions.php:805
+#: includes/functions.php:751 includes/functions.php:810
 msgid "Analytics"
 msgstr ""
 
-#: includes/functions.php:760 includes/functions.php:812
+#: includes/functions.php:765 includes/functions.php:817
 msgid "Last Week vs This Week"
 msgstr ""
 
-#: includes/functions.php:761 includes/functions.php:813
+#: includes/functions.php:766 includes/functions.php:818
 msgid "This Month vs Last Month"
 msgstr ""
 
-#: includes/functions.php:762 includes/functions.php:814
+#: includes/functions.php:767 includes/functions.php:819
 msgid "This Year vs Last Year"
 msgstr ""
 
-#: includes/functions.php:763 includes/functions.php:815
+#: includes/functions.php:768 includes/functions.php:820
 msgid "Top Countries"
 msgstr ""
 
@@ -338,6 +359,8 @@ msgid "Default (medium)"
 msgstr ""
 
 #: includes/widgets/class-frontend-analytics-widget-analytics.php:118
+#: vendor/ayecode/wp-super-duper/sd-functions.php:240
+#: vendor/ayecode/wp-super-duper/sd-functions.php:277
 msgid "Small"
 msgstr ""
 
@@ -346,6 +369,8 @@ msgid "Medium"
 msgstr ""
 
 #: includes/widgets/class-frontend-analytics-widget-analytics.php:120
+#: vendor/ayecode/wp-super-duper/sd-functions.php:241
+#: vendor/ayecode/wp-super-duper/sd-functions.php:279
 msgid "Large"
 msgstr ""
 
@@ -362,14 +387,19 @@ msgid "Default (left)"
 msgstr ""
 
 #: includes/widgets/class-frontend-analytics-widget-analytics.php:134
+#: vendor/ayecode/wp-super-duper/sd-functions.php:250
+#: vendor/ayecode/wp-super-duper/sd-functions.php:842
 msgid "Left"
 msgstr ""
 
 #: includes/widgets/class-frontend-analytics-widget-analytics.php:135
+#: vendor/ayecode/wp-super-duper/sd-functions.php:844
 msgid "Center"
 msgstr ""
 
 #: includes/widgets/class-frontend-analytics-widget-analytics.php:136
+#: vendor/ayecode/wp-super-duper/sd-functions.php:251
+#: vendor/ayecode/wp-super-duper/sd-functions.php:843
 msgid "Right"
 msgstr ""
 
@@ -377,26 +407,26 @@ msgstr ""
 msgid "Block"
 msgstr ""
 
-#: vendor/ayecode/wp-super-duper/hello-world.php:25
+#: vendor/ayecode/wp-super-duper/hello-world.php:26
 msgid "Placeholder"
 msgstr ""
 
-#: vendor/ayecode/wp-super-duper/hello-world.php:38
+#: vendor/ayecode/wp-super-duper/hello-world.php:36
 msgid "Hello World"
 msgstr ""
 
-#: vendor/ayecode/wp-super-duper/hello-world.php:43
+#: vendor/ayecode/wp-super-duper/hello-world.php:41
 #: vendor/ayecode/wp-super-duper/map.php:74
 msgid ""
 "This is an example that will take a text parameter and output it after "
 "`Hello:`."
 msgstr ""
 
-#: vendor/ayecode/wp-super-duper/hello-world.php:53
+#: vendor/ayecode/wp-super-duper/hello-world.php:47
 msgid "Text after hello:"
 msgstr ""
 
-#: vendor/ayecode/wp-super-duper/hello-world.php:55
+#: vendor/ayecode/wp-super-duper/hello-world.php:49
 msgid "This is the text that will appear after `Hello:`."
 msgstr ""
 
@@ -431,145 +461,806 @@ msgstr ""
 msgid "Map"
 msgstr ""
 
-#: vendor/ayecode/wp-super-duper/map.php:80
+#: vendor/ayecode/wp-super-duper/map.php:79
 msgid "Map Type:"
 msgstr ""
 
-#: vendor/ayecode/wp-super-duper/map.php:81
+#: vendor/ayecode/wp-super-duper/map.php:80
 msgid "Select the map type to use."
 msgstr ""
 
-#: vendor/ayecode/wp-super-duper/map.php:84
+#: vendor/ayecode/wp-super-duper/map.php:83
 msgid "Static Image"
 msgstr ""
 
-#: vendor/ayecode/wp-super-duper/map.php:85
+#: vendor/ayecode/wp-super-duper/map.php:84
 msgid "Place"
 msgstr ""
 
-#: vendor/ayecode/wp-super-duper/map.php:97
+#: vendor/ayecode/wp-super-duper/map.php:96
 msgid "Location:"
 msgstr ""
 
-#: vendor/ayecode/wp-super-duper/map.php:98
+#: vendor/ayecode/wp-super-duper/map.php:97
 msgid "Enter the location to show on the map, place, city, zip code or GPS."
 msgstr ""
 
-#: vendor/ayecode/wp-super-duper/map.php:106
-#: vendor/ayecode/wp-super-duper/map.php:135
+#: vendor/ayecode/wp-super-duper/map.php:105
+#: vendor/ayecode/wp-super-duper/map.php:134
 msgid "Width:"
 msgstr ""
 
-#: vendor/ayecode/wp-super-duper/map.php:107
+#: vendor/ayecode/wp-super-duper/map.php:106
 msgid ""
 "This is the width of the map, for static maps you can only use px values."
 msgstr ""
 
-#: vendor/ayecode/wp-super-duper/map.php:120
-#: vendor/ayecode/wp-super-duper/map.php:145
+#: vendor/ayecode/wp-super-duper/map.php:119
+#: vendor/ayecode/wp-super-duper/map.php:144
 msgid "Height:"
 msgstr ""
 
-#: vendor/ayecode/wp-super-duper/map.php:121
+#: vendor/ayecode/wp-super-duper/map.php:120
 msgid ""
 "This is the height of the map, for static maps you can only use px values."
 msgstr ""
 
-#: vendor/ayecode/wp-super-duper/map.php:136
+#: vendor/ayecode/wp-super-duper/map.php:135
 #, php-format
 msgid "This is the width of the map, you can use % or px here."
 msgstr ""
 
-#: vendor/ayecode/wp-super-duper/map.php:146
+#: vendor/ayecode/wp-super-duper/map.php:145
+#: vendor/ayecode/wp-super-duper/map.php:179
 msgid "This is the height of the map, you can use %, px or vh here."
 msgstr ""
 
-#: vendor/ayecode/wp-super-duper/map.php:155
+#: vendor/ayecode/wp-super-duper/map.php:154
 msgid "Mapview:"
 msgstr ""
 
-#: vendor/ayecode/wp-super-duper/map.php:156
+#: vendor/ayecode/wp-super-duper/map.php:155
 msgid "This is the type of map view that will be used by default."
 msgstr ""
 
-#: vendor/ayecode/wp-super-duper/map.php:158
+#: vendor/ayecode/wp-super-duper/map.php:157
 msgid "Road Map"
 msgstr ""
 
-#: vendor/ayecode/wp-super-duper/map.php:159
+#: vendor/ayecode/wp-super-duper/map.php:158
 msgid "Satellite Map"
 msgstr ""
 
-#: vendor/ayecode/wp-super-duper/map.php:169
+#: vendor/ayecode/wp-super-duper/map.php:168
 msgid "Zoom level:"
 msgstr ""
 
-#: vendor/ayecode/wp-super-duper/map.php:170
+#: vendor/ayecode/wp-super-duper/map.php:169
 msgid "This is the zoom level of the map, `auto` is recommended."
 msgstr ""
 
-#: vendor/ayecode/wp-super-duper/map.php:179
+#: vendor/ayecode/wp-super-duper/map.php:178
 msgid "Api Key:"
 msgstr ""
 
-#: vendor/ayecode/wp-super-duper/map.php:180
-msgid "Enter your Google maps API key here."
+#: vendor/ayecode/wp-super-duper/sd-functions.php:54
+#: vendor/ayecode/wp-super-duper/sd-functions.php:141
+#: vendor/ayecode/wp-super-duper/sd-functions.php:246
+#: vendor/ayecode/wp-super-duper/sd-functions.php:257
+#: vendor/ayecode/wp-super-duper/sd-functions.php:276
+#: vendor/ayecode/wp-super-duper/sd-functions.php:306
+#: vendor/ayecode/wp-super-duper/sd-functions.php:334
+#: vendor/ayecode/wp-super-duper/sd-functions.php:458
+#: vendor/ayecode/wp-super-duper/sd-functions.php:514
+#: vendor/ayecode/wp-super-duper/sd-functions.php:666
+msgid "None"
 msgstr ""
 
-#: vendor/ayecode/wp-super-duper/type/block.php:364
-msgid "Placeholder for: "
+#: vendor/ayecode/wp-super-duper/sd-functions.php:55
+#: vendor/ayecode/wp-super-duper/sd-functions.php:749
+#: vendor/ayecode/wp-super-duper/sd-functions.php:798
+msgid "auto"
 msgstr ""
 
-#: vendor/ayecode/wp-super-duper/type/block.php:464
-msgid "Settings"
+#: vendor/ayecode/wp-super-duper/sd-functions.php:88
+#: vendor/ayecode/wp-super-duper/sd-functions.php:97
+msgid "Margin top"
 msgstr ""
 
-#: vendor/ayecode/wp-super-duper/type/shortcode.php:247
-#: vendor/ayecode/wp-super-duper/wp-super-duper.php:731
+#: vendor/ayecode/wp-super-duper/sd-functions.php:92
+#: vendor/ayecode/wp-super-duper/sd-functions.php:163
+#: vendor/ayecode/wp-super-duper/sd-functions.php:219
+#: vendor/ayecode/wp-super-duper/sd-functions.php:288
+#: vendor/ayecode/wp-super-duper/sd-functions.php:316
+#: vendor/ayecode/wp-super-duper/sd-functions.php:898
+#: vendor/ayecode/wp-super-duper/sd-functions.php:1077
+#: vendor/ayecode/wp-super-duper/sd-functions.php:1101
+#: vendor/ayecode/wp-super-duper/sd-functions.php:1465
+#: vendor/ayecode/wp-super-duper/sd-functions.php:1518
+#: vendor/ayecode/wp-super-duper/sd-functions.php:1572
+#: vendor/ayecode/wp-super-duper/sd-functions.php:1626
+msgid "Wrapper Styles"
+msgstr ""
+
+#: vendor/ayecode/wp-super-duper/sd-functions.php:100
+msgid "Margins"
+msgstr ""
+
+#: vendor/ayecode/wp-super-duper/sd-functions.php:106
+msgid "Margin right"
+msgstr ""
+
+#: vendor/ayecode/wp-super-duper/sd-functions.php:112
+msgid "Margin bottom"
+msgstr ""
+
+#: vendor/ayecode/wp-super-duper/sd-functions.php:118
+msgid "Margin left"
+msgstr ""
+
+#: vendor/ayecode/wp-super-duper/sd-functions.php:159
+#: vendor/ayecode/wp-super-duper/sd-functions.php:168
+msgid "Padding top"
+msgstr ""
+
+#: vendor/ayecode/wp-super-duper/sd-functions.php:171
+msgid "Padding"
+msgstr ""
+
+#: vendor/ayecode/wp-super-duper/sd-functions.php:177
+msgid "Padding right"
+msgstr ""
+
+#: vendor/ayecode/wp-super-duper/sd-functions.php:183
+msgid "Padding bottom"
+msgstr ""
+
+#: vendor/ayecode/wp-super-duper/sd-functions.php:189
+msgid "Padding left"
+msgstr ""
+
+#: vendor/ayecode/wp-super-duper/sd-functions.php:215
+msgid "Border"
+msgstr ""
+
+#: vendor/ayecode/wp-super-duper/sd-functions.php:224
+msgid "Border radius type"
+msgstr ""
+
+#: vendor/ayecode/wp-super-duper/sd-functions.php:226
+#: vendor/ayecode/wp-super-duper/sd-functions.php:239
+#: vendor/ayecode/wp-super-duper/sd-functions.php:256
+#: vendor/ayecode/wp-super-duper/sd-functions.php:841
+#: vendor/ayecode/wp-super-duper/sd-functions.php:880
+#: vendor/ayecode/wp-super-duper/sd-functions.php:1060
+#: vendor/ayecode/wp-super-duper/sd-functions.php:1307
+#: vendor/ayecode/wp-super-duper/sd-functions.php:1451
+#: vendor/ayecode/wp-super-duper/sd-functions.php:1504
+#: vendor/ayecode/wp-super-duper/sd-functions.php:1558
+#: vendor/ayecode/wp-super-duper/sd-functions.php:1611
+msgid "Default"
+msgstr ""
+
+#: vendor/ayecode/wp-super-duper/sd-functions.php:237
+msgid "Border radius size"
+msgstr ""
+
+#: vendor/ayecode/wp-super-duper/sd-functions.php:244
+msgid "Border type"
+msgstr ""
+
+#: vendor/ayecode/wp-super-duper/sd-functions.php:247
+msgid "Full"
+msgstr ""
+
+#: vendor/ayecode/wp-super-duper/sd-functions.php:248
+#: vendor/ayecode/wp-super-duper/sd-functions.php:504
+msgid "Top"
+msgstr ""
+
+#: vendor/ayecode/wp-super-duper/sd-functions.php:249
+#: vendor/ayecode/wp-super-duper/sd-functions.php:505
+msgid "Bottom"
+msgstr ""
+
+#: vendor/ayecode/wp-super-duper/sd-functions.php:254
+msgid "Border color"
+msgstr ""
+
+#: vendor/ayecode/wp-super-duper/sd-functions.php:278
+msgid "Regular"
+msgstr ""
+
+#: vendor/ayecode/wp-super-duper/sd-functions.php:284
+#: vendor/ayecode/wp-super-duper/sd-functions.php:1418
+msgid "Shadow"
+msgstr ""
+
+#: vendor/ayecode/wp-super-duper/sd-functions.php:307
+#: vendor/ayecode/wp-super-duper/sd-functions.php:335
+#: vendor/ayecode/wp-super-duper/sd-functions.php:515
+msgid "Transparent"
+msgstr ""
+
+#: vendor/ayecode/wp-super-duper/sd-functions.php:312
+msgid "Background color"
+msgstr ""
+
+#: vendor/ayecode/wp-super-duper/sd-functions.php:338
+#: vendor/ayecode/wp-super-duper/sd-functions.php:518
+msgid "Custom Color"
+msgstr ""
+
+#: vendor/ayecode/wp-super-duper/sd-functions.php:339
+msgid "Custom Gradient"
+msgstr ""
+
+#: vendor/ayecode/wp-super-duper/sd-functions.php:344
+msgid "Background Color"
+msgstr ""
+
+#: vendor/ayecode/wp-super-duper/sd-functions.php:348
+#: vendor/ayecode/wp-super-duper/sd-functions.php:364
+#: vendor/ayecode/wp-super-duper/sd-functions.php:379
+#: vendor/ayecode/wp-super-duper/sd-functions.php:392
+#: vendor/ayecode/wp-super-duper/sd-functions.php:402
+#: vendor/ayecode/wp-super-duper/sd-functions.php:415
+#: vendor/ayecode/wp-super-duper/sd-functions.php:428
+#: vendor/ayecode/wp-super-duper/sd-functions.php:439
+msgid "Background"
+msgstr ""
+
+#: vendor/ayecode/wp-super-duper/sd-functions.php:360
+#: vendor/ayecode/wp-super-duper/sd-functions.php:537
+#: vendor/ayecode/wp-super-duper/sd-functions.php:670
+#: vendor/ayecode/wp-super-duper/sd-functions.php:714
+msgid "Custom color"
+msgstr ""
+
+#: vendor/ayecode/wp-super-duper/sd-functions.php:375
+msgid "Custom gradient"
+msgstr ""
+
+#: vendor/ayecode/wp-super-duper/sd-functions.php:389
+msgid "Fixed background"
+msgstr ""
+
+#: vendor/ayecode/wp-super-duper/sd-functions.php:399
+msgid "Use featured image"
+msgstr ""
+
+#: vendor/ayecode/wp-super-duper/sd-functions.php:411
+msgid "Custom image"
+msgstr ""
+
+#: vendor/ayecode/wp-super-duper/sd-functions.php:459
+msgid "Mountains"
+msgstr ""
+
+#: vendor/ayecode/wp-super-duper/sd-functions.php:460
+msgid "Drops"
+msgstr ""
+
+#: vendor/ayecode/wp-super-duper/sd-functions.php:461
+msgid "Clouds"
+msgstr ""
+
+#: vendor/ayecode/wp-super-duper/sd-functions.php:462
+msgid "Zigzag"
+msgstr ""
+
+#: vendor/ayecode/wp-super-duper/sd-functions.php:463
+msgid "Pyramids"
+msgstr ""
+
+#: vendor/ayecode/wp-super-duper/sd-functions.php:464
+msgid "Triangle"
+msgstr ""
+
+#: vendor/ayecode/wp-super-duper/sd-functions.php:465
+msgid "Triangle Asymmetrical"
+msgstr ""
+
+#: vendor/ayecode/wp-super-duper/sd-functions.php:466
+msgid "Tilt"
+msgstr ""
+
+#: vendor/ayecode/wp-super-duper/sd-functions.php:467
+msgid "Opacity Tilt"
+msgstr ""
+
+#: vendor/ayecode/wp-super-duper/sd-functions.php:468
+msgid "Opacity Fan"
+msgstr ""
+
+#: vendor/ayecode/wp-super-duper/sd-functions.php:469
+msgid "Curve"
+msgstr ""
+
+#: vendor/ayecode/wp-super-duper/sd-functions.php:470
+msgid "Curve Asymmetrical"
+msgstr ""
+
+#: vendor/ayecode/wp-super-duper/sd-functions.php:471
+msgid "Waves"
+msgstr ""
+
+#: vendor/ayecode/wp-super-duper/sd-functions.php:472
+msgid "Wave Brush"
+msgstr ""
+
+#: vendor/ayecode/wp-super-duper/sd-functions.php:473
+msgid "Waves Pattern"
+msgstr ""
+
+#: vendor/ayecode/wp-super-duper/sd-functions.php:474
+msgid "Arrow"
+msgstr ""
+
+#: vendor/ayecode/wp-super-duper/sd-functions.php:475
+msgid "Split"
+msgstr ""
+
+#: vendor/ayecode/wp-super-duper/sd-functions.php:476
+msgid "Book"
+msgstr ""
+
+#: vendor/ayecode/wp-super-duper/sd-functions.php:481
+#: vendor/ayecode/wp-super-duper/sd-functions.php:1037
+msgid "Type"
+msgstr ""
+
+#: vendor/ayecode/wp-super-duper/sd-functions.php:485
+#: vendor/ayecode/wp-super-duper/sd-functions.php:494
+#: vendor/ayecode/wp-super-duper/sd-functions.php:508
+#: vendor/ayecode/wp-super-duper/sd-functions.php:528
+#: vendor/ayecode/wp-super-duper/sd-functions.php:541
+#: vendor/ayecode/wp-super-duper/sd-functions.php:558
+#: vendor/ayecode/wp-super-duper/sd-functions.php:572
+#: vendor/ayecode/wp-super-duper/sd-functions.php:602
+#: vendor/ayecode/wp-super-duper/sd-functions.php:611
+#: vendor/ayecode/wp-super-duper/sd-functions.php:620
+msgid "Shape Divider"
+msgstr ""
+
+#: vendor/ayecode/wp-super-duper/sd-functions.php:492
+msgid "Parent element must be position `relative`"
+msgstr ""
+
+#: vendor/ayecode/wp-super-duper/sd-functions.php:502
+#: vendor/ayecode/wp-super-duper/sd-functions.php:1073
+msgid "Position"
+msgstr ""
+
+#: vendor/ayecode/wp-super-duper/sd-functions.php:525
+msgid "Color"
+msgstr ""
+
+#: vendor/ayecode/wp-super-duper/sd-functions.php:550
+msgid "Width"
+msgstr ""
+
+#: vendor/ayecode/wp-super-duper/sd-functions.php:565
+msgid "Height"
+msgstr ""
+
+#: vendor/ayecode/wp-super-duper/sd-functions.php:599
+msgid "Flip"
+msgstr ""
+
+#: vendor/ayecode/wp-super-duper/sd-functions.php:608
+msgid "Invert"
+msgstr ""
+
+#: vendor/ayecode/wp-super-duper/sd-functions.php:617
+msgid "Bring to front"
+msgstr ""
+
+#: vendor/ayecode/wp-super-duper/sd-functions.php:675
+msgid "Text color"
+msgstr ""
+
+#: vendor/ayecode/wp-super-duper/sd-functions.php:679
+#: vendor/ayecode/wp-super-duper/sd-functions.php:718
+#: vendor/ayecode/wp-super-duper/sd-functions.php:853
+#: vendor/ayecode/wp-super-duper/sd-functions.php:921
+#: vendor/ayecode/wp-super-duper/sd-functions.php:1163
+#: vendor/ayecode/wp-super-duper/sd-functions.php:1192
+#: vendor/ayecode/wp-super-duper/sd-functions.php:1225
+#: vendor/ayecode/wp-super-duper/sd-functions.php:1288
+#: vendor/ayecode/wp-super-duper/sd-functions.php:1319
+#: vendor/ayecode/wp-super-duper/sd-functions.php:1349
+msgid "Typography"
+msgstr ""
+
+#: vendor/ayecode/wp-super-duper/sd-functions.php:766
+msgid "Column width"
+msgstr ""
+
+#: vendor/ayecode/wp-super-duper/sd-functions.php:770
+#: vendor/ayecode/wp-super-duper/sd-functions.php:813
+#: vendor/ayecode/wp-super-duper/sd-functions.php:1041
+msgid "Container"
+msgstr ""
+
+#: vendor/ayecode/wp-super-duper/sd-functions.php:809
+msgid "Row columns"
+msgstr ""
+
+#: vendor/ayecode/wp-super-duper/sd-functions.php:849
+msgid "Text align"
+msgstr ""
+
+#: vendor/ayecode/wp-super-duper/sd-functions.php:894
+msgid "Display"
+msgstr ""
+
+#: vendor/ayecode/wp-super-duper/sd-functions.php:918
+msgid "Text justify"
+msgstr ""
+
+#: vendor/ayecode/wp-super-duper/sd-functions.php:941
+msgid "Primary"
+msgstr ""
+
+#: vendor/ayecode/wp-super-duper/sd-functions.php:942
+msgid "Secondary"
+msgstr ""
+
+#: vendor/ayecode/wp-super-duper/sd-functions.php:943
+msgid "Success"
+msgstr ""
+
+#: vendor/ayecode/wp-super-duper/sd-functions.php:944
+msgid "Danger"
+msgstr ""
+
+#: vendor/ayecode/wp-super-duper/sd-functions.php:945
+msgid "Warning"
+msgstr ""
+
+#: vendor/ayecode/wp-super-duper/sd-functions.php:946
+msgid "Info"
+msgstr ""
+
+#: vendor/ayecode/wp-super-duper/sd-functions.php:947
+msgid "Light"
+msgstr ""
+
+#: vendor/ayecode/wp-super-duper/sd-functions.php:948
+msgid "Dark"
+msgstr ""
+
+#: vendor/ayecode/wp-super-duper/sd-functions.php:949
+msgid "White"
+msgstr ""
+
+#: vendor/ayecode/wp-super-duper/sd-functions.php:950
+msgid "Purple"
+msgstr ""
+
+#: vendor/ayecode/wp-super-duper/sd-functions.php:951
+msgid "Salmon"
+msgstr ""
+
+#: vendor/ayecode/wp-super-duper/sd-functions.php:952
+msgid "Cyan"
+msgstr ""
+
+#: vendor/ayecode/wp-super-duper/sd-functions.php:953
+msgid "Gray"
+msgstr ""
+
+#: vendor/ayecode/wp-super-duper/sd-functions.php:954
+msgid "Gray dark"
+msgstr ""
+
+#: vendor/ayecode/wp-super-duper/sd-functions.php:955
+msgid "Indigo"
+msgstr ""
+
+#: vendor/ayecode/wp-super-duper/sd-functions.php:956
+msgid "Orange"
+msgstr ""
+
+#: vendor/ayecode/wp-super-duper/sd-functions.php:959
+msgid "(button only)"
+msgstr ""
+
+#: vendor/ayecode/wp-super-duper/sd-functions.php:960
+msgid "Primary outline"
+msgstr ""
+
+#: vendor/ayecode/wp-super-duper/sd-functions.php:961
+msgid "Secondary outline"
+msgstr ""
+
+#: vendor/ayecode/wp-super-duper/sd-functions.php:962
+msgid "Success outline"
+msgstr ""
+
+#: vendor/ayecode/wp-super-duper/sd-functions.php:963
+msgid "Danger outline"
+msgstr ""
+
+#: vendor/ayecode/wp-super-duper/sd-functions.php:964
+msgid "Warning outline"
+msgstr ""
+
+#: vendor/ayecode/wp-super-duper/sd-functions.php:965
+msgid "Info outline"
+msgstr ""
+
+#: vendor/ayecode/wp-super-duper/sd-functions.php:966
+msgid "Light outline"
+msgstr ""
+
+#: vendor/ayecode/wp-super-duper/sd-functions.php:967
+msgid "Dark outline"
+msgstr ""
+
+#: vendor/ayecode/wp-super-duper/sd-functions.php:968
+msgid "White outline"
+msgstr ""
+
+#: vendor/ayecode/wp-super-duper/sd-functions.php:969
+msgid "Purple outline"
+msgstr ""
+
+#: vendor/ayecode/wp-super-duper/sd-functions.php:970
+msgid "Salmon outline"
+msgstr ""
+
+#: vendor/ayecode/wp-super-duper/sd-functions.php:971
+msgid "Cyan outline"
+msgstr ""
+
+#: vendor/ayecode/wp-super-duper/sd-functions.php:972
+msgid "Gray outline"
+msgstr ""
+
+#: vendor/ayecode/wp-super-duper/sd-functions.php:973
+msgid "Gray dark outline"
+msgstr ""
+
+#: vendor/ayecode/wp-super-duper/sd-functions.php:974
+msgid "Indigo outline"
+msgstr ""
+
+#: vendor/ayecode/wp-super-duper/sd-functions.php:975
+msgid "Orange outline"
+msgstr ""
+
+#: vendor/ayecode/wp-super-duper/sd-functions.php:992
+msgid "Facebook"
+msgstr ""
+
+#: vendor/ayecode/wp-super-duper/sd-functions.php:993
+msgid "Twitter"
+msgstr ""
+
+#: vendor/ayecode/wp-super-duper/sd-functions.php:994
+msgid "Instagram"
+msgstr ""
+
+#: vendor/ayecode/wp-super-duper/sd-functions.php:995
+msgid "Linkedin"
+msgstr ""
+
+#: vendor/ayecode/wp-super-duper/sd-functions.php:996
+msgid "Flickr"
+msgstr ""
+
+#: vendor/ayecode/wp-super-duper/sd-functions.php:997
+msgid "GitHub"
+msgstr ""
+
+#: vendor/ayecode/wp-super-duper/sd-functions.php:998
+msgid "YouTube"
+msgstr ""
+
+#: vendor/ayecode/wp-super-duper/sd-functions.php:999
+msgid "WordPress"
+msgstr ""
+
+#: vendor/ayecode/wp-super-duper/sd-functions.php:1000
+msgid "Google"
+msgstr ""
+
+#: vendor/ayecode/wp-super-duper/sd-functions.php:1001
+msgid "Yahoo"
+msgstr ""
+
+#: vendor/ayecode/wp-super-duper/sd-functions.php:1002
+msgid "Vkontakte"
+msgstr ""
+
+#: vendor/ayecode/wp-super-duper/sd-functions.php:1018
+msgid "container (default)"
+msgstr ""
+
+#: vendor/ayecode/wp-super-duper/sd-functions.php:1097
+#: vendor/ayecode/wp-super-duper/sd-functions.php:1110
+msgid "Sticky offset"
+msgstr ""
+
+#: vendor/ayecode/wp-super-duper/sd-functions.php:1107
+msgid "Top offset"
+msgstr ""
+
+#: vendor/ayecode/wp-super-duper/sd-functions.php:1116
+msgid "Bottom offset"
+msgstr ""
+
+#: vendor/ayecode/wp-super-duper/sd-functions.php:1140
+msgid "Inherit from parent"
+msgstr ""
+
+#: vendor/ayecode/wp-super-duper/sd-functions.php:1154
+msgid "Custom size"
+msgstr ""
+
+#: vendor/ayecode/wp-super-duper/sd-functions.php:1159
+msgid "Font size"
+msgstr ""
+
+#: vendor/ayecode/wp-super-duper/sd-functions.php:1183
+msgid "Font size (rem)"
+msgstr ""
+
+#: vendor/ayecode/wp-super-duper/sd-functions.php:1216
+msgid "Font Line Height"
+msgstr ""
+
+#: vendor/ayecode/wp-super-duper/sd-functions.php:1268
+msgid "Inherit"
+msgstr ""
+
+#: vendor/ayecode/wp-super-duper/sd-functions.php:1284
+msgid "Appearance"
+msgstr ""
+
+#: vendor/ayecode/wp-super-duper/sd-functions.php:1308
+msgid "lowercase"
+msgstr ""
+
+#: vendor/ayecode/wp-super-duper/sd-functions.php:1309
+msgid "UPPERCASE"
+msgstr ""
+
+#: vendor/ayecode/wp-super-duper/sd-functions.php:1310
+msgid "Capitalize"
+msgstr ""
+
+#: vendor/ayecode/wp-super-duper/sd-functions.php:1315
+msgid "Letter case"
+msgstr ""
+
+#: vendor/ayecode/wp-super-duper/sd-functions.php:1339
+#: vendor/ayecode/wp-super-duper/wp-super-duper.php:234
 msgid "No"
 msgstr ""
 
-#: vendor/ayecode/wp-super-duper/type/shortcode.php:247
-#: vendor/ayecode/wp-super-duper/wp-super-duper.php:730
+#: vendor/ayecode/wp-super-duper/sd-functions.php:1340
+#: vendor/ayecode/wp-super-duper/wp-super-duper.php:234
 msgid "Yes"
 msgstr ""
 
-#: vendor/ayecode/wp-super-duper/wp-super-duper.php:347
-#: vendor/ayecode/wp-super-duper/wp-super-duper.php:538
-msgid "Advanced Settings"
+#: vendor/ayecode/wp-super-duper/sd-functions.php:1345
+msgid "Font italic"
 msgstr ""
 
-#: vendor/ayecode/wp-super-duper/wp-super-duper.php:414
+#: vendor/ayecode/wp-super-duper/sd-functions.php:1369
+msgid "HTML anchor"
+msgstr ""
+
+#: vendor/ayecode/wp-super-duper/sd-functions.php:1370
+msgid ""
+"Enter a word or two — without spaces — to make a unique web address just for "
+"this block, called an “anchor.” Then, you’ll be able to link directly to "
+"this section of your page."
+msgstr ""
+
+#: vendor/ayecode/wp-super-duper/sd-functions.php:1373
+#: vendor/ayecode/wp-super-duper/sd-functions.php:1397
+msgid "Advanced"
+msgstr ""
+
+#: vendor/ayecode/wp-super-duper/sd-functions.php:1393
+msgid "Additional CSS class(es)"
+msgstr ""
+
+#: vendor/ayecode/wp-super-duper/sd-functions.php:1394
+msgid "Separate multiple classes with spaces."
+msgstr ""
+
+#: vendor/ayecode/wp-super-duper/sd-functions.php:1416
+msgid "none"
+msgstr ""
+
+#: vendor/ayecode/wp-super-duper/sd-functions.php:1417
+msgid "Zoom"
+msgstr ""
+
+#: vendor/ayecode/wp-super-duper/sd-functions.php:1419
+msgid "Move up"
+msgstr ""
+
+#: vendor/ayecode/wp-super-duper/sd-functions.php:1420
+msgid "Move down"
+msgstr ""
+
+#: vendor/ayecode/wp-super-duper/sd-functions.php:1421
+msgid "Move left"
+msgstr ""
+
+#: vendor/ayecode/wp-super-duper/sd-functions.php:1422
+msgid "Move right"
+msgstr ""
+
+#: vendor/ayecode/wp-super-duper/sd-functions.php:1428
+#: vendor/ayecode/wp-super-duper/sd-functions.php:1432
+msgid "Hover Animations"
+msgstr ""
+
+#: vendor/ayecode/wp-super-duper/sd-functions.php:1461
+msgid "Vertical Align Items"
+msgstr ""
+
+#: vendor/ayecode/wp-super-duper/sd-functions.php:1514
+msgid "Justify content"
+msgstr ""
+
+#: vendor/ayecode/wp-super-duper/sd-functions.php:1568
+msgid "Align Self"
+msgstr ""
+
+#: vendor/ayecode/wp-super-duper/sd-functions.php:1622
+msgid "Flex Order"
+msgstr ""
+
+#: vendor/ayecode/wp-super-duper/wp-super-duper.php:287
 msgid "Select shortcode"
 msgstr ""
 
-#: vendor/ayecode/wp-super-duper/wp-super-duper.php:433
+#: vendor/ayecode/wp-super-duper/wp-super-duper.php:307
 msgid "Insert shortcode"
 msgstr ""
 
-#: vendor/ayecode/wp-super-duper/wp-super-duper.php:436
+#: vendor/ayecode/wp-super-duper/wp-super-duper.php:310
 msgid "Copy shortcode"
 msgstr ""
 
-#: vendor/ayecode/wp-super-duper/wp-super-duper.php:718
-msgid "Load Super Duper Widgets"
+#: vendor/ayecode/wp-super-duper/wp-super-duper.php:515
+#: vendor/ayecode/wp-super-duper/wp-super-duper.php:1174
+msgid "Advanced Settings"
 msgstr ""
 
-#: vendor/ayecode/wp-super-duper/wp-super-duper.php:732
-msgid "Auto"
-msgstr ""
-
-#: vendor/ayecode/wp-super-duper/wp-super-duper.php:742
-msgid ""
-"This option allows you to disable Super Duper widgets and instead only load "
-"the blocks and shortcodes."
-msgstr ""
-
-#: vendor/ayecode/wp-super-duper/wp-super-duper.php:792
+#: vendor/ayecode/wp-super-duper/wp-super-duper.php:1467
 #, php-format
 msgid "Placeholder for: %s"
 msgstr ""
 
-#: vendor/ayecode/wp-super-duper/wp-super-duper.php:1114
+#: vendor/ayecode/wp-super-duper/wp-super-duper.php:1690
 msgid "General"
+msgstr ""
+
+#: vendor/ayecode/wp-super-duper/wp-super-duper.php:2517
+msgid "Placeholder for: "
+msgstr ""
+
+#: vendor/ayecode/wp-super-duper/wp-super-duper.php:2709
+msgid "Settings"
+msgstr ""
+
+#: vendor/ayecode/wp-super-duper/wp-super-duper.php:3265
+msgid "Are you sure?"
+msgstr ""
+
+#: vendor/ayecode/wp-super-duper/wp-super-duper.php:3265
+msgid "Delete"
+msgstr ""
+
+#: vendor/ayecode/wp-super-duper/wp-super-duper.php:3265
+msgid "Cancel"
 msgstr ""
