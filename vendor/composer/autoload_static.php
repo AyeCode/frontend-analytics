@@ -25,7 +25,6 @@ class ComposerStaticInitbf9c091eacc2203f2ee3fdb559e1e304
     );
 
     public static $classMap = array (
-        'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
         'WP_Super_Duper' => __DIR__ . '/..' . '/ayecode/wp-super-duper/wp-super-duper.php',
     );
 

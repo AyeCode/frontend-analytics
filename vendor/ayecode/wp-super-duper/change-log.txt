@@ -1,3 +1,51 @@
+= 1.1.10 =
+* styleid argument now auto added to class list - ADDED
+
+= 1.1.9 =
+* Device type switcher not working on multiline items - FIXED
+* Spacing option increased from 5 to 12 - ADDED
+* MultiSelect inputs now show a clear button - ADDED
+
+= 1.1.8 =
+* prevent JS error that breaks the GD block - FIXED
+* bug with justify content between helper function - FIXED
+
+= 1.1.5 =
+* Customize > Widgets section don't show advanced settings toggle button - FIXED
+* Flex positioning helper functions - ADDED
+
+= 1.1.4 =
+* Hover animations helper functions - ADDED
+* Flex layout helper classes - ADDED
+* Constant added for version number SUPER_DUPER_VER - ADDED
+
+= 1.1.3 =
+* Preview mode can now be changed from block setting icon - ADDED
+* text_color_custom now implemented for inline custom colors - ADDED
+
+= 1.1.2 =
+* BlockStrap theme color pickers will now add custom colors from FSE - ADDED
+
+= 1.1.1 =
+* props.id deprecated and replaced with props.clientId, this could cause issues with wrong content displayed - FIXED
+* We will now attempt to auto-recover all blocks - ADDED
+* Nested blocks support -  ADDED
+* New input types supported for blocks 'image' and 'images' - ADDED
+* Many helper functions added for input arguments - ADDED
+* Font Awesome icons for block icons updated to  5.15.4 - UPDATED
+
+= 1.0.30 =
+* Block icon not loading when WordPress installed on sub-directory - FIXED
+
+= 1.0.29 =
+* Shortcode button not working in editor on Divi theme builder - FIXED
+
+= 1.0.28 =
+* Some extra escaping block parameters - CHANGED
+* Block editor multi-select dropdown style issue - FIXED
+* If tinyMCE is undefined the inserter can fail - FIXED
+* block_show_advanced() sometimes has no arguments - FIXED
+
 = 1.0.27 =
 * Category settings loads only 10 categories on CPT change - FIXED
 * Hook added to filter class & attributes for Elementor widget output - ADDED
