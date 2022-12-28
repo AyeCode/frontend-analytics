@@ -4,7 +4,7 @@ Donate link: https://wpgeodirectory.com/
 Tags: analytics, google analytics, frontend google analytics, tracking
 Requires at least: 4.9
 Tested up to: 6.1
-Stable tag: 2.2
+Stable tag: 2.2.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -34,7 +34,7 @@ UsersWP - Can be used on the UsersWP profile page to show the owner their profil
 
 == Changelog ==
 
-= 2.2.1 =
+= 2.2.1 (2022-12-28) =
 * Analytics not working for encoded url with special characters - FIXED
 
 = 2.2 (2022-11-15) =
