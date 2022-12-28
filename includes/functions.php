@@ -53,7 +53,6 @@ function frontend_analytics_sec2hms( $sec, $padHours = false ) {
  */
 function frontend_analytics_get_analytics( $page, $ga_start = '', $ga_end = '' ) {
     // NEW ANALYTICS
-	$page = esc_url_raw($page);
     $start_date = '';
     $end_date = '';
     $dimensions = '';

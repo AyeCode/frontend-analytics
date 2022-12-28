@@ -52,7 +52,7 @@ class Frontend_Analytics_AJAX {
 
 		// some special security checks
 		$ref = wp_get_referer();
-		$req = isset($_REQUEST['ga_page']) ? urldecode($_REQUEST['ga_page']) : '';
+		$req = isset( $_REQUEST['ga_page'] ) ? wp_unslash( $_REQUEST['ga_page'] ) : '';
 		$page_token = isset($_REQUEST['pt']) ? $_REQUEST['pt'] : '';
 
 		if (

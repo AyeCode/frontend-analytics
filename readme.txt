@@ -34,6 +34,9 @@ UsersWP - Can be used on the UsersWP profile page to show the owner their profil
 
 == Changelog ==
 
+= 2.2.1 =
+* Analytics not working for encoded url with special characters - FIXED
+
 = 2.2 (2022-11-15) =
 * Graph line & bar color changed - CHANGED
 * Google OAuth 2.0 authorization compatibility changes - CHANGED
