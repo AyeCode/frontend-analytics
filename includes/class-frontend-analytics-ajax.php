@@ -78,8 +78,10 @@ class Frontend_Analytics_AJAX {
 				$page_uri = esc_url_raw($_REQUEST['ga_page']);
 				frontend_analytics_get_analytics( $page_uri, $ga_start, $ga_end );
 			} catch ( Exception $e ) {
-
+				echo json_encode( array() );
 			}
+		} else {
+			echo json_encode( array() );
 		}
 
 		exit;
