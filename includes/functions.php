@@ -351,7 +351,7 @@ function gd_renderRealTime(dom_ready) {
 	}
 	ga_au_old = ga_au;
 
-	ga_au = ga_data6.totalsForAllResults["rt:activeUsers"];
+	ga_au = ga_data6 && typeof ga_data6 == 'object' && ga_data6.totalsForAllResults ? ga_data6.totalsForAllResults["rt:activeUsers"] : 0;
 	if (ga_au > ga_au_old) {
 		jQuery('.gd-ActiveUsers').addClass("is-increasing");
 	}
@@ -449,9 +449,8 @@ function gd_renderYearOverYearChart() {
 	jQuery('#gdga-select-analytic').prop('disabled', false);
 
 	Promise.all([thisYear, lastYear]).then(function(results) {
-		var data1 = results[0].rows.map(function(row) { return +row[2]; });
-		var data2 = results[1].rows.map(function(row) { return +row[2]; });
-		//var labelsN = results[0].rows.map(function(row) { return +row[1]; });
+		var data1 = results && results[0] && results[0].rows ? results[0].rows.map(function(row) { return +row[2]; }) : [];
+		var data2 = results && results[1] && results[1].rows ? results[1].rows.map(function(row) { return +row[2]; }) : [];
 
 		var labels = [geodir_fa_htmlEscape('<?php echo esc_js( __( 'Jan', 'frontend-analytics' ) ); ?>'),
 			geodir_fa_htmlEscape('<?php echo esc_js( __( 'Feb', 'frontend-analytics' ) ); ?>'),
@@ -526,9 +525,8 @@ function gd_renderWeekOverWeekChart() {
 	jQuery('#gdga-select-analytic').prop('disabled', false);
 
 	Promise.all([thisWeek, lastWeek]).then(function(results) {
-		var data1 = results[0].rows.map(function(row) { return +row[2]; });
-		var data2 = results[1].rows.map(function(row) { return +row[2]; });
-		var labels = results[1].rows.map(function(row) { return +row[0]; });
+		var data1 = results && results[0] && results[0].rows ? results[0].rows.map(function(row) { return +row[2]; }) : [];
+		var data2 = results && results[1] && results[1].rows ? results[1].rows.map(function(row) { return +row[2]; }) : [];
 
 		<?php
 		// Here we list the shorthand days of the week so it can be used in translation.
@@ -599,12 +597,10 @@ function gd_renderMonthOverMonthChart() {
 	jQuery('#gdga-select-analytic').prop('disabled', false);
 
 	Promise.all([thisMonth, lastMonth]).then(function(results) {
-		var data1 = results[0].rows.map(function(row) { return +row[2]; });
-		var data2 = results[1].rows.map(function(row) { return +row[2]; });
-		var labels = results[1].rows.map(function(row) { return +row[0]; });
+		var data1 = results && results[0] && results[0].rows ? results[0].rows.map(function(row) { return +row[2]; }) : [];
+		var data2 = results && results[1] && results[1].rows ? results[1].rows.map(function(row) { return +row[2]; }) : [];
+		var labels = [<?php echo implode( ",", $month_days ) ?>];
 
-		labels = [<?php echo implode( ",", $month_days ) ?>];
-		
 		for (var i = 0, len = labels.length; i < len; i++) {
 			if (data1[i] === undefined) data1[i] = null;
 			if (data2[i] === undefined) data2[i] = 0;
