@@ -34,6 +34,9 @@ UsersWP - Can be used on the UsersWP profile page to show the owner their profil
 
 == Changelog ==
 
+= 2.2.2 =
+* Changes for AUI Bootstrap 5 compatibility - ADDED
+
 = 2.2.1 (2022-12-28) =
 * Analytics not working for encoded url with special characters - FIXED
 

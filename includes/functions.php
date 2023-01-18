@@ -173,7 +173,7 @@ function frontend_analytics_get_token() {
  * @package Frontend_Analytics
  */
 function frontend_analytics_display_analytics( $args = array() ) {
-	global $post, $preview;
+	global $aui_bs5, $post, $preview;
 
 	if ( $preview || empty( $post ) ) {
 		return;
@@ -666,7 +666,7 @@ function generateLegend(id, items) {
 		var color = item.color || item.fillColor;
 		var label = item.label;
 		<?php if ( $design_style ) { ?>
-		return '<div class="btn btn-sm m-auto shadow-none py-0 px-3"><i style="background:' + color + '" class="mr-1 badge badge-pill p-2 d-inline-block align-middle"></i><span class="d-inline-block align-middle">' + label + '</span></div>';
+		return '<div class="btn btn-sm m-auto shadow-none py-0 px-3"><i style="background:' + color + '" class="<?php echo ( $aui_bs5 ? 'me-1 rounded-pill' : 'mr-1 badge-pill' ); ?> badge p-2 d-inline-block align-middle"></i><span class="d-inline-block align-middle">' + label + '</span></div>';
 		<?php } else { ?>
 		return '<li><i style="background:' + color + '"></i>' + label + '</li>';
 		<?php } ?>
@@ -738,15 +738,19 @@ function geodir_fa_htmlEscape(str) {
 			$btn_wrap_class .= ' text-' . sanitize_html_class( $args['btn_alignment'] );
 		}
 	}
+
+	if ( $aui_bs5 ) {
+		$btn_wrap_class = str_replace( array( '-left', '-right' ), array( '-start', '-end' ), $btn_wrap_class );
+	}
 	?>
-		<div class="gdga-show-analytics<?php echo $btn_wrap_class; ?>"><button role="button" class="btn<?php echo $btn_class; ?>"><i class="fas fa-chart-bar mr-1" aria-hidden="true"></i><?php echo ! empty( $args['button_text'] ) ? esc_attr( $args['button_text'] ) : __('Show Google Analytics', 'frontend-analytics');?></button></div>
+		<div class="gdga-show-analytics<?php echo $btn_wrap_class; ?>"><button role="button" class="btn<?php echo $btn_class; ?>"><i class="fas fa-chart-bar <?php echo ( $aui_bs5 ? 'me-1' : 'mr-1' ); ?>" aria-hidden="true"></i><?php echo ! empty( $args['button_text'] ) ? esc_attr( $args['button_text'] ) : __('Show Google Analytics', 'frontend-analytics');?></button></div>
 		<div id="ga_stats" class="gdga-analytics-box card" style="display:none">
 			<div class="card-header p-3">
-				<div class="gd-ActiveUsers btn btn-sm btn-info float-right py-1 px-2 align-middle"><span id="gdga-loader-icon" class="mr-1" title="<?php esc_attr_e("Refresh", 'frontend-analytics');?>"><i class="fas fa-sync fa-spin" aria-hidden="true"></i></span><?php _e("Active Users:", 'frontend-analytics');?> <span class="gd-ActiveUsers-value badge badge-light badge-pill">0</span></div>
-				<div id="ga-analytics-title" class="h5 m-0 card-title align-middle"><i class="fas fa-chart-bar mr-1" aria-hidden="true"></i><?php _e("Analytics", 'frontend-analytics');?></div>
+				<div class="gd-ActiveUsers btn btn-sm btn-info py-1 px-2 align-middle <?php echo ( $aui_bs5 ? 'float-end' : 'float-right' ); ?>"><span id="gdga-loader-icon" class="<?php echo ( $aui_bs5 ? 'me-1' : 'mr-1' ); ?>" title="<?php esc_attr_e("Refresh", 'frontend-analytics');?>"><i class="fas fa-sync fa-spin" aria-hidden="true"></i></span><?php _e("Active Users:", 'frontend-analytics');?> <span class="gd-ActiveUsers-value badge <?php echo ( $aui_bs5 ? 'bg-light rounded-pill' : 'badge-light badge-pill' ); ?>">0</span></div>
+				<div id="ga-analytics-title" class="h5 m-0 card-title align-middle"><i class="fas fa-chart-bar <?php echo ( $aui_bs5 ? 'me-1' : 'mr-1' ); ?>" aria-hidden="true"></i><?php _e("Analytics", 'frontend-analytics');?></div>
 			</div>
 			<div class="card-body">
-				<div class="gdga-type-container form-group" style="display:none">
+				<div class="gdga-type-container <?php echo ( $aui_bs5 ? 'mb-3' : 'form-group' ); ?>" style="display:none">
 					<?php
 					echo aui()->select( array(
 						'id' => 'gdga-select-analytic',
