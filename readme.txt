@@ -3,8 +3,8 @@ Contributors: stiofansisland, paoltaia, ayecode, basantakumar
 Donate link: https://wpgeodirectory.com/
 Tags: analytics, google analytics, frontend google analytics, tracking
 Requires at least: 4.9
-Tested up to: 6.1
-Stable tag: 2.2.1
+Tested up to: 6.2
+Stable tag: 2.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -34,7 +34,7 @@ UsersWP - Can be used on the UsersWP profile page to show the owner their profil
 
 == Changelog ==
 
-= 2.2.2 =
+= 2.3 - 2023-03-16 =
 * Changes for AUI Bootstrap 5 compatibility - ADDED
 
 = 2.2.1 (2022-12-28) =
